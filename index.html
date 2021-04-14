@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>Taiko Konfigurator</title>
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet"> 
+		<style type="text/css">			
+			body 
+			{ 
+				margin_off: 0; 
+				font-family: Quicksand, sans-serif;
+			}
+
+			#configurator
+			{
+				
+			}
+
+			#taiko-list
+			{
+				border_off: 2px solid red;
+			}
+
+			.taiko 
+			{ 
+				border: 1px solid black;
+				background-color: lightgrey; 
+				width: 96%;
+				padding: 10;
+				margin: 10;
+			}
+			.miya 
+			{ 
+				background-color: lightgrey; 
+			}
+			.hira 
+			{ 
+				background-color: lightblue; 
+			}
+
+			.thumbnail
+			{
+				display: inline;
+				padding-right: 20
+				float: left;
+				height: 100;
+			}
+
+			.taiko-name
+			{
+				font-family: Quicksand, sans-serif;
+				text-transform-off: uppercase;
+				font-size: 24;
+				font-weight: 700;
+				font-style-off: italic;
+			}
+
+			.taiko-name-size
+			{
+				font-family: Quicksand, sans-serif;
+				font-size: 20;
+				font-weight: 700;
+			}
+
+			.taiko-name-unit
+			{
+				font-family: Quicksand, sans-serif;
+				font-size: 14;
+				font-weight: 600;
+			}
+
+			.taiko-text
+			{
+				border-off: 1px dashed black;
+				display:inline-block;
+				width:500;
+				font-family: Quicksand, sans-serif;
+				font-size: 16;
+				vertical-align: top;
+			}
+
+			.option-text
+			{
+				font-family: Quicksand, sans-serif;
+				font-size: 16;
+			}
+
+			.taiko-summary
+			{
+				border: 1px dashed black;
+				display:none;
+				width: 500;
+				font-family: Quicksand, sans-serif;
+				font-size: 18;
+				vertical-align: top;
+			}
+
+			.img-option
+			{
+				display: inline-block;
+				width: 80;
+				height: 80;
+			}
+
+			.img-option-selected
+			{
+				border: 5px solid blue;
+				width: 70;
+				height: 70;
+			}
+
+			#transparentbackground
+			{
+				display: none;
+				position: fixed;
+				left: 0;
+				top: 0;
+				width:	100%;
+				height: 100%;
+				background-color:rgba(0,0,0,0.3);
+				z-index-off: 1;
+			}
+
+			#inquiryformwrapper
+			{
+				margin: auto;
+				margin-top: 100;
+				padding: 5;
+				width: 450;
+				height: auto;
+				background-color:#eee;
+				border: 3px solid darkgrey;
+			}
+
+			form
+			{
+				padding: 10;
+			}
+
+			td 
+			{ 
+				vertical-align: top; 
+				font-size: 12; 
+			}
+			
+			.formcol1 
+			{	
+				width: 8em;	
+				padding-top: 5;
+			}
+
+			input {	width: 20em; }
+
+			textarea { width: 100%; }
+
+			select 
+			{
+				display: block;
+				width: 375;
+				height: 40px;
+				-moz-padding-start: calc(10px - 3px);
+				padding-left: 10px;
+				background: url(fff-0-2.png) repeat;
+				color: #000;
+				font-family: Quicksand, sans-serif;
+				font-size: 16px;
+				box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.3);
+				border-radius: 3px;
+				outline: none;
+				cursor: pointer;
+			}
+
+			select option 
+			{
+  				color: #666;
+			}
+
+			@media only screen and (min-width: 900px)
+			{
+				#configurator
+				{
+					width: 800px;
+					margin: 0 auto;
+					padding: 0;
+					border_off: 2px solid blue;
+				}
+
+				.thumbnail
+				{
+					height: 200;
+				}
+			}
+		</style>
+		<script src="taiko-data-json.js"></script>
+	</head>
+
+	<body>
+		<div id=configurator>
+			<button id=search-button onclick="onclick_searchButton();">Suchen</button>
+			<div id=taiko-list>
+				<div id=taiko-template-id class="taiko miya" data-price="{TEMPLATE_PRICE}">
+					
+						<img class=thumbnail src="image/{TEMPLATE_THUMBNAIL}">
+					
+					<div class=taiko-text data-price="{TEMPLATE_PRICE}">
+						<span class=taiko-name>{TEMPLATE_NAME}</span>
+						<p>{TEMPLATE_DESCRIPTION}</p>
+						<p style="text-align:right; margin-top:-20;">Grundpreis {TEMPLATE_PRICE},- Euro</p>
+						<button onclick="onclick_optionsButton(this);">
+							Meine Taiko konfigurieren
+						</button>
+						<div id=options-section style="display:none;">
+							<p><label style="display:block;">Haltegriffe</label>
+								<div id=drum-handle data-price=0 data-value="kan-none" data-value-ui="Ohne Haltegriffe">
+									<img id=kan-none class="img-option img-option-selected"
+										data-price-option=0
+										data-option-description="Ohne Haltegriffe"
+										onclick="onclick_drumhandle(this)"/>
+									<img id=kan-brass-small class="img-option" src='image/kan-messingrosette.jpg' 
+										data-price-option=100
+										data-option-description="Haltegriffe mit Messingrosette(klein)"
+										onclick="onclick_drumhandle(this)"/>
+									<img id=kan-brass-big class=img-option src='image/kan-messingrosette.jpg' 
+										data-price-option=100
+										data-option-description="Haltegriffe mit Messingrosette(groß)"
+										onclick="onclick_drumhandle(this)"/>
+									<img id=kan-steel-small class=img-option src='image/kan-stahlrosette.jpg'
+										data-price-option=100 
+										data-option-description="Haltegriffe mit Stahlrosette(klein)"
+										onclick="onclick_drumhandle(this)"/>
+									<img id=kan-steel-nobase class=img-option src='image/kan-ohnegrundplatte.jpg' 
+										data-price-option=70
+										data-option-description="Haltegriffe mit Stahlrosette ohne Grundplatte"
+										onclick="onclick_drumhandle(this)"/>
+								</div>
+								<p id=handle_option_text class=option-text>Ohne Haltegriffe</p>
+								<p id=handle_option_text_price class=option-text style="text-align:right; margin-top:-20;">0,- Euro</p>
+
+							<p><label>Holzart & Farbe</label>
+							<p>	<select id=woodtype data-price=0 data-value-ui="Esche gebeizt" onchange="onchange_wood(this);">
+									<option value=0 selected>Esche gebeizt (ohne Aufpreis)</option>
+									<option value=1>Ahorn gebeizt (Aufpreis 60,- Euro)</option>
+									<option value=2>Rüster natur (Aufpreis 60,- Euro)</option>
+								</select>
+								<p id=wood_price class=option-text style="text-align:right; margin-top:-20;">0,- Euro</p>
+								<div id=wood_color>
+									<div>
+										<img id='color-birne' class="img-option img-option-selected" src='image/farbe-birne.jpg' 
+											onclick="onclick_drumcolor(this)"
+											data-option-description="Beizton 'Birne'" />
+										<img id='color-dunkelbraun' class=img-option src='image/farbe-rotbraun.jpg' 
+											onclick="onclick_drumcolor(this)"
+											data-option-description="Beizton dunkelbraun" />
+										<img id='color-rotbraun' class=img-option src='image/farbe-rotbraun.jpg' 
+											onclick="onclick_drumcolor(this)"
+											data-option-description="Beizton rotbraun" />
+										<img id='color-rot' class=img-option src='image/farbe-rotbraun.jpg' 
+											onclick="onclick_drumcolor(this)"
+											data-option-description="Beizton dunkelrot" />
+									</div>
+									<p id=color_option_text class=option-text>Beizton "Birne"</p>
+								</div>
+							<p><label>Felle</label>
+							<p>	<select id=skintype>
+									<option value="skin-nature">Natur (ohne Aufpreis)</option>
+									<option value="skin-white">Weiß (ohne Aufpreis)</option>
+								</select>
+								<p style="text-align:right; margin-top:-20;">0,- Euro</p>
+								<p>Gesamtpreis</p>
+							<p class="totalprice"style="text-align:right; margin-top:-20; font-weight: 1200;">1.200,- Euro</p>
+							
+						</div>
+						<button id="button-anfragen" style="float: right;" onclick="onclick_inquiryButton(this);">
+							Instrument unverbindlich anfragen
+						</button>
+					</div>
+				</div>
+
+
+				<div id=taiko-list-dynamisch>
+					<script type="text/javascript">
+						var list = document.querySelector("#taiko-list-dynamisch");
+						var template = document.querySelector("#taiko-template-id");
+						var content = "";
+
+						for (i=0; i<TAIKO_DATA_JSON.length; i++)
+						{
+							var newGeneric = template.outerHTML
+											.replace("taiko-template-id",TAIKO_DATA_JSON[i].id)
+											.replace("{TEMPLATE_NAME}",TAIKO_DATA_JSON[i].name)
+											.replace("{TEMPLATE_THUMBNAIL}",TAIKO_DATA_JSON[i].thumbnail)
+											.replace("{TEMPLATE_DESCRIPTION}",TAIKO_DATA_JSON[i].description)
+											.replace(/{TEMPLATE_PRICE}/g,TAIKO_DATA_JSON[i].price)
+											;
+							content += newGeneric;
+						}
+
+						list.innerHTML = content;
+
+						/*
+
+						list.innerHTML = TAIKO_DATA_JSON.map(function(drum) { return `
+							<div id=miyadaiko_14 class="taiko miya" data-price="${drum.price}">
+							<div style="display:inline-block;">
+								<img src=${drum.thumbnail}>
+							</div>
+							<div class=taiko-text>
+								<span class=taiko-name>${drum.name}</span>
+								<span class=taiko-name-size> XXXXX </span>
+								<span class=taiko-name-unit> shaku </span>
+								<p>${drum.description}</p>
+								<p style="text-align:right; margin-top:-20;">Grundpreis ${drum.price} Euro</p>
+								<button style="float: left;">Optionen für Griffe, Holzart, usw. anzeigen</button>
+							</div>
+						</div>
+						`; }).join('');
+						*/
+
+						// TAIKO_DATA_JSON 
+						// TAIKO_DATA_JSON.toString();
+
+					</script>
+				</div>
+			</div>
+		</div>
+		<div id=transparentbackground>
+			<div id=inquiryformwrapper>
+				<span style="float:right;cursor: pointer;"><a onclick="document.querySelector('#transparentbackground').style.display='none';">[x]</a></span>
+				<form action=".">
+				<table>
+					<tr><td class="formcol1">Anfrage</td><td class="formcol2"><input id=formfield-size name="spec" type="text" disabled></td></tr>					
+					<tr><td class="formcol1">Haltegriffe</td><td><input id=formfield-handle name="Haltegriffe" type="text" disabled></td></tr>
+					<tr><td class="formcol1">Holz/Farbe</td><td><input id=formfield-wood  name="Holz/Farbe" type="text" disabled></td></tr>
+					<tr><td class="formcol1">Felle</td><td><input id=formfield-skin name="Felle" type="text" disabled></td></tr>
+					<tr><td></td><td></td></tr>
+					<tr><td class="formcol1">Name</td><td><input name="Name" type="text"></td></tr>
+					<tr><td class="formcol1">Email</td><td><input name="Email" type="email"></td></tr>
+					<tr><td class="formcol1">Telefon</td><td><input name="Telefon" type="text"></td></tr>
+					<tr><td class="formcol1">Anmerkungen <br>& Fragen</td><td><textarea name="Anmerkungen" rows="10"></textarea></td>
+					</tr><td></td><td><button type=submit onclick_off="">
+					Taiko unverbindlich Anfragen</button></td>
+					</tr>
+					</table>
+					<input type=hidden name="drumspec" value="Miya-Daiko XXX">
+				</form>
+			</div>
+		</div>
+		<script src="taiko-config.js"></script>
+		<script type="text/javascript">
+			function findDrum(element)
+			{
+				if (element == null)
+					return element;
+
+				if (element.classList.contains('taiko'))
+					return element;
+
+				return findDrum(element.parentElement);
+			}
+
+			function onchange_wood(element)
+			{
+				var drum = findDrum(element);			
+				var woodPrice = drum.querySelector("#wood_price");
+				var woodColor = drum.querySelector("#wood_color");
+				var price = element.value == 0 ? 0 : 60;
+
+				element.setAttribute("data-price", price);
+				element.setAttribute("data-value-ui",element.innerHTML);
+				woodPrice.innerHTML = price + ",- Euro";
+				updateTotalPrice(drum);
+
+				woodColor.style.display = element.value == 2 ? 'none' : 'block';
+			}
+
+			function onclick_drumhandle(element)
+			{
+				var drum = findDrum(element);
+				var image = element;
+				var description = drum.querySelector("#handle_option_text");
+				var descriptionPrice = drum.querySelector("#handle_option_text_price");
+				var allOptions = image.parentElement.querySelectorAll("img");
+
+				for (i=0; i<allOptions.length; i++)
+				{
+					allOptions[i].classList.remove("img-option-selected");
+				}
+
+				image.classList.add("img-option-selected");
+				var price = image.getAttribute("data-price-option");
+				image.parentElement.setAttribute("data-price",price);
+				image.parentElement.setAttribute("data-value",image.id);
+				image.parentElement.setAttribute("data-value-ui",image.getAttribute("data-option-description"));
+
+				description.innerHTML = image.getAttribute("data-option-description");
+				descriptionPrice.innerHTML = price + ",- Euro";
+
+				updateTotalPrice(drum);
+			}
+
+			function onclick_drumcolor(element)
+			{
+				var drum = findDrum(element);
+				var image = element; 
+				var description = drum.querySelector("#color_option_text");
+				var wood_color = drum.querySelector("#wood_color"); // div
+				var allOptions = image.parentElement.querySelectorAll("img");
+
+				for (i=0; i<allOptions.length; i++)
+				{
+					allOptions[i].classList.remove("img-option-selected");
+				}
+
+				image.classList.add("img-option-selected");
+				description.innerHTML = image.getAttribute("data-option-description");
+				wood_color.setAttribute	("data-value",image.id);
+			}
+
+			function onclick_optionsButton(element)
+			{
+				var drum = findDrum(element);
+				var optionsSection = drum.querySelector("#options-section");
+
+				if (optionsSection.style.display == 'none')
+				{
+					optionsSection.style.display = 'block';
+					updateTotalPrice(drum);
+				}
+				else
+				{
+					optionsSection.style.display = 'none';					
+				}
+			}
+
+			function onclick_inquiryButton(element)
+			{
+				var drum = findDrum(element);
+				var taikoName = drum.querySelector(".taiko-name");
+				var drumHandles = drum.querySelector("#drum-handle");
+				var	woodtype = drum.querySelector("#woodtype");
+				var woodcolorName = drum.querySelector("#color_option_text"); 
+				var skintype = drum.querySelector("#skintype");
+				var form = document.querySelector("#transparentbackground");
+				var outSize = document.querySelector("#formfield-size");
+				var outHandle = document.querySelector("#formfield-handle");
+				var outWood = document.querySelector("#formfield-wood");
+				var outSkin = document.querySelector("#formfield-skin");
+
+				outSize.value = taikoName.innerHTML;
+				outHandle.value = drumHandles.getAttribute("data-value-ui");
+				outWood.value = woodtype.getAttribute("data-value-ui") + ", " + woodcolorName.innerHTML;
+				outSkin.value = skintype.value == "skin-nature" ? "Naturfelle" : "Weiße Felle";
+				form.style.display = 'block';
+				
+				/*
+				window.open("inquiry.html?id=" + drum.id 
+					+ "&woodtype=" + woodtype.value
+					+ "&woodcolor=" + woodcolor.getAttribute("data-value")
+					+ "&drumhandle=" + drumHandles.getAttribute("data-value")
+					+ "&skintype=" + encodeURI(skintype.value)
+					);*/
+			}
+
+			function updateTotalPrice(drum)
+			{
+				var list = drum.querySelectorAll("[data-price]");
+				var price = 0.0;
+
+				for (i=0; i<list.length; i++)
+				{
+					price += parseInt(list[i].getAttribute("data-price"));
+				}
+
+				drum.querySelector(".totalprice").innerHTML = price;
+				drum.querySelector(".totalprice").innerHTML += ",- Euro";
+			}
+
+			function onclick_searchButton()
+			{
+				var taikos = document.querySelectorAll('.taiko');
+
+				for (i=0; i<taikos.length; i++)
+				{
+					var element = taikos[i];
+					var price = parseInt(element.getAttribute('data-price'));
+
+					if (price > 900
+					&&  price < 1400)
+					{
+						element.style.display = "block";
+					}
+					else
+					{
+						element.style.display = "none";
+					}
+				}
+			}
+		</script>
+	</body>
+
+</html>

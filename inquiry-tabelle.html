@@ -1,0 +1,63 @@
+<!DOCTYPE html">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>Taiko Konfigurator Anfrage</title>
+		<style type="text/css">			
+			body 
+			{ 
+				margin_off: 0; 
+				font-family: 'Open Sans', sans-serif;
+			}
+
+			.col1
+			{
+				width: 8em;
+			}
+
+			td
+			{
+				vertical-align: top; 
+			}
+			
+			input 
+			{
+				width: 20em;
+			}
+
+			textarea
+			{
+				width: 20em;
+			}
+
+		</style>
+		<script src="taiko-data-json.js"></script>
+	</head>
+
+	<body>
+		<p>Anfrage</p>
+			<form>
+				<table>
+					<tr ><td class="col1"></td><td class="col2"></td></tr>
+					
+					<tr ><td>Name</td><td><input type="text"></td></tr>
+					<tr><td>Email</td><td><input type="email"></td></tr>
+					<tr><td>Telefon</td><td><input type="text"></td></tr>
+					<tr><td>Anmerkungen <br>& Fragen</td><td><textarea rows="10"></textarea></td>
+					</tr><td></td><td><button onclick="document.querySelector('#transparentbackground').style.display='none';">
+					Taiko unverbindlich Anfragen</button></td>
+					</tr>
+					</table>
+				
+			</form>
+
+			<script type="text/javascript">
+				let params = (new URL(document.location)).searchParams;
+				// alert(params.toString());
+			</script>
+		
+	</body>
+	
+</html>
