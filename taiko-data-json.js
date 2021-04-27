@@ -1,74 +1,227 @@
 const TAIKO_DATA_JSON = 
-[
-	// handles : [ { id: "HANDLE_NONE", description: "Ohne Haltegriffe" }, { id: HANDLE_BRASS_SMALL } ]
+{
+	
+	handles : 
+	[ 
+		  { id: "HANDLE_NONE", 			
+	  			price: "0", 	
+	  			description: "Ohne Haltegriffe",
+	  			description_en: "Without handles" }
+		, { id: "HANDLE_BRASS_SMALL", 	
+				price: "100", 	
+				description: "Haltegriffe mit Messingrosette (klein)",
+				description_en: "Handles with brass rosette (small)" } 
+		, { id: "HANDLE_BRASS_BIG", 	
+				price: "100", 	
+				description: "Haltegriffe mit Messingrosette (groß)",
+				description_en: "Handles with brass rosette (big)"  } 
+		, { id: "HANDLE_STEEL_SMALL", 	
+				price: "100", 	
+				description: "Haltegriffe mit Stahlrosette (klein)",
+				description_en: "Handles with steel rosette (small)"  } 
+		, { id: "HANDLE_STEEL_BIG", 	
+				price: "100", 	
+				description: "Haltegriffe mit Stahlrosette (groß)",
+				description_en: "Handles with steel rosette (big)"  } 
+		, { id: "HANDLE_STEEL_NOBASE", 	
+				price: "70", 	
+				description: "Haltegriffe mit Stahlrosette ohne Grundplatte",
+				description_en: "Handles with steel rosette without base plate" } 
+	]
+	,	
+	woodtypes :
+	[
+		{ 
+		  	id: "WOOD_ASH",   
+		  	description: "Esche gebeizt",
+		  	description_en: "Ash"
+		}
+		, 
+		{ 
+			id: "WOOD_MAPLE", 
+			description: "Ahorn gebeizt", 
+			description_en: "Maple",
+			prices:
+			[
+				  { drumid: "HIRA_DAIKO_14", price: "15" }
+				, { drumid: "HIRA_DAIKO_15", price: "15" }
+				, { drumid: "HIRA_DAIKO_16", price: "20" }
+				, { drumid: "HIRA_DAIKO_17", price: "20" }
+				, { drumid: "MIYA_DAIKO_14", price: "40" }
+				, { drumid: "MIYA_DAIKO_15", price: "50" }
+				, { drumid: "MIYA_DAIKO_16", price: "60" }
+			]
+		}
+		, 
+		{ 
+			id: "WOOD_ELM",   
+			description: "Rüster natur",
+			description_en: "Elm natural",
+			prices:
+			[
+				  { drumid: "HIRA_DAIKO_14", price: "15" }
+				, { drumid: "HIRA_DAIKO_15", price: "15" }
+				, { drumid: "HIRA_DAIKO_16", price: "20" }
+				, { drumid: "HIRA_DAIKO_17", price: "20" }
+				, { drumid: "MIYA_DAIKO_14", price: "40" }
+				, { drumid: "MIYA_DAIKO_15", price: "50" }
+				, { drumid: "MIYA_DAIKO_16", price: "60" }
+			]
+		}
+	]
+	,
+	woodcolors :
+	[
+		{ 
+		  	id: "WOODCOLOR_NATURAL",   
+		  	description: "Rüster Natur",
+		  	description_en: "Elm natural"  
+		}
+		, 
+		{ 
+			id: "WOODCOLOR_PEAR",   
+			description: "Farbton Birne/Rüster",
+			description_en: "Pear/Elmwood"
+		}
+		, 
+		{ 
+			id: "WOODCOLOR_NUT",   
+			description: "Farbton Nuss/Dunkelbraun",
+			description_en: "Nut/darkbrown"
+		}
+		, 
+		{ 
+			id: "WOODCOLOR_REDBROWN", 
+			description: "Farbton Rotbraun",
+			description_en: "Redbrown" 
+		}
+		, 
+		{ 
+			id: "WOODCOLOR_RED", 
+			description: "Farbton Dunkelrot",
+			description_en: "Darkred" 
+		}
+		, 
+		{ 
+			id: "WOODCOLOR_SPECIAL", 
+			description: "Wunschfarbe",
+			description_en: "Color of choice" 
+		}
+	]
+	,
 	// text : 
 	// [ 
 	//		{ id: "MIYA_DAIKO_14+description+de", text: "Nagado Daiko 1.4shaku"}
 	// ]
 
-	// drums : []
+	drums : 
+	[
+		{
+			id: 			"HIRA_DAIKO_14", 
+			name: 			"Hira daiko 1,4 shaku",
+			thumbnail: 		"hira.jpg",
+			description: 	"Fell-d: 42cm",
+			description_en: "Skin-d: 42cm",
+			price: 			"750",
+			option_handle : [ "HANDLE_NONE", "HANDLE_BRASS_SMALL", "HANDLE_STEEL_SMALL", "HANDLE_STEEL_NOBASE" ]
+		}
+		,
+		{
+			id: 			"HIRA_DAIKO_15", 
+			name: 			"Hira daiko 1,5 shaku",
+			thumbnail: 		"hira.jpg",
+			description: 	"Fell-d: 45cm",
+			price: 			"850",
+			option_handle : [ "HANDLE_NONE", "HANDLE_BRASS_SMALL", "HANDLE_STEEL_SMALL", "HANDLE_STEEL_NOBASE" ]
+		}
+		,
+		{
+			id: 			"HIRA_DAIKO_16", 
+			name: 			"Hira daiko 1,6 shaku",
+			thumbnail: 		"hira.jpg",
+			description: 	"Fell-d: 48cm",
+			price: 			"950",
+			option_handle : [ "HANDLE_NONE", "HANDLE_BRASS_SMALL", "HANDLE_STEEL_SMALL", "HANDLE_STEEL_NOBASE" ]
+		}
+		,
+		{
+			id: 			"HIRA_DAIKO_17", 
+			name: 			"Hira daiko 1,7 shaku",
+			thumbnail: 		"hira.jpg",
+			description: 	"Fell-d: 51cm",
+			price: 			"1050",
+			option_handle : [ "HANDLE_NONE", "HANDLE_BRASS_SMALL", "HANDLE_STEEL_SMALL", "HANDLE_STEEL_NOBASE" ]
+		}
+		,
+		{
+			id: 			"MIYA_DAIKO_14", 
+			name: 			"Miya daiko 1,4 shaku",
+			thumbnail: 		"miya-14.jpg",
+			description: 	"Fell-d: 42cm",
+			description_en: "Skin-d: 42cm",
+			price: 			"1100",
+			option_handle : [ "HANDLE_NONE", "HANDLE_BRASS_SMALL", "HANDLE_BRASS_BIG", "HANDLE_STEEL_SMALL", "HANDLE_STEEL_BIG", "HANDLE_STEEL_NOBASE" ]
+		}
+		,
+		{
+			id: 			"MIYA_DAIKO_15", 
+			name: 			"Miya daiko 1,5 shaku",
+			thumbnail: 		"miya-15.jpg",
+			description: 	"Fell-d: 45cm Bauch-d:56cm Länge=56cm",
+			price: 			"1275",
+			option_handle : [ "HANDLE_NONE", "HANDLE_BRASS_SMALL", "HANDLE_BRASS_BIG", "HANDLE_STEEL_SMALL", "HANDLE_STEEL_BIG", "HANDLE_STEEL_NOBASE" ]
+		}
+		,
+		{
+			id: 			"MIYA_DAIKO_16", 
+			name: 			"Miya daiko 1,6 shaku",
+			thumbnail: 		"miya-16.jpg",
+			description: 	"Fell-d: 48cm",
+			price: 			"1450",
+			option_handle : [ "HANDLE_NONE", "HANDLE_BRASS_SMALL", "HANDLE_BRASS_BIG", "HANDLE_STEEL_SMALL", "HANDLE_STEEL_BIG", "HANDLE_STEEL_NOBASE" ]
+		}
+	],
+
+	getDrumDataForId : function(drumId)
 	{
-		id: 			"HIRA_DAIKO_14", 
-		name: 			"Hira daiko 1,4 shaku",
-		thumbnail: 		"hira.jpg",
-		description: 	"Fell-d: 42cm",
-		description_en: "Skin-d: 42cm",
-		price: 			"750",
-		option_handle : [ "HANDLE_NONE", "HANDLE_SMALL", "HANDLE_BIG", "HANDLE_STEEL", "HANDLE_STEEL_NOBASE" ]
+		for (i=0; i<this.drums.length; i++)
+		{
+			if (this.drums[i].id == drumId)
+			{
+				return this.drums[i];
+			}
+		}
+
+		return null;
 	}
 	,
+	getWoodtypeDataForId : function(woodtypeId)
 	{
-		id: 			"HIRA_DAIKO_15", 
-		name: 			"Hira daiko 1,5 shaku",
-		thumbnail: 		"hira.jpg",
-		description: 	"Fell-d: 45cm",
-		price: 			"850",
-		option_handle : [ "HANDLE_NONE", "HANDLE_SMALL", "HANDLE_BIG", "HANDLE_STEEL", "HANDLE_STEEL_NOBASE" ]
+		for (i=0; i<this.woodtypes.length ; i++)
+		{
+			if (this.woodtypes[i].id == woodtypeId)
+			{
+				return this.woodtypes[i];
+			}
+		}
+
+		return null;
 	}
 	,
+	getPrice : function(woodtype, drumId)
 	{
-		id: 			"HIRA_DAIKO_16", 
-		name: 			"Hira daiko 1,6 shaku",
-		thumbnail: 		"hira.jpg",
-		description: 	"Fell-d: 48cm",
-		price: 			"950",
-		option_handle : [ "HANDLE_NONE", "HANDLE_SMALL", "HANDLE_BIG", "HANDLE_STEEL", "HANDLE_STEEL_NOBASE" ]
+		if (woodtype.prices != null)
+		{
+			for (j=0; j<woodtype.prices.length; j++)
+			{
+				if (woodtype.prices[j].drumid == global.drumId)
+				{
+					return woodtype.prices[j].price;
+				}
+			}					
+		}
+
+		return -1;
 	}
-	,
-	{
-		id: 			"HIRA_DAIKO_17", 
-		name: 			"Hira daiko 1,7 shaku",
-		thumbnail: 		"hira.jpg",
-		description: 	"Fell-d: 51cm",
-		price: 			"1050",
-		option_handle : [ "HANDLE_NONE", "HANDLE_SMALL", "HANDLE_BIG", "HANDLE_STEEL", "HANDLE_STEEL_NOBASE" ]
-	}
-	,
-	{
-		id: 			"Miya_DAIKO_14", 
-		name: 			"Miya daiko 1,4 shaku",
-		thumbnail: 		"miya-14.jpg",
-		description: 	"Fell-d: 42cm",
-		description_en: "Skin-d: 42cm",
-		price: 			"1100",
-		option_handle : [ "HANDLE_NONE", "HANDLE_SMALL", "HANDLE_BIG", "HANDLE_STEEL", "HANDLE_STEEL_NOBASE" ]
-	}
-	,
-	{
-		id: 			"MIYA_DAIKO_15", 
-		name: 			"Miya daiko 1,5 shaku",
-		thumbnail: 		"miya-15.jpg",
-		description: 	"Fell-d: 45cm Bauch-d:56cm Länge=56cm",
-		price: 			"1275",
-		option_handle : [ "HANDLE_NONE", "HANDLE_SMALL", "HANDLE_BIG", "HANDLE_STEEL", "HANDLE_STEEL_NOBASE" ]
-	}
-	,
-	{
-		id: 			"MIYA_DAIKO_16", 
-		name: 			"Miya daiko 1,6 shaku",
-		thumbnail: 		"miya-16.jpg",
-		description: 	"Fell-d: 48cm",
-		price: 			"1450",
-		option_handle : [ "HANDLE_NONE", "HANDLE_SMALL", "HANDLE_BIG", "HANDLE_STEEL", "HANDLE_STEEL_NOBASE" ]
-	}
-];
+	
+};

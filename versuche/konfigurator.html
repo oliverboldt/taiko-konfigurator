@@ -286,14 +286,14 @@
 						var template = document.querySelector("#taiko-template-id");
 						var content = "";
 
-						for (i=0; i<TAIKO_DATA_JSON.length; i++)
+						for (i=0; i<TAIKO_DATA_JSON.drums.length; i++)
 						{
 							var newGeneric = template.outerHTML
-											.replace("taiko-template-id",TAIKO_DATA_JSON[i].id)
-											.replace("{TEMPLATE_NAME}",TAIKO_DATA_JSON[i].name)
-											.replace("{TEMPLATE_THUMBNAIL}",TAIKO_DATA_JSON[i].thumbnail)
-											.replace("{TEMPLATE_DESCRIPTION}",TAIKO_DATA_JSON[i].description)
-											.replace(/{TEMPLATE_PRICE}/g,TAIKO_DATA_JSON[i].price)
+											.replace("taiko-template-id",TAIKO_DATA_JSON.drums[i].id)
+											.replace("{TEMPLATE_NAME}",TAIKO_DATA_JSON.drums[i].name)
+											.replace("{TEMPLATE_THUMBNAIL}",TAIKO_DATA_JSON.drums[i].thumbnail)
+											.replace("{TEMPLATE_DESCRIPTION}",TAIKO_DATA_JSON.drums[i].description)
+											.replace(/{TEMPLATE_PRICE}/g,TAIKO_DATA_JSON.drums[i].price)
 											;
 							content += newGeneric;
 						}

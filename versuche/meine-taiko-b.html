@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>Meine-taiko-B.de</title>
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" > 
+		<link rel="stylesheet" href="common.css">
+		<script src="common.js"></script>
+		<script src="taiko-data-json.js"></script>
+		<style type="text/css">	
+
+			#section-wood {	display: none; }
+			#section-handle { display: none; }
+			#section-skin { display: none; }
+			#section-offer { display: none; }
+
+			#offer-content
+			{
+				padding-left: 35px;
+				padding-right: 55px;
+			}
+
+			form
+			{
+				padding: 10;
+			}
+
+			td 
+			{ 
+				vertical-align: top; 
+				font-size: 12; 
+			}
+			
+			.formcol1 
+			{	
+				width: 8em;	
+				padding-top: 5;
+			}
+
+			input {	width: 20em; }
+
+			textarea { width: 40em; }
+
+		</style>
+
+	</head>
+
+	<body>
+		<div id=wrapper>
+			<div id=menu>
+				<div class="menuitem menuitem-active italic">
+					Meine Taiko !
+				</div>
+				<div class="menuitem right" 
+					onmouseover="buttonHighlightStart(this);" 
+					onmouseout="buttonHighlightStop(this);">
+					<a href="start.html">my<strong>taiko</strong>drum.de</a>
+				</div>
+			</div>
+
+			<div id=section-size class=section>
+				<h1>Trommeltyp & Größe</h1>
+				<div class="choice">
+					<div class="button right" 
+						onmouseover="buttonHighlightStart(this);" 
+						onmouseout="buttonHighlightStop(this);" 
+						onclick="onclick_sectionwood(this);"> 
+						Holzart & Farbe auswählen >> 
+					</div>
+					<div class=cleardiv></div>
+					<p><strong>Ich möchte eine </strong>
+					<select id=drum-type>
+						<option value="-1" selected>Bitte auswählen...</option>
+						<option value="HIRA">Hira-daiko</option>
+						<option value="MIYA">Miya-daiko</option>
+					</select>
+					<strong>in der Größe</strong>
+					<select id=drum-size>
+						<option value="-1" selected>Bitte auswählen...</option>
+						<option value="14">42cm Felldruchmesser (1,4shaku)</option>
+						<option value="15">45cm Felldruchmesser (1,5shaku)</option>
+						<option value="16">48cm Felldruchmesser (1,6shaku)</option>
+						<option value="17">51cm Felldruchmesser (1,7shaku)</option>
+					</select>
+					</p>
+					
+				</div>				
+				<img class=left src="image/miya-14.jpg">
+				<p>Wir bieten dir Miya-daikos und Hira-daikos in verschiedenen Größen an. Die Trommeln werden in Sachen Form & Größe genauso gebaut wie in Japan 
+				und werden deshalb auch in der Maßeinheit Shaku angegeben. Ein Shaku ist ziemlich genau 30cm. Zum Beispiel entspricht 1,4shaku einem Felldurchmesser von 42cm. 1,6shaku sind entsprechend 48cm im Fell.</p>
+				<p>Eine <strong>48er Miya-daiko</strong> (bzw. 1,6shaku) ist eine sehr universelle Trommel. Du kannst sie auch mit sehr dicken Bachi spielen,
+				was für die seitliche Schlagtechnik (jap. "Yoko-uchi") sehr interessant ist. Bedingt durch die Größe und einem Gewicht von ca. 20kg ist so eine Trommel natürlich aufwendiger im Transport.</p>
+				<p>Hier hat eine <strong>42er Miya-daiko</strong> (1,4shaku) natürlich Vorteile. Sie wiegt unter 14kg und passt wohl in jeden PKW-Kofferraum bzw. auch mal auf die Rücksitzbank. Auch auf einem Schrägständer macht sie eine gute Figur und kann noch mit mittleren Bachi kraftvoll gespielt werden.</p>
+				<p>Wenn deine Taiko noch mobiler sein soll ist eine <strong>Hira-daiko</strong> (jap. "flache Trommel") interresant. Wir bauen Sie in 4 Größen als 42er bis 51er (bzw. 1,4 bis 1,7shaku). Die Höhe des Trommelkörpers ist ungefähr nur halb so hoch wie bei einer Miya-daiko. So eine Trommel ist natürlich viel leichter und kann auch gut ohne Auto transportiert werden. Der Klang einer Hira-daiko ist ebenfalls flacher und der Ton länger als bei einer Miya. Für die Taiko-stile Yoko-uchi (jap. "seitlich schlagen") und Naname-uchi (jap. "schräg schlagen") benötigst du aber eine Miya-daiko.</p>
+
+			</div>
+			<div id=section-wood class=section>
+				<h1>Holzart & Farbe</h1>
+				<div class="choice">
+					<div class="button left" 
+							onmouseover="buttonHighlightStart(this);" 
+							onmouseout="buttonHighlightStop(this);" 
+							onclick="onclick_sectionsize(this);"> 
+							<< Typ & Größe auswählen
+					</div>
+					<div class="button right" 
+						onmouseover="buttonHighlightStart(this);" 
+						onmouseout="buttonHighlightStop(this);" 
+						onclick="onclick_sectionhandle(this);"> 
+						Haltegriffe auswählen >> 
+					</div>
+					<div class=cleardiv></div>					
+					<p><strong>Für meine Taiko möchte ich </strong>
+						<select id=wood-type>
+							<option value=WOOD_ASH>Esche gebeizt</option>
+							<option value=WOOD_MAPLE>Ahorn gebeizt (Aufpreis)</option>
+							<option value=WOOD_ELM>Rüster natur (Aufpreis)</option>
+						</select>
+					</p>
+					<div id=wood-color data-value='color-birne'>
+						<div>
+							<img id='WOODCOLOR_NATURAL' class="img-option" src='image/woodcolor-nature.jpg' 
+								onclick="onclick_drumcolor(this)"
+								data-option-description="Natur/Ungebeizt" />
+							<img id='color-birne' class="img-option img-option-selected" src='image/farbe-birne.jpg' 
+								onclick="onclick_drumcolor(this)"
+								data-option-description="Beizton 'Birne'" />
+							<img id='color-dunkelbraun' class=img-option src='image/woodcolor-nut.jpg' 
+								onclick="onclick_drumcolor(this)"
+								data-option-description="Beizton Nuss/dunkelbraun" />
+							<img id='color-rotbraun' class=img-option src='image/farbe-rotbraun.jpg' 
+								onclick="onclick_drumcolor(this)"
+								data-option-description="Beizton rotbraun" />
+							<img id='color-rot' class=img-option src='image/farbe-rotbraun.jpg' 
+								onclick="onclick_drumcolor(this)"
+								data-option-description="Beizton dunkelrot" />
+							<img id='WOODCOLOR_SPECIAL' class=img-option src='image/farbe-rotbraun.jpg' 
+								onclick="onclick_drumcolor(this)"
+								data-option-description="Wunsch-Beizton" />
+						</div>
+						<p id=color_option_text class=option-text>Beizton "Birne"</p>
+						
+					</div>
+					
+				</div>
+
+				<img class="right" src="image/20191118_101202.jpg">
+				<p>Als Standardholz benutzen wir europäische Esche. Als Hartholz liefert es die Qualität die wie zum Taikobau 
+				benötigen. Es ist relativ hell und lässt sich damit gut auf den Wunschfarbton beizen. Und dabei bleibt die schöne 
+				Eschen-Maserung weiterhin sichtbar. Als Alternative zu Esche ist auch Ahorn (mit Aufpreis) möglich. Ein sehr 
+				helles und hartes Holz mit weniger Maserung.</p>
+				<p>Aber man kann Holz auch in Naturfarbe verwenden. So hat z.B. Rüster (Ulmenholz) einen schönen braunton, 
+				den man dann nicht überbeizen sollte.</p>
+				<p>Bei der Wahl der Farbe sollte man auch berücksichtigen, ob die Taiko mit anderen Instrumenten auf der Bühne 
+				stehen soll. In diesem Fall ist es natürlich von Vorteil die Optik passend zu den anderen Taikos zu wählen.</p>
+
+			</div>
+			<div id=section-handle class=section>
+				<h1>Haltegriffe</h1>
+				<div class="choice">
+					<div class="button left" 
+							onmouseover="buttonHighlightStart(this);" 
+							onmouseout="buttonHighlightStop(this);" 
+							onclick="onclick_sectionwood(this);"> 
+							<< Holzart & Farbe auswählen
+					</div>
+					<div class="button right" 
+							onmouseover="buttonHighlightStart(this);" 
+							onmouseout="buttonHighlightStop(this);" 
+							onclick="onclick_sectionskin(this);"> 
+							Felle & Nägel auswählen >>
+					</div>
+					<div class=cleardiv></div>				
+					<p>Ich möchte folgende Griffe:</p>
+					<div id=drum-handle data-price=0 data-value="HANDLE_NONE" data-value-ui="Ohne Haltegriffe">
+						<img id=HANDLE_NONE class="img-option img-option-selected" src='image/farbe-birne.jpg'
+							data-price-option=0
+							data-option-description="Ohne Haltegriffe"
+							onclick="onclick_drumhandle(this)"/>
+						<img id=HANDLE_BRASS_SMALL class="img-option" src='image/kan-messingrosette.jpg' 
+							data-price-option=100
+							data-option-description="Haltegriffe mit Messingrosette(klein)"
+							onclick="onclick_drumhandle(this)"/>
+						<img id=HANDLE_BRASS_BIG class=img-option src='image/kan-messingrosette.jpg' 
+							data-price-option=100
+							data-option-description="Haltegriffe mit Messingrosette(groß)"
+							onclick="onclick_drumhandle(this)"/>
+						<img id=HANDLE_STEEL_SMALL class=img-option src='image/kan-stahlrosette.jpg'
+							data-price-option=100 
+							data-option-description="Haltegriffe mit Stahlrosette(klein)"
+							onclick="onclick_drumhandle(this)"/>
+						<img id=HANDLE_STEEL_BIG class=img-option src='image/kan-stahlrosette.jpg'
+							data-price-option=100 
+							data-option-description="Haltegriffe mit Stahlrosette(groß)"
+							onclick="onclick_drumhandle(this)"/>
+						<img id=HANDLE_STEEL_NOBASE class=img-option src='image/kan-ohnegrundplatte.jpg' 
+							data-price-option=70
+							data-option-description="Haltegriffe mit Stahlrosette ohne Grundplatte"
+							onclick="onclick_drumhandle(this)"/>
+					</div>
+					<p id=handle_option_text>Ohne Haltegriffe</p>
+					
+				</div>
+				<p>Haltegriffe sind dekorativ und funktionell. Wenn man zum Beispiel eine 20kg schwere 
+				Miya-daiko auf einen hohen Ständer heben muss, dann sind sie fast unverzichtbar. Bei kleineren Trommeln wie
+				 Hira-daikos kann man sie benutzen, kommt aber auch ohne Griffe klar.</p>
+				 <p>Unsere Haltegriffe werden von einem Kloben gehalten, der durch die Trommelwand durchgeht und von innen
+				 verschraubt wird. Die schwarze Grundplatte gibt es in zwei Größen. Darauf befindet sich dann entweder
+				 eine flache Messingrosette oder eine dickere Stahlrosette. Letztere kann sogar ohne die Grundplatte verwendet 
+				werden - eine Option für kleinere Trommeln.</p>
+
+			</div>
+
+
+			<div id=section-skin class=section>
+				<h1>Felle & Nägel</h1>
+				<div class="choice">				
+					<div class="button left" 
+							onmouseover="buttonHighlightStart(this);" 
+							onmouseout="buttonHighlightStop(this);" 
+							onclick="onclick_sectionhandle(this);"> 
+							<< Haltegriffe auswählen
+					</div>
+					<div class="button right" 
+							onmouseover="buttonHighlightStart(this);" 
+							onmouseout="buttonHighlightStop(this);" 
+							onclick="onclick_sectionoffer(this);"> 
+							Angebot ansehen >>
+					</div>
+					<div class=cleardiv></div>
+				</div>
+				<h1>Felle</h1>Lorem ipsum dolor sit amet, consetetur 
+				sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, 
+				sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd 
+				gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, 
+				consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna 
+				aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. 
+				Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+			</div>
+
+			<div id=section-offer class=section>
+				<h1>Angebot</h1>
+				<form action=".">
+				<div class="choice">
+					<div class="button left" 
+							onmouseover="buttonHighlightStart(this);" 
+							onmouseout="buttonHighlightStop(this);" 
+							onclick="onclick_sectionskin(this);"> 
+							<< Felle & Nägel auswählen
+					</div>
+					<div class=cleardiv></div>			
+
+					<p>Hier ist Deine Taiko:</p>
+					<div id=offer-content></div>
+				</div>
+				<p>Wie geht es jetzt weiter? Schick doch einfach das Formular (mit ggfs. Fragen/Anmerkungen) ab, 
+				und wir schicken dir ein Angebot für deine Taiko und einen Fertigstellungstermin. Du kannst dir dann in Ruhe 
+				überlegen, ob du die Taiko bestellst. Wir freuen uns in jedem Fall von dir zu hören !</p>
+				<table>				
+					<tr><td class="formcol1">Name</td><td><input name="Name" type="text"></td></tr>
+					<tr><td class="formcol1">Email</td><td><input name="Email" type="email"></td></tr>
+					<tr><td class="formcol1">Telefon</td><td><input name="Telefon" type="text"></td></tr>
+					<tr><td class="formcol1">Anmerkungen <br>& Fragen</td><td><textarea name="Anmerkungen" rows="10"></textarea></td>
+					</tr><td></td><td><button type=submit onclick_off="">
+					Taiko unverbindlich Anfragen</button></td>
+					</tr>
+					</table>
+					<input type=hidden name="drumspec" value="Miya-Daiko XXX">
+				</form>
+			</div>
+
+			<div class="footer">
+				<a href="impressum.html">Impressum</a> | <a href="agb.html">AGB</a>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			// Inject data from TAIKO_DATA_JSON
+			//
+			for (i=0; i<TAIKO_DATA_JSON.handles.length; i++)
+			{
+				var handleElement = document.querySelector("#"+TAIKO_DATA_JSON.handles[i].id);
+
+				handleElement.setAttribute("data-price-option", TAIKO_DATA_JSON.handles[i].price);
+			}
+
+		</script>
+
+		<script type="text/javascript">
+
+							
+			function findSection(element)
+			{
+				if (element == null)
+					return element;
+
+				if (element.classList.contains('section'))
+					return element;
+
+				return findSection(element.parentElement);
+			}
+
+			function onclick_sectionsize(element)
+			{
+				findSection(element).style.display = "none";
+				document.querySelector("#section-size").style.display = "block";
+			}
+
+			function onclick_sectionwood(element)
+			{
+				findSection(element).style.display = "none";
+				document.querySelector("#section-wood").style.display = "block";
+			}
+
+			function onclick_sectionhandle(element)
+			{
+				findSection(element).style.display = "none";
+				document.querySelector("#section-handle").style.display = "block";
+			}
+			function onclick_sectionskin(element)
+			{
+				findSection(element).style.display = "none";
+				document.querySelector("#section-skin").style.display = "block";
+			}
+			function onclick_sectionoffer(element)
+			{
+				findSection(element).style.display = "none";
+				document.querySelector("#section-offer").style.display = "block";
+
+				var drumType = document.querySelector("#drum-type").value;
+				var drumSize = document.querySelector("#drum-size").value;
+				var drumId = drumType + "_DAIKO_" + drumSize;
+				var drumData = null;
+				var woodTypeData = null;
+				var woodTypeId = document.querySelector("#wood-type").value;
+				var woodColor = document.querySelector("#wood-color").getAttribute("data-value");
+				var woodColorData = document.querySelector("#" + woodColor);
+				var colorText = woodColorData.getAttribute("data-option-description");
+				var handleId = document.querySelector("#drum-handle").getAttribute("data-Value");
+				var handleData = document.querySelector("#" + handleId);
+				var handlePrice = parseInt(handleData.getAttribute("data-price-option"));
+				var handleText = handleData.getAttribute("data-option-description");
+				var offerContent = document.querySelector("#offer-content");
+				var drumPrice = 9999;
+				var woodPrice = 0;
+				var totalPrice = 0;
+
+				// Trommel
+				//
+				for (i=0; i<TAIKO_DATA_JSON.drums.length && drumData == null; i++)
+				{
+					if (TAIKO_DATA_JSON.drums[i].id == drumId)
+					{
+						drumData = TAIKO_DATA_JSON.drums[i];
+						drumPrice = parseInt(drumData.price);
+					}
+				}
+
+				// Holzart
+				//
+				for (i=0; i<TAIKO_DATA_JSON.woodtypes.length && woodTypeData == null; i++)
+				{
+					if (TAIKO_DATA_JSON.woodtypes[i].id == woodTypeId)
+					{
+						woodTypeData = TAIKO_DATA_JSON.woodtypes[i];
+
+						if (woodTypeData.prices != null)
+						{
+							for (j=0; j<woodTypeData.prices.length; j++)
+							{
+								if (woodTypeData.prices[j].drumid == drumId)
+								{
+									woodPrice = parseInt(woodTypeData.prices[j].price);
+									break;
+								}
+							}					
+						}
+					}
+				}
+
+				totalPrice = drumPrice + woodPrice + handlePrice;
+
+				offerContent.innerHTML = ""
+					+ "<img height=120 width=auto src='image/" + drumData.thumbnail + "'/>"
+					+ "<img height=120 width=auto src='image/kan-messingrosette.jpg'/>"
+					+ "<p>"+ drumData.name + " " + drumData.description + "</p>"
+					+ "<p style='text-align:right; margin-top:-40px;'>"+ drumPrice + ",- Euro </p>"
+					+ "<p>"+ woodTypeData.description + " " + colorText + "</p>"
+					+ "<p style='text-align:right; margin-top:-40px;'>"+ woodPrice + ",- Euro </p>"
+					+ "<p>"+ handleText + "</p>"
+					+ "<p style='text-align:right; margin-top:-40px;'>"+ handlePrice + ",- Euro </p>"
+					+ "<p><strong>Summe</strong></p>"
+					+ "<p style='text-align:right; margin-top:-40px;'><strong>"+ totalPrice + ",- Euro </strong></p>"
+					;
+			}
+		</script>
+
+		<script type="text/javascript">
+			function findDrum(element)
+			{
+				if (element == null)
+					return element;
+
+				if (element.classList.contains('taiko'))
+					return element;
+
+				return findDrum(element.parentElement);
+			}
+
+			function onchange_wood(element)
+			{
+				var drum = findDrum(element);			
+				var woodPrice = drum.querySelector("#wood_price");
+				var woodColor = drum.querySelector("#wood-color");
+				var price = element.value == 0 ? 0 : 60;
+
+				element.setAttribute("data-price", price);
+				element.setAttribute("data-value-ui",element.innerHTML);
+				woodPrice.innerHTML = price + ",- Euro";
+				// updateTotalPrice(drum);
+
+				woodColor.style.display = element.value == 2 ? 'none' : 'block';
+			}
+
+			function onclick_drumhandle(element)
+			{
+				var image = element;
+				var description = document.querySelector("#handle_option_text");
+				var descriptionPrice = document.querySelector("#handle_option_text_price");
+				var allOptions = image.parentElement.querySelectorAll("img");
+
+				for (i=0; i<allOptions.length; i++)
+				{
+					allOptions[i].classList.remove("img-option-selected");
+				}
+
+				image.classList.add("img-option-selected");
+				var price = image.getAttribute("data-price-option");
+				image.parentElement.setAttribute("data-price",price);
+				image.parentElement.setAttribute("data-value",image.id);
+				image.parentElement.setAttribute("data-value-ui",image.getAttribute("data-option-description"));
+
+				description.innerHTML = image.getAttribute("data-option-description");
+				descriptionPrice.innerHTML = price + ",- Euro";
+
+				// updateTotalPrice(drum);
+			}
+
+			function onclick_drumcolor(element)
+			{
+				var image = element; 
+				var wood_color = document.querySelector("#wood-color"); // div
+				var description = document.querySelector("#color_option_text"); 
+				var allOptions = image.parentElement.querySelectorAll("img");
+
+				for (i=0; i<allOptions.length; i++)
+				{
+					allOptions[i].classList.remove("img-option-selected");
+				}
+
+				image.classList.add("img-option-selected");
+				description.innerHTML = image.getAttribute("data-option-description");
+				wood_color.setAttribute	("data-value",image.id);
+			}
+
+			function onclick_optionsButton(element)
+			{
+				var drum = findDrum(element);
+				var optionsSection = drum.querySelector("#options-section");
+
+				if (optionsSection.style.display == 'none')
+				{
+					optionsSection.style.display = 'block';
+					updateTotalPrice(drum);
+				}
+				else
+				{
+					optionsSection.style.display = 'none';					
+				}
+			}
+
+			function onclick_inquiryButton(element)
+			{
+				var drum = findDrum(element);
+				var taikoName = drum.querySelector(".taiko-name");
+				var drumHandles = drum.querySelector("#drum-handle");
+				var	woodtype = drum.querySelector("#woodtype");
+				var woodcolorName = drum.querySelector("#color_option_text"); 
+				var skintype = drum.querySelector("#skintype");
+				var form = document.querySelector("#transparentbackground");
+				var outSize = document.querySelector("#formfield-size");
+				var outHandle = document.querySelector("#formfield-handle");
+				var outWood = document.querySelector("#formfield-wood");
+				var outSkin = document.querySelector("#formfield-skin");
+
+				outSize.value = taikoName.innerHTML;
+				outHandle.value = drumHandles.getAttribute("data-value-ui");
+				outWood.value = woodtype.getAttribute("data-value-ui") + ", " + woodcolorName.innerHTML;
+				outSkin.value = skintype.value == "skin-nature" ? "Naturfelle" : "Weiße Felle";
+				form.style.display = 'block';
+				
+				/*
+				window.open("inquiry.html?id=" + drum.id 
+					+ "&woodtype=" + woodtype.value
+					+ "&woodcolor=" + woodcolor.getAttribute("data-value")
+					+ "&drumhandle=" + drumHandles.getAttribute("data-value")
+					+ "&skintype=" + encodeURI(skintype.value)
+					);*/
+			}
+
+			function updateTotalPrice(drum)
+			{
+				var list = drum.querySelectorAll("[data-price]");
+				var price = 0.0;
+
+				for (i=0; i<list.length; i++)
+				{
+					price += parseInt(list[i].getAttribute("data-price"));
+				}
+
+				drum.querySelector(".totalprice").innerHTML = price;
+				drum.querySelector(".totalprice").innerHTML += ",- Euro";
+			}
+
+			function onclick_searchButton()
+			{
+				var taikos = document.querySelectorAll('.taiko');
+
+				for (i=0; i<taikos.length; i++)
+				{
+					var element = taikos[i];
+					var price = parseInt(element.getAttribute('data-price'));
+
+					if (price > 900
+					&&  price < 1400)
+					{
+						element.style.display = "block";
+					}
+					else
+					{
+						element.style.display = "none";
+					}
+				}
+			}
+		</script>
+	</body>
+
+</html>
