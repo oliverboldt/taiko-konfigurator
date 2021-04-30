@@ -208,20 +208,51 @@ const TAIKO_DATA_JSON =
 		return null;
 	}
 	,
-	getPrice : function(woodtype, drumId)
+	getWoodcolorDataForId : function(woodcolorId)
+	{
+		for (i=0; i<this.woodcolors.length ; i++)
+		{
+			if (this.woodcolors[i].id == woodcolorId)
+			{
+				return this.woodcolors[i];
+			}
+		}
+
+		return null;
+	}
+	,
+	getHandleDataForId : function(handleId)
+	{
+		for (i=0; i<this.handles.length ; i++)
+		{
+			if (this.handles[i].id == handleId)
+			{
+				return this.handles[i];
+			}
+		}
+
+		return null;
+	}
+	,
+	getPriceForWood : function(woodtype, drumId)
 	{
 		if (woodtype.prices != null)
 		{
 			for (j=0; j<woodtype.prices.length; j++)
 			{
-				if (woodtype.prices[j].drumid == global.drumId)
+				if (woodtype.prices[j].drumid == drumId)
 				{
-					return woodtype.prices[j].price;
+					return parseInt(woodtype.prices[j].price);
 				}
 			}					
 		}
 
-		return -1;
+		return 0;
+	}
+	,
+	getWoodPrice : function(woodtypeId, drumId)
+	{
+		this.getPriceForWood(this.getWoodtypeDataForId(woodtypeId), drumId);
 	}
 	
 };
