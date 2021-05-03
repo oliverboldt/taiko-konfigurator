@@ -4,27 +4,33 @@ const TAIKO_DATA_JSON =
 	handles : 
 	[ 
 		  { id: "HANDLE_NONE", 			
-	  			price: "0", 	
+	  			price: "0",
+	  			thumbnail: "woodcolor-pear.jpg", 	
 	  			description: "Ohne Haltegriffe",
 	  			description_en: "Without handles" }
 		, { id: "HANDLE_BRASS_SMALL", 	
 				price: "100", 	
+	  			thumbnail: "kan-messingrosette-gross-frei.png", 	
 				description: "Haltegriffe mit Messingrosette (klein)",
 				description_en: "Handles with brass rosette (small)" } 
 		, { id: "HANDLE_BRASS_BIG", 	
 				price: "100", 	
+	  			thumbnail: "kan-messingrosette-gross-frei.png", 	
 				description: "Haltegriffe mit Messingrosette (groß)",
 				description_en: "Handles with brass rosette (big)"  } 
 		, { id: "HANDLE_STEEL_SMALL", 	
 				price: "100", 	
+	  			thumbnail: "kan-stahlrosette-gross-frei.png", 	
 				description: "Haltegriffe mit Stahlrosette (klein)",
 				description_en: "Handles with steel rosette (small)"  } 
 		, { id: "HANDLE_STEEL_BIG", 	
 				price: "100", 	
+	  			thumbnail: "kan-stahlrosette-gross-frei.png", 	
 				description: "Haltegriffe mit Stahlrosette (groß)",
 				description_en: "Handles with steel rosette (big)"  } 
 		, { id: "HANDLE_STEEL_NOBASE", 	
 				price: "70", 	
+	  			thumbnail: "kan-ohnegrundplatte-frei.png", 	
 				description: "Haltegriffe mit Stahlrosette ohne Grundplatte",
 				description_en: "Handles with steel rosette without base plate" } 
 	]
@@ -73,37 +79,43 @@ const TAIKO_DATA_JSON =
 	woodcolors :
 	[
 		{ 
-		  	id: "WOODCOLOR_NATURAL",   
+		  	id: "WOODCOLOR_NATURAL",
+		  	thumbnail: "woodcolor-nature.jpg",   
 		  	description: "Rüster Natur",
 		  	description_en: "Elm natural"  
 		}
 		, 
 		{ 
 			id: "WOODCOLOR_PEAR",   
+		  	thumbnail: "woodcolor-pear.jpg",   
 			description: "Farbton Birne/Rüster",
 			description_en: "Pear/Elmwood"
 		}
 		, 
 		{ 
 			id: "WOODCOLOR_NUT",   
+		  	thumbnail: "woodcolor-nut.jpg",   
 			description: "Farbton Nuss/Dunkelbraun",
 			description_en: "Nut/darkbrown"
 		}
 		, 
 		{ 
 			id: "WOODCOLOR_REDBROWN", 
+		  	thumbnail: "woodcolor-redbrown.jpg",   
 			description: "Farbton Rotbraun",
 			description_en: "Redbrown" 
 		}
 		, 
 		{ 
 			id: "WOODCOLOR_RED", 
+		  	thumbnail: "woodcolor-darkred.jpg",   
 			description: "Farbton Dunkelrot",
 			description_en: "Darkred" 
 		}
 		, 
 		{ 
 			id: "WOODCOLOR_SPECIAL", 
+		  	thumbnail: "woodcolor-special.jpg",   
 			description: "Wunschfarbe",
 			description_en: "Color of choice" 
 		}

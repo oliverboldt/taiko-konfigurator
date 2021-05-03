@@ -39,6 +39,16 @@
 				vertical-align: top; 
 				font-size: 12; 
 			}
+
+			.img-red
+			{
+				background-image: url('image/woodcolor-darkred.jpg');
+			}
+
+			.img-white
+			{
+				background-color: white;
+			}
 			
 			.formcol1 
 			{	
@@ -230,7 +240,7 @@
 							class=img-option src='image/kan-stahlrosette-klein.jpg'
 							onclick="onclick_drumhandle(this)"/>
 						<img id=HANDLE_STEEL_BIG 
-							class=img-option src='image/kan-stahlrosette-gross.jpg'
+							class="img-option" src='image/kan-stahlrosette-gross.jpg'
 							onclick="onclick_drumhandle(this)"/>
 						<img id=HANDLE_STEEL_NOBASE 
 							class=img-option src='image/kan-ohnegrundplatte.jpg' 
@@ -466,7 +476,7 @@
 				global.drum.woodId = element.value;
 				storeDrumSpec();
 	
-				document.querySelector("#wood-color").style.display = element.value == "WOOD_ELM" ? 'none' : 'block';
+				document.querySelector("#wood-color").style.display = element.value == "WOOD_ELM" /*TODO*/? 'none' : 'block';
 			}
 
 			function onclick_drumcolor(image)
@@ -639,9 +649,16 @@
 				var totalPrice = drumPrice + woodPrice + handlePrice;
 
 				offerContent.innerHTML = ""
-					+ "<img height=120 width=auto src='image/" + drumData.thumbnail + "'/>"
-					+ "<img height=120 width=auto src='image/kan-messingrosette-gross.jpg'/>"
-					+ "<p>"+ drumData.name + " " + drumData.description + "</p>"
+					+ "<img height=120 width=auto style='margin-right:10px' src='image/" 
+					+ drumData.thumbnail + "'/>";
+
+				if (handleData.id != "HANDLE_NONE")
+					offerContent.innerHTML += "<img height=120 width=auto "
+						+ " style='padding: 10px; background-image:url(image/" + woodColorData.thumbnail + ")'"
+						+ " src='image/" + handleData.thumbnail + "'/>"
+
+				offerContent.innerHTML 
+					+= "<p>"+ drumData.name + " " + drumData.description + "</p>"
 					+ "<p style='text-align:right; margin-top:-40px;'>"+ drumPrice + ",- Euro </p>"
 					+ "<p>"+ woodTypeData.description + " " + colorText + "</p>"
 					+ "<p style='text-align:right; margin-top:-40px;'>"+ woodPrice + ",- Euro </p>"
