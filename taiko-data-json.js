@@ -1,6 +1,27 @@
 const TAIKO_DATA_JSON = 
 {
-	
+	nails :
+	[
+		  { id: "NAIL_20MM", 			
+	  			price: "0.0",
+	  			diameter: "20.0",
+	  			thumbnail: "nagel-20mm-120px.jpg", 	
+	  			description: "20mm Nägel aus deutscher Produktion",
+	  			description_en: "20mm nail from Germany" }
+		, { id: "NAIL_19MM", 			
+	  			price: "0.22",
+	  			diameter: "19.0",
+	  			thumbnail: "nagel-19mm-120px.jpg", 	
+	  			description: "19mm Nägel, Japan-Qualität",
+	  			description_en: "19mm nail from Japan" }
+		, { id: "NAIL_16MM", 			
+	  			price: "0.20",
+	  			diameter: "17.0",
+	  			thumbnail: "nagel-16mm-120px.jpg", 	
+	  			description: "16mm Nägel, Japan-Qualität",
+	  			description_en: "16mm nail from Japan" }
+	]
+	,
 	handles : 
 	[ 
 		  { id: "HANDLE_NONE", 			
@@ -131,6 +152,7 @@ const TAIKO_DATA_JSON =
 		{
 			id: 			"HIRA_DAIKO_14", 
 			name: 			"Hira daiko 1,4 shaku",
+			diameter:		"1.4",
 			thumbnail: 		"hira.jpg",
 			description: 	"Fell-d: 42cm",
 			description_en: "Skin-d: 42cm",
@@ -141,6 +163,7 @@ const TAIKO_DATA_JSON =
 		{
 			id: 			"HIRA_DAIKO_15", 
 			name: 			"Hira daiko 1,5 shaku",
+			diameter:		"1.5",
 			thumbnail: 		"hira.jpg",
 			description: 	"Fell-d: 45cm",
 			price: 			"850",
@@ -150,6 +173,7 @@ const TAIKO_DATA_JSON =
 		{
 			id: 			"HIRA_DAIKO_16", 
 			name: 			"Hira daiko 1,6 shaku",
+			diameter:		"1.6",
 			thumbnail: 		"hira.jpg",
 			description: 	"Fell-d: 48cm",
 			price: 			"950",
@@ -159,6 +183,7 @@ const TAIKO_DATA_JSON =
 		{
 			id: 			"HIRA_DAIKO_17", 
 			name: 			"Hira daiko 1,7 shaku",
+			diameter:		"1.7",
 			thumbnail: 		"hira.jpg",
 			description: 	"Fell-d: 51cm",
 			price: 			"1050",
@@ -168,7 +193,8 @@ const TAIKO_DATA_JSON =
 		{
 			id: 			"MIYA_DAIKO_14", 
 			name: 			"Miya daiko 1,4 shaku",
-			thumbnail: 		"miya-14.jpg",
+			diameter:		"1.5",
+			thumbnail: 		"miya-daiko-15-woodcolor-pear.jpg",
 			description: 	"Fell-d: 42cm",
 			description_en: "Skin-d: 42cm",
 			price: 			"1100",
@@ -178,6 +204,7 @@ const TAIKO_DATA_JSON =
 		{
 			id: 			"MIYA_DAIKO_15", 
 			name: 			"Miya daiko 1,5 shaku",
+			diameter:		"1.5",
 			thumbnail: 		"miya-15.jpg",
 			description: 	"Fell-d: 45cm Bauch-d:56cm Länge=56cm",
 			price: 			"1275",
@@ -187,6 +214,7 @@ const TAIKO_DATA_JSON =
 		{
 			id: 			"MIYA_DAIKO_16", 
 			name: 			"Miya daiko 1,6 shaku",
+			diameter:		"1.6",
 			thumbnail: 		"miya-16.jpg",
 			description: 	"Fell-d: 48cm",
 			price: 			"1450",
@@ -240,6 +268,19 @@ const TAIKO_DATA_JSON =
 			if (this.handles[i].id == handleId)
 			{
 				return this.handles[i];
+			}
+		}
+
+		return null;
+	}
+	,
+	getNailDataForId : function(nailId)
+	{
+		for (i=0; i<this.nails.length ; i++)
+		{
+			if (this.nails[i].id == nailId)
+			{
+				return this.nails[i];
 			}
 		}
 

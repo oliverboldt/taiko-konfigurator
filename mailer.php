@@ -58,7 +58,7 @@
 		if ($sys_an != "")
 			$mailTo = $sys_an;
 		else
-			$mailTo = "taiko@oliver-boldt.de";
+			$mailTo = "oliver@mytaikodrum.de";
 		
 		$mailHeaders = "From: ".$email."\n";
 		$mailSubject = $sys_betreff;

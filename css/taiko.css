@@ -1,0 +1,28 @@
+
+.img-option
+{
+	display: inline-block;
+	width: 120px;
+	height: auto;
+}
+
+.img-nail-option
+{
+	display: inline-block;
+	width: 120px;
+	height: 240px;
+	border: 5px solid grey;
+}
+
+.img-nailrows-option
+{
+	display: inline-block;
+	width: 300px;
+	height: 100px;
+	border: 5px solid grey;
+}
+
+.img-option-selected
+{
+	border: 5px solid blue;
+}

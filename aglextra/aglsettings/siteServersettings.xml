@@ -5,12 +5,58 @@
 	<attributes>
 		<attribute name="ActiveServer" value="mytaikodrum.de"/>
 		<attribute name="ActiveServerU" value="mytaikodrum.de"/>
-		<attribute name="MaxServerID" value="1"/>
+		<attribute name="MaxServerID" value="2"/>
 		<list name="SiteServerList">
 			<item>
 				<attribute name="id" value="1"/>
 				<attribute name="name" value="mytaikodrum.de"/>
 				<attribute name="nickname" value="mytaikodrum.de"/>
+				<attribute name="optionPassive" value="YES"/>
+				<attribute name="optionProxyPublish" value="NO"/>
+				<list name="options">
+					<item>
+						<attribute name="optionsKey" value="ALIVE"/>
+						<attribute name="optionsValue" value="NO"/>
+					</item>
+					<item>
+						<attribute name="optionsKey" value="FRAMEWORK"/>
+						<attribute name="optionsValue" value="libcurl"/>
+					</item>
+					<item>
+						<attribute name="optionsKey" value="ISO"/>
+						<attribute name="optionsValue" value="NO"/>
+					</item>
+					<item>
+						<attribute name="optionsKey" value="PASSIVE"/>
+						<attribute name="optionsValue" value="YES"/>
+					</item>
+					<item>
+						<attribute name="optionsKey" value="PROXY"/>
+						<attribute name="optionsValue" value="NO"/>
+					</item>
+					<item>
+						<attribute name="optionsKey" value="RESOLVE"/>
+						<attribute name="optionsValue" value="YES"/>
+					</item>
+					<item>
+						<attribute name="optionsKey" value="SECURITY"/>
+						<attribute name="optionsValue" value="None"/>
+					</item>
+				</list>
+				<attribute name="password" value="%ef%be%a4p%0a%ef%bf%bb%ef%bf%ba%5ce%0a%ef%be%8e%ef%bf%8e%ef%bf%8a%ef%be%86"/>
+				<attribute name="savePassword" value="yes"/>
+				<attribute name="targetUrl" value="ftp://lc0.greatnet-hosting.de/html/mytaikodrum.de/"/>
+				<attribute name="url" value="ftp://lc0.greatnet-hosting.de/html/mytaikodrum.de/"/>
+				<attribute name="urlServerAbs" value="no"/>
+				<attribute name="user" value="web1046"/>
+				<attribute name="username" value="web1046"/>
+				<attribute name="version" value="10"/>
+				<attribute name="webUrl" value=""/>
+			</item>
+			<item>
+				<attribute name="id" value="2"/>
+				<attribute name="name" value="japanische-trommeln%202018"/>
+				<attribute name="nickname" value="japanische-trommeln 2018"/>
 				<attribute name="optionPassive" value="YES"/>
 				<attribute name="optionProxyPublish" value="NO"/>
 				<list name="options">

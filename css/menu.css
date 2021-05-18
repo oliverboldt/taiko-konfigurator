@@ -1,0 +1,56 @@
+
+#menu
+{
+	font-size: 18px;
+	border-bottom: 2px solid darkgrey;
+	margin-bottom: 20px;
+	padding: 5px;
+}
+
+.menuitem
+{
+	display: inline-block;
+	border: 2px solid black;
+	padding: 5px 10px 5px 10px;
+	margin-bottom: 5px;
+	background-color: lightgrey;
+	font-weight: 500;
+	cursor: pointer;
+}
+
+.willkommen
+{
+	display: inline-block;
+	border: 2px solid white;
+	padding: 10px 10px 0px 10px;
+	margin-bottom: 5px;
+	margin-right: 10px;
+	font-weight: 500;
+}
+
+.menuitem-mytaikodrum
+{
+	display: inline-block;
+	font-size: 28px;
+	border-off: 2px solid black;
+	padding-off: 5px 10px 5px 10px;
+	margin-top: 5px;
+	background-color-off: lightgrey;
+	font-weight: 500;
+	cursor: pointer;
+}
+
+.menuitem-active 
+{ 
+	background-color: lightblue; 
+	cursor: default; 
+}
+
+.off
+{
+	display: none;
+}
+
+.link a { text-decoration: none; color: black; }
+
+.link a:visited { color: black; }
