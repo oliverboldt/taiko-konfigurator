@@ -21,10 +21,8 @@
 .willkommen
 {
 	display: inline-block;
-	border: 2px solid white;
-	padding: 10px 10px 0px 10px;
-	margin-bottom: 5px;
-	margin-right: 10px;
+	font-size: 20px;
+	padding-top: -5px;
 	font-weight: 500;
 }
 
@@ -32,10 +30,7 @@
 {
 	display: inline-block;
 	font-size: 28px;
-	border-off: 2px solid black;
-	padding-off: 5px 10px 5px 10px;
 	margin-top: 5px;
-	background-color-off: lightgrey;
 	font-weight: 500;
 	cursor: pointer;
 }
@@ -45,6 +40,14 @@
 	background-color: lightblue; 
 	cursor: default; 
 }
+
+#logo
+{
+	height: 30px; 
+	width: auto;
+	margin-top: 10px;
+}
+
 
 .off
 {

@@ -4,7 +4,7 @@
 
 	<head>
 		<meta charset="UTF-8" />
-		<title>mytaikodrum.de - Willkommen !</title>
+		<title>mytaikodrum.de - Taiko gestalten</title>
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" > 
 		<link rel="stylesheet" href="css/common.css">
@@ -81,7 +81,7 @@
 	<body>
 		<div id=wrapper>
 			<div id=menu>
-				<div class="menuitem menuitem-active off">Meine Taiko !</div>
+				<img id="logo" src="image/logo.jpg"/>
 				<div class="link menuitem-mytaikodrum right" 
 					onmouseover_off="buttonHighlightStart(this);" 
 					onmouseout_off="buttonHighlightStop(this);">
@@ -94,13 +94,13 @@
 				<h1>Trommeltyp & Größe</h1>
 				<div class="choice">
 					<p>Ich möchte eine 
-					<select id=drum-type onclick="onclick_drumtype(this);">
+					<select id=drum-type onchange="onclick_drumtype(this);">
 						<option value="-1" selected>Bitte auswählen...</option>
 						<option value="HIRA">Hira-daiko</option>
 						<option value="MIYA">Miya-daiko</option>
 					</select>
 					in der Größe
-					<select id=drum-size onclick="onclick_drumsize(this);">
+					<select id=drum-size onchange="onclick_drumsize(this);">
 						<option value="-1" selected>Bitte auswählen...</option>
 						<option value="14">42cm Felldurchmesser (1,4shaku)</option>
 						<option value="15">45cm Felldurchmesser (1,5shaku)</option>
@@ -196,7 +196,7 @@
 							onclick="onclick_drumcolor(this)"/>
 						<p id=color-option-text class=option-text>...</p>	
 					</div>
-					<div class="button right" 
+					<div class="button right" style="margin-top:-30px;"
 						onmouseover="buttonHighlightStart(this);" 
 						onmouseout="buttonHighlightStop(this);" 
 						onclick="onclick_sectionhandle(this);"> 
@@ -256,7 +256,7 @@
 							onclick="onclick_drumhandle(this)"/>
 					</div>
 					<p id=handle_option_text>Ohne Haltegriffe</p>
-					<div class="button right" 
+					<div class="button right" style="margin-top: -20px;"
 							onmouseover="buttonHighlightStart(this);" 
 							onmouseout="buttonHighlightStop(this);" 
 							onclick="onclick_sectionskin(this);"> 
@@ -270,6 +270,11 @@
 					Hira-daikos kann man sie, wenn optisch gewünscht gerne anbringen, das Handling gelingt 
 					auch ohne Griffe leicht.</p>
 
+				<figure class="right">
+				  <img src="image/kan-20160407_112602-300px.jpg"/>
+				  <figcaption>Grundplatte, Rosette und Kloben </figcaption>
+				</figure>
+				 
 				 <p>Unsere Haltegriffe werden von einem Kloben gehalten, der durch die Trommelwand hindurchgeführt  
 				 	und von innen verschraubt wird. Die schwarze Grundplatte gibt es in zwei Größen. Darauf 
 				 	befindet sich dann entweder eine flache Messingrosette oder eine dickere Stahlrosette. 
@@ -305,7 +310,7 @@
 
 					</div>
 					<p id=nail_option_text>xxx</p>
-					<div class="button right" 
+					<div class="button right"  style="margin-top: -20px;"
 							onmouseover="buttonHighlightStart(this);" 
 							onmouseout="buttonHighlightStop(this);" 
 							onclick="onclick_sectionoffer(this);"> 
@@ -342,6 +347,12 @@
 							onmouseout="buttonHighlightStop(this);" 
 							onclick="onclick_sectionskin(this);"> 
 							<< Felle & Nägel auswählen
+					</div>
+					<div class="button right" 
+							onmouseover="buttonHighlightStart(this);" 
+							onmouseout="buttonHighlightStop(this);" 
+							onclick="onclick_newdesign(this);"> 
+							Neues Design starten
 					</div>
 					<div class=cleardiv></div>			
 
@@ -381,7 +392,7 @@
 			</div>
 
 			<div class="footer">
-				<a href="impressum.html">Impressum</a>
+				<a href="impressum.html">Impressum</a> | <a href="ueber.html">über:mytaikodrum.de</a>
 			</div>
 		</div>
 
@@ -424,6 +435,26 @@
 				// document.cookie = "drumspec="+ JSON.stringify(global.drum)+"; SameSite=lax";
 			}
 
+			function resetDrumSpec()
+			{
+				global.drum.id = "";
+
+				// if (global.drum.woodId == "")
+					global.drum.woodId = "WOOD_ASH";
+
+				// if (global.drum.colorId == "")
+					global.drum.colorId = "WOODCOLOR_PEAR";
+
+				// if (global.drum.handleId == "")
+					global.drum.handleId = "HANDLE_NONE";
+
+				// if (global.drum.nailId == "")
+					global.drum.nailId = "NAIL_20MM";
+
+				// if (global.drum.nailrowId == "")
+					global.drum.nailrowId = "NAILROWS_2";
+			}
+
 
 			function description(obj,lang)
 			{
@@ -454,8 +485,17 @@
 
 			function onclick_sectionwood(element)
 			{
-				storeDrumSpec();
-				document.location.assign("?section=wood");
+				if (global.drum.id == "")
+				{
+					var text = document.querySelector("#drum-price");
+
+					text.innerHTML = "Bitte Typ und Größe der Taiko auswählen."
+				}
+				else
+				{
+					storeDrumSpec();
+					document.location.assign("?section=wood");
+				}
 			}
 
 
@@ -477,6 +517,12 @@
 				document.location.assign("?section=offer");
 			}
 
+			function onclick_newdesign(element)
+			{
+				resetDrumSpec();
+				onclick_sectiontype(element);
+			}
+
 			function onclick_drumtype(element)
 			{
 				var drumType = element.value;
@@ -493,7 +539,7 @@
 
 					shaku17.style.display = "none";
 				}
-				else
+				else if (drumType == "HIRA")
 				{
 					shaku17.style.display = "inline";
 				}
@@ -510,9 +556,18 @@
 			function onchange_woodtype(element)
 			{		
 				global.drum.woodId = element.value;
+
+				if (element.value == "WOOD_ELM")
+				{
+					onclick_drumcolor(document.querySelector("#WOODCOLOR_NATURAL"));
+				}
+
 				storeDrumSpec();
 	
-				document.querySelector("#wood-color").style.display = element.value == "WOOD_ELM" /*TODO*/? 'none' : 'block';
+				/*
+				document.querySelector("#wood-color").style.display 
+					= element.value == "WOOD_ELM" /TODO/? 'none' : 'block';
+					*/
 			}
 
 			function onclick_drumcolor(image)
@@ -625,7 +680,11 @@
 				var drumSize = document.querySelector("#drum-size").value;
 				var drumPrice = document.querySelector("#drum-price");
 
-				global.drum.id = drumType + "_DAIKO_" + drumSize;
+				if (drumType != "-1" && drumSize > 0)
+					global.drum.id = drumType + "_DAIKO_" + drumSize;
+				else
+					global.drum.id = "";
+
 				storeDrumSpec();
 
 				var drumData = TAIKO_DATA_JSON.getDrumDataForId(global.drum.id);
@@ -639,17 +698,22 @@
 
 			function open_sectiontype()
 			{				
-				// findSection(element).style.display = "none";
-				// document.querySelector("#section-type").style.display = "block";
-
 				var drumtypeSelect = document.querySelector("#drum-type");
 				var drumsizeSelect = document.querySelector("#drum-size");
-				var drumSize = global.drum.id.substring(global.drum.id.indexOf("DAIKO_")+6);
 
-				drumtypeSelect.value = global.drum.id.charAt(0) == 'M' ? "MIYA" : "HIRA";
-				drumsizeSelect.value = drumSize;
+				if (global.drum.id != "")
+				{
+					var drumSize = global.drum.id.substring(global.drum.id.indexOf("DAIKO_")+6);
 
-				onclick_drumtype(drumtypeSelect);
+					if (global.drum.id.indexOf("MIYA") == 0)
+						drumtypeSelect.value = "MIYA";
+					else if (global.drum.id.indexOf("HIRA") == 0)
+						drumtypeSelect.value = "HIRA";
+
+					drumsizeSelect.value = drumSize;
+
+					onclick_drumtype(drumtypeSelect);	
+				}
 			}
 
 
@@ -788,28 +852,22 @@
 			var searchParams = url.searchParams;
 
 
-			var global = { drum: { id: "", woodId: "", colorId: "", 
-									handleId: "", nailId: "NAIL_20MM", nailrowId: "NAILROWS_2" } 
+			var global = { drum: { id: "", woodId: "WOOD_ASH", colorId: "WOODCOLOR_PEAR", 
+									handleId: "HANDLE_NONE", nailId: "NAIL_20MM", nailrowId: "NAILROWS_2" } 
 						, lang: "de" };
-			var data = JSON.parse(getDrumSpec());
 
-			if (data != null)
-				global.drum = data;
+			var spec = getDrumSpec();
 
-			if (global.drum.woodId == "")
-				global.drum.woodId = "WOOD_ASH";
+			if (spec != null)
+			{
+				var data = JSON.parse(spec);
 
-			if (global.drum.colorId == "")
-				global.drum.colorId = "WOODCOLOR_PEAR";
+				if (data != null)
+					global.drum = data;
+			}
 
-			if (global.drum.handleId == "")
-				global.drum.handleId = "HANDLE_NONE";
-
-			if (global.drum.nailId == "")
-				global.drum.nailId = "NAIL_20MM";
-
-			if (global.drum.nailrowId == "")
-				global.drum.nailrowId = "NAILROWS_2";
+	
+			// resetDrumSpec();
 
 			if (searchParams.has("lang"))
 			{
