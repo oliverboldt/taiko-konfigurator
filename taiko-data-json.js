@@ -102,6 +102,8 @@ const TAIKO_DATA_JSON =
 		{ 
 		  	id: "WOODCOLOR_NATURAL",
 		  	thumbnail: "woodcolor-nature.jpg",   
+		  	thumbnail_miya: "miya-pear.jpg",
+		  	thumbnail_hira: "hira.jpg",
 		  	description: "Rüster Natur",
 		  	description_en: "Elm natural"  
 		}
@@ -109,6 +111,8 @@ const TAIKO_DATA_JSON =
 		{ 
 			id: "WOODCOLOR_PEAR",   
 		  	thumbnail: "woodcolor-pear.jpg",   
+		  	thumbnail_miya: "miya-pear.jpg",
+		  	thumbnail_hira: "hira.jpg",
 			description: "Farbton Birne/Rüster",
 			description_en: "Pear/Elmwood"
 		}
@@ -116,6 +120,8 @@ const TAIKO_DATA_JSON =
 		{ 
 			id: "WOODCOLOR_NUT",   
 		  	thumbnail: "woodcolor-nut.jpg",   
+		  	thumbnail_miya: "miya-darkbrown.jpg",
+		  	thumbnail_hira: "hira.jpg",
 			description: "Farbton Nuss/Dunkelbraun",
 			description_en: "Nut/darkbrown"
 		}
@@ -123,12 +129,16 @@ const TAIKO_DATA_JSON =
 		{ 
 			id: "WOODCOLOR_REDBROWN", 
 		  	thumbnail: "woodcolor-redbrown.jpg",   
+		  	thumbnail_miya: "miya-redbrown.jpg",
+		  	thumbnail_hira: "hira.jpg",
 			description: "Farbton Rotbraun",
 			description_en: "Redbrown" 
 		}
 		, 
 		{ 
 			id: "WOODCOLOR_RED", 
+		  	thumbnail_miya: "miya-darkred.jpg",
+		  	thumbnail_hira: "hira.jpg",
 		  	thumbnail: "woodcolor-darkred.jpg",   
 			description: "Farbton Dunkelrot",
 			description_en: "Darkred" 
@@ -136,6 +146,8 @@ const TAIKO_DATA_JSON =
 		, 
 		{ 
 			id: "WOODCOLOR_SPECIAL", 
+		  	thumbnail_miya: "miya-pear.jpg",
+		  	thumbnail_hira: "hira.jpg",
 		  	thumbnail: "woodcolor-special.jpg",   
 			description: "Wunschfarbe",
 			description_en: "Color of choice" 
@@ -154,7 +166,8 @@ const TAIKO_DATA_JSON =
 			name: 			"Hira daiko 1,4 shaku",
 			diameter:		"1.4",
 			thumbnail: 		"hira.jpg",
-			description: 	"Fell-d: 42cm",
+			thumbnail_size: "hira-14-masse.jpg",
+			description: 	"Fell-Durchmesser 42cm, Höhe 24,5cm",
 			description_en: "Skin-d: 42cm",
 			price: 			"750",
 			option_handle : [ "HANDLE_NONE", "HANDLE_BRASS_SMALL", "HANDLE_STEEL_SMALL", "HANDLE_STEEL_NOBASE" ]
@@ -165,7 +178,8 @@ const TAIKO_DATA_JSON =
 			name: 			"Hira daiko 1,5 shaku",
 			diameter:		"1.5",
 			thumbnail: 		"hira.jpg",
-			description: 	"Fell-d: 45cm",
+			thumbnail_size: "hira-15-masse.jpg",
+			description: 	"Fell-Durchmesser 45cm, Höhe 26cm",
 			price: 			"850",
 			option_handle : [ "HANDLE_NONE", "HANDLE_BRASS_SMALL", "HANDLE_STEEL_SMALL", "HANDLE_STEEL_NOBASE" ]
 		}
@@ -175,7 +189,8 @@ const TAIKO_DATA_JSON =
 			name: 			"Hira daiko 1,6 shaku",
 			diameter:		"1.6",
 			thumbnail: 		"hira.jpg",
-			description: 	"Fell-d: 48cm",
+			thumbnail_size: "hira-16-masse.jpg",
+			description: 	"Fell-Durchmesser 48cm, Höhe 27,5cm",
 			price: 			"950",
 			option_handle : [ "HANDLE_NONE", "HANDLE_BRASS_SMALL", "HANDLE_STEEL_SMALL", "HANDLE_STEEL_NOBASE" ]
 		}
@@ -185,7 +200,8 @@ const TAIKO_DATA_JSON =
 			name: 			"Hira daiko 1,7 shaku",
 			diameter:		"1.7",
 			thumbnail: 		"hira.jpg",
-			description: 	"Fell-d: 51cm",
+			thumbnail_size: "hira-17-masse.jpg",
+			description: 	"Fell-Durchmesser 51cm, Höhe 29cm",
 			price: 			"1050",
 			option_handle : [ "HANDLE_NONE", "HANDLE_BRASS_SMALL", "HANDLE_STEEL_SMALL", "HANDLE_STEEL_NOBASE" ]
 		}
@@ -194,8 +210,9 @@ const TAIKO_DATA_JSON =
 			id: 			"MIYA_DAIKO_14", 
 			name: 			"Miya daiko 1,4 shaku",
 			diameter:		"1.5",
-			thumbnail: 		"miya-daiko-15-woodcolor-pear.jpg",
-			description: 	"Fell-d: 42cm",
+			thumbnail: 		"miya-redbrown.jpg",
+			thumbnail_size: "miya-14-masse.jpg",
+			description: 	"Fell-Durchmesser 42cm",
 			description_en: "Skin-d: 42cm",
 			price: 			"1100",
 			option_handle : [ "HANDLE_NONE", "HANDLE_BRASS_SMALL", "HANDLE_BRASS_BIG", "HANDLE_STEEL_SMALL", "HANDLE_STEEL_BIG", "HANDLE_STEEL_NOBASE" ]
@@ -205,8 +222,9 @@ const TAIKO_DATA_JSON =
 			id: 			"MIYA_DAIKO_15", 
 			name: 			"Miya daiko 1,5 shaku",
 			diameter:		"1.5",
-			thumbnail: 		"miya-15.jpg",
-			description: 	"Fell-d: 45cm Bauch-d:56cm Länge=56cm",
+			thumbnail: 		"miya-redbrown.jpg",
+			thumbnail_size: "miya-15-masse.jpg",
+			description: 	"Fell-Durchmesser 45cm",
 			price: 			"1275",
 			option_handle : [ "HANDLE_NONE", "HANDLE_BRASS_SMALL", "HANDLE_BRASS_BIG", "HANDLE_STEEL_SMALL", "HANDLE_STEEL_BIG", "HANDLE_STEEL_NOBASE" ]
 		}
@@ -215,7 +233,8 @@ const TAIKO_DATA_JSON =
 			id: 			"MIYA_DAIKO_16", 
 			name: 			"Miya daiko 1,6 shaku",
 			diameter:		"1.6",
-			thumbnail: 		"miya-16.jpg",
+			thumbnail: 		"miya-redbrown.jpg",
+			thumbnail_size: "miya-16-masse.jpg",
 			description: 	"Fell-d: 48cm",
 			price: 			"1450",
 			option_handle : [ "HANDLE_NONE", "HANDLE_BRASS_SMALL", "HANDLE_BRASS_BIG", "HANDLE_STEEL_SMALL", "HANDLE_STEEL_BIG", "HANDLE_STEEL_NOBASE" ]
@@ -306,6 +325,16 @@ const TAIKO_DATA_JSON =
 	getWoodPrice : function(woodtypeId, drumId)
 	{
 		this.getPriceForWood(this.getWoodtypeDataForId(woodtypeId), drumId);
+	}
+	,
+	isMiya : function(drumId)
+	{
+		return drumId.includes("MIYA_DAIKO");
+	}
+	,
+	isHira : function(drumId)
+	{
+		return drumId.includes("HIRA_DAIKO");
 	}
 	
 };

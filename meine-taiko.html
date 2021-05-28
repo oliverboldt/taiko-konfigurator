@@ -41,16 +41,6 @@
 				vertical-align: top; 
 				font-size: 12; 
 			}
-
-			.img-red-off
-			{
-				background-image: url('image/woodcolor-darkred.jpg');
-			}
-
-			.img-white-off
-			{
-				background-color: white;
-			}
 			
 			.formcol1 
 			{	
@@ -62,7 +52,7 @@
 
 			textarea { width: 40em; }
 
-			.menuactive
+			.menuactive-off
 			{
 				display: inline-block;
 				font-size: 20px;
@@ -108,6 +98,7 @@
 						<option id=shaku17 value="17">51cm Felldurchmesser (1,7shaku)</option>
 					</select>
 					</p>
+					<img id="drum-draft" />
 					<p id=drum-price></p>
 					<div class="button right" 
 						onmouseover="buttonHighlightStart(this);" 
@@ -118,7 +109,7 @@
 					<div class=cleardiv></div>
 
 				</div>				
-				<img class=left src="image/miya-15.jpg">
+				<img class=left src="image/miya-redbrown.jpg">
 				<h1>Welche Trommel passt zu mir? Miya-Daiko oder Hira-Daiko?</h1>
 
 				<p>Wir bieten dir Miya-daikos und Hira-daikos in verschiedenen Größen. Unsere Taikos werden in 
@@ -137,7 +128,7 @@
 					eine gute Figur auf einem Schrägständer und kann noch mit mittleren Bachi kraftvoll gespielt 
 				werden. Die Höhe beträgt 52,5 cm. </p>
 
-				<p>Wenn deine Taiko noch mobiler sein soll, Du gerne mit Bus und Bahn unterwegs bist und deine Taiko 
+				<img class=right src="image/hira-250px.jpg"><p>Wenn deine Taiko noch mobiler sein soll, Du gerne mit Bus und Bahn unterwegs bist und deine Taiko 
 					zu jedem Training oder Ausflug mit soll, passt eine <strong>Hira-daiko (jap. "flache Trommel")</strong> 
 					zu Dir. Wir bauen sie in 4 Größen als 42er (bespielbarer Felldurchmesser 42 cm)  bis 51cm (1,4 bis 1,7 shaku). 
 					Die Höhe des Trommelkörpers ist ungefähr nur halb so hoch wie bei einer Miya-daiko. So eine Trommel 
@@ -679,6 +670,7 @@
 				var drumType = document.querySelector("#drum-type").value;
 				var drumSize = document.querySelector("#drum-size").value;
 				var drumPrice = document.querySelector("#drum-price");
+				var draft = document.querySelector("#drum-draft");
 
 				if (drumType != "-1" && drumSize > 0)
 					global.drum.id = drumType + "_DAIKO_" + drumSize;
@@ -689,10 +681,18 @@
 
 				var drumData = TAIKO_DATA_JSON.getDrumDataForId(global.drum.id);
 
-				if (drumData != null)		
+				if (drumData != null)	
+				{	
 					drumPrice.innerHTML = drumData.name + " für Basispreis von " + drumData.price + ",- Euro";
+					draft.src = "image/" + drumData.thumbnail_size;
+					draft.style.display = "inline";
+				}
 				else
-					drumPrice.innerHTML = "";			
+				{
+					drumPrice.innerHTML = "";	
+					draft.style.display = "none";
+				}
+							
 			}
 
 
@@ -819,15 +819,18 @@
 
 				offerContent.innerHTML = ""
 					+ "<img height=200 width=auto style='margin-right:10px' src='image/" 
-					+ drumData.thumbnail + "'/>";
+					+ (TAIKO_DATA_JSON.isMiya(global.drum.id) ? woodColorData.thumbnail_miya : woodColorData.thumbnail_hira) + "'/>";
 
 				if (handleData.id != "HANDLE_NONE")
-					offerContent.innerHTML += "<img height=200 width=auto "
-						+ " style='padding: 10px; background-image:url(image/" + woodColorData.thumbnail + ")'"
+					offerContent.innerHTML += "<img height=125 width=auto "
+						+ " style='padding: 10px; margin-right:10px; background-image:url(image/" + woodColorData.thumbnail + ")'"
 						+ " src='image/" + handleData.thumbnail + "'/>"
 
+				offerContent.innerHTML += "<img height=125 width=auto src='image/" 
+					+ drumData.thumbnail_size + "'/>";		
+
 				offerContent.innerHTML 
-					+= "<p>"+ drumData.name + " " + drumData.description + "</p>"
+					+= "<p>"+ drumData.name + " / " + drumData.description + "</p>"
 					+ "<p style='text-align:right; margin-top:-40px;'>"+ drumPrice + ",- Euro </p>"
 					+ "<p>"+ woodTypeData.description + " " + colorText + "</p>"
 					+ "<p style='text-align:right; margin-top:-40px;'>"+ woodPrice + ",- Euro </p>"

@@ -1,4 +1,11 @@
 
+#drum-draft
+{
+	display: none;
+	height: 150px;
+	width: auto;
+}
+
 .img-option
 {
 	display: inline-block;
