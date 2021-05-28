@@ -100,7 +100,7 @@
 					</p>
 					<img id="drum-draft" />
 					<p id=drum-price></p>
-					<div class="button right" 
+					<div class="button right forward" 
 						onmouseover="buttonHighlightStart(this);" 
 						onmouseout="buttonHighlightStop(this);" 
 						onclick="onclick_sectionwood(this);"> 
@@ -158,7 +158,7 @@
 			<div id=section-wood class=section>
 				<h1>Holzart & Farbe</h1>
 				<div class="choice">
-					<div class="button left" 
+					<div class="button left backwards" 
 							onmouseover="buttonHighlightStart(this);" 
 							onmouseout="buttonHighlightStop(this);" 
 							onclick="onclick_sectiontype(this);"> 
@@ -187,10 +187,10 @@
 							onclick="onclick_drumcolor(this)"/>
 						<p id=color-option-text class=option-text>...</p>	
 					</div>
-					<div class="button right" style="margin-top:-30px;"
+					<div class="button right forward" style="margin-top:-30px;"
 						onmouseover="buttonHighlightStart(this);" 
 						onmouseout="buttonHighlightStop(this);" 
-						onclick="onclick_sectionhandle(this);"> 
+						onclick="onclick_sectionhandle(this,false);"> 
 						Haltegriffe auswählen >> 
 					</div>
 					<div class=cleardiv></div>					
@@ -220,10 +220,10 @@
 			<div id=section-handles class=section>
 				<h1>Haltegriffe</h1>
 				<div class="choice">
-					<div class="button left" 
+					<div class="button left backwards" 
 							onmouseover="buttonHighlightStart(this);" 
 							onmouseout="buttonHighlightStop(this);" 
-							onclick="onclick_sectionwood(this);"> 
+							onclick="onclick_sectionwood(this,false);"> 
 							<< Holzart & Farbe auswählen
 					</div>
 					<div class=cleardiv></div>
@@ -247,10 +247,10 @@
 							onclick="onclick_drumhandle(this)"/>
 					</div>
 					<p id=handle_option_text>Ohne Haltegriffe</p>
-					<div class="button right" style="margin-top: -20px;"
+					<div class="button right forward" style="margin-top: -20px;"
 							onmouseover="buttonHighlightStart(this);" 
 							onmouseout="buttonHighlightStop(this);" 
-							onclick="onclick_sectionskin(this);"> 
+							onclick="onclick_sectionskin(this,false);"> 
 							Felle & Nägel auswählen >>
 					</div>
 					<div class=cleardiv></div>				
@@ -277,10 +277,10 @@
 			<div id=section-skin class=section>
 				<h1>Felle & Nägel</h1>
 				<div class="choice">				
-					<div class="button left" 
+					<div class="button left backwards" 
 							onmouseover="buttonHighlightStart(this);" 
 							onmouseout="buttonHighlightStop(this);" 
-							onclick="onclick_sectionhandle(this);"> 
+							onclick="onclick_sectionhandle(this,false);"> 
 							<< Haltegriffe auswählen
 					</div>
 					<div class=cleardiv></div>
@@ -301,7 +301,7 @@
 
 					</div>
 					<p id=nail_option_text>xxx</p>
-					<div class="button right"  style="margin-top: -20px;"
+					<div class="button right forward"  style="margin-top: -20px;"
 							onmouseover="buttonHighlightStart(this);" 
 							onmouseout="buttonHighlightStop(this);" 
 							onclick="onclick_sectionoffer(this);"> 
@@ -333,11 +333,29 @@
 				<form action="mailer.php">
 				<input type=hidden name="sys_betreff" value="Anfrage mytaikodrum.de">
 				<div class="choice">
-					<div class="button left" 
+					<div class="button" 
 							onmouseover="buttonHighlightStart(this);" 
 							onmouseout="buttonHighlightStop(this);" 
-							onclick="onclick_sectionskin(this);"> 
-							<< Felle & Nägel auswählen
+							onclick="onclick_sectiontype(this,true);"> 
+							Typ & Größe
+					</div>
+					<div class="button" 
+							onmouseover="buttonHighlightStart(this);" 
+							onmouseout="buttonHighlightStop(this);" 
+							onclick="onclick_sectionwood(this,true);"> 
+							Holz & Farbe
+					</div>
+					<div class="button" 
+							onmouseover="buttonHighlightStart(this);" 
+							onmouseout="buttonHighlightStop(this);" 
+							onclick="onclick_sectionhandle(this,true);"> 
+							Griffe
+					</div>
+					<div class="button" 
+							onmouseover="buttonHighlightStart(this);" 
+							onmouseout="buttonHighlightStop(this);" 
+							onclick="onclick_sectionskin(this,true);"> 
+							Felle & Nägel
 					</div>
 					<div class="button right" 
 							onmouseover="buttonHighlightStart(this);" 
@@ -468,13 +486,13 @@
 				return findSection(element.parentElement);
 			}
 
-			function onclick_sectiontype(element)
+			function onclick_sectiontype(element,editMode)
 			{
 				storeDrumSpec();
-				document.location.assign("?section=type");
+				document.location.assign("?section=type" + (editMode ? "&edit=1" : ""));
 			}
 
-			function onclick_sectionwood(element)
+			function onclick_sectionwood(element,editMode)
 			{
 				if (global.drum.id == "")
 				{
@@ -485,21 +503,21 @@
 				else
 				{
 					storeDrumSpec();
-					document.location.assign("?section=wood");
+					document.location.assign("?section=wood" + (editMode ? "&edit=1" : ""));
 				}
 			}
 
 
-			function onclick_sectionhandle(element)
+			function onclick_sectionhandle(element,editMode)
 			{
 				storeDrumSpec();
-				document.location.assign("?section=handles");
+				document.location.assign("?section=handles" + (editMode ? "&edit=1" : ""));
 			}
 
-			function onclick_sectionskin(element)
+			function onclick_sectionskin(element,editMode)
 			{
 				storeDrumSpec();
-				document.location.assign("?section=skin");
+				document.location.assign("?section=skin" + (editMode ? "&edit=1" : ""));
 			}
 
 			function onclick_sectionoffer(element)
@@ -514,7 +532,7 @@
 				onclick_sectiontype(element);
 			}
 
-			function onclick_drumtype(element)
+			function onclick_drumtype(element,editMode)
 			{
 				var drumType = element.value;
 				var drumSizeElement = document.querySelector("#drum-size")
@@ -695,11 +713,32 @@
 							
 			}
 
+			function switchToEditMode(section)
+			{
+				var forward = section.querySelector(".forward");
+				var backwards = section.querySelector(".backwards");
 
-			function open_sectiontype()
+				if (forward != null)
+				{
+					forward.innerHTML = "übernehmen";
+					forward.onclick = function() { onclick_sectionoffer(forward); }
+				}
+
+				if (backwards != null)
+				{
+					backwards.innerHTML = "verwerfen";
+					backwards.onclick = function() { history.back(); }
+				}
+			}
+
+
+			function open_sectiontype(edit)
 			{				
 				var drumtypeSelect = document.querySelector("#drum-type");
 				var drumsizeSelect = document.querySelector("#drum-size");
+
+				if (edit == "1")
+					switchToEditMode(document.querySelector("#section-type"));
 
 				if (global.drum.id != "")
 				{
@@ -717,10 +756,13 @@
 			}
 
 
-			function open_sectionwood()
+			function open_sectionwood(edit)
 			{
 				document.querySelector("#section-type").style.display = "none";
 				document.querySelector("#section-wood").style.display = "block";
+
+				if (edit == "1")
+					switchToEditMode(document.querySelector("#section-wood"));
 
 				// Update woodtype-select
 				//
@@ -767,10 +809,16 @@
 
 			}
 
-			function open_sectionhandles()
+
+			function open_sectionhandles(edit)
 			{
+				var handleSection = document.querySelector("#section-handles");
+
 				document.querySelector("#section-type").style.display = "none";
-				document.querySelector("#section-handles").style.display = "block";
+				handleSection.style.display = "block";
+
+				if (edit == "1")
+					switchToEditMode(handleSection);
 
 				var handleElement = document.querySelector("#" + global.drum.handleId); 
 
@@ -787,10 +835,13 @@
 				}
 			}
 
-			function open_sectionskin()
+			function open_sectionskin(edit)
 			{
 				document.querySelector("#section-type").style.display = "none";
 				document.querySelector("#section-skin").style.display = "block";
+
+				if (edit == "1")
+					switchToEditMode(document.querySelector("#section-skin"));
 
 				onclick_nail(document.querySelector("#"+global.drum.nailId));
 				onclick_nailrow(document.querySelector("#"+global.drum.nailrowId));
@@ -878,18 +929,19 @@
 			}
 
 			var section = searchParams.get("section");
+			var edit = searchParams.get("edit");
 
 			if (section == "wood")
 			{
-				open_sectionwood();
+				open_sectionwood(edit);
 			}
 			else if (section == "handles")
 			{
-				open_sectionhandles();
+				open_sectionhandles(edit);
 			}
 			else if (section == "skin")
 			{
-				open_sectionskin();
+				open_sectionskin(edit);
 			}
 			else if (section == "offer")
 			{
@@ -897,7 +949,7 @@
 			}
 			else
 			{
-				open_sectiontype();
+				open_sectiontype(edit);
 			}
 	
 		</script>
