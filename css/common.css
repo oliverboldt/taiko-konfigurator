@@ -81,6 +81,18 @@ figcaption { font-size: 12px; }
 	background-color: #E3DDCB;
 }
 
+figure { margin: 0px; }
+
+.stdphoto
+{
+	width: 250px;
+}	
+
+.photoframe
+{
+	border: 1px solid black;
+}
+
 select
 {
 	font-size: 18px;
@@ -105,5 +117,15 @@ select
 
 .footer a { text-decoration: none; }
 .footer a:hover { text-decoration: underline; }
+
+
+@media only screen and (max-width: 800px)
+{				
+	#wrapper	{ width: 100%; }			
+
+	.stdphoto {	width: 30%; }
+	.right { margin-left: 5px; }
+}		
+
 
 			

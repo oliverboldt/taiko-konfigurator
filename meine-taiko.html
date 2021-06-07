@@ -4,6 +4,7 @@
 
 	<head>
 		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>mytaikodrum.de - Taiko gestalten</title>
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" > 
@@ -12,6 +13,7 @@
 		<link rel="stylesheet" href="css/taiko.css">
 		<script src="common.js"></script>
 		<script src="taiko-data-json.js"></script>
+		<script src="loc-data-json.js"></script>
 		<style type="text/css">	
 
 			#section-wood {	display: none; }
@@ -52,18 +54,6 @@
 
 			textarea { width: 40em; }
 
-			.menuactive-off
-			{
-				display: inline-block;
-				font-size: 20px;
-				border: 2px solid black;
-				padding: 5px 10px 5px 10px;
-				margin-bottom: 5px;
-				background-color: lightblue;
-				font-weight: 500;
-				cursor: default;
-			}
-
 		</style>
 
 	</head>
@@ -80,27 +70,31 @@
 				<div class=cleardiv></div>
 			</div>
 
-			<div id=section-type class=section>
-				<h1>Trommeltyp & Größe</h1>
+			<div id="section-type" class="section">
+				<h1 id="HEADLINE_SIZEANDTYPE" class="localize">Trommeltyp & Größe</h1>
 				<div class="choice">
-					<p>Ich möchte eine 
-					<select id=drum-type onchange="onclick_drumtype(this);">
-						<option value="-1" selected>Bitte auswählen...</option>
-						<option value="HIRA">Hira-daiko</option>
-						<option value="MIYA">Miya-daiko</option>
+					<img id="drum-draft" class="stdphoto photoframe left" />
+					<div style="display: inline-block; margin-top: 10px;">
+						<span id="LABEL_TYPE" class="localize">Ich möchte eine </span>
+						<select id="drum-type" onchange="onclick_drumtype(this);">
+							<option id="OPTION_CHOOSE" class="localize" value="-1" selected>Bitte auswählen...</option>
+							<option value="HIRA">Hira-daiko</option>
+							<option id="OPTION_MIYA" class="localize" value="MIYA">Miya-daiko</option>
+						</select>
+						</div>
+					<div style="display: inline-block; margin-top: 10px;">
+					<span id="LABEL_SIZE" class="localize">in der Größe</span>
+					<select id="drum-size" onchange="onclick_drumsize(this);">
+						<option id="OPTION_CHOOSE" class="localize" value="-1" selected>Bitte auswählen...</option>
+						<option value="14">42cm Felldurchmesser</option>
+						<option value="15">45cm Felldurchmesser</option>
+						<option value="16">48cm Felldurchmesser</option>
+						<option id=shaku17 value="17">51cm Felldurchmesser</option>
 					</select>
-					in der Größe
-					<select id=drum-size onchange="onclick_drumsize(this);">
-						<option value="-1" selected>Bitte auswählen...</option>
-						<option value="14">42cm Felldurchmesser (1,4shaku)</option>
-						<option value="15">45cm Felldurchmesser (1,5shaku)</option>
-						<option value="16">48cm Felldurchmesser (1,6shaku)</option>
-						<option id=shaku17 value="17">51cm Felldurchmesser (1,7shaku)</option>
-					</select>
-					</p>
-					<img id="drum-draft" />
-					<p id=drum-price></p>
-					<div class="button right forward" 
+					</div>
+					
+					<p id="drum-price"></p>
+					<div id="BUTTON_CHOOSE_WOOD" class="button right forward localize" 
 						onmouseover="buttonHighlightStart(this);" 
 						onmouseout="buttonHighlightStop(this);" 
 						onclick="onclick_sectionwood(this);"> 
@@ -109,44 +103,50 @@
 					<div class=cleardiv></div>
 
 				</div>				
-				<img class=left src="image/miya-redbrown.jpg">
-				<h1>Welche Trommel passt zu mir? Miya-Daiko oder Hira-Daiko?</h1>
+				<img class="right stdphoto photoframe" src="image/miya-redbrown.jpg">
+				<article>
+					<h1 id="ARTICLE_DRUMTYPE" class="localize">Welche Trommel passt zu mir? Miya-Daiko oder Hira-Daiko?</h1>
+				</article>
+					<article id="ARTICLE_DRUMTYPE_MIYA" class="localize">
+						<p>Wir bieten dir Miya-daikos und Hira-daikos in verschiedenen Größen. Unsere Taikos werden in 
+							Form & Größe präzise so hergestellt wie in Japan und in der Maßeinheit Shaku angegeben. Ein Shaku 
+							entspricht ziemlich genau 30cm. Somit entspricht 1,4shaku einen bespielbaren Felldurchmesser von 42cm 
+							(42er Miya). 1,6shaku sind entsprechend 48cm (bespielbarer) Felldurchmesser (48er Miya).</p>
 
-				<p>Wir bieten dir Miya-daikos und Hira-daikos in verschiedenen Größen. Unsere Taikos werden in 
-					Form & Größe präzise so hergestellt wie in Japan und in der Maßeinheit Shaku angegeben. Ein Shaku 
-					entspricht ziemlich genau 30cm. Somit entspricht 1,4shaku einen bespielbaren Felldurchmesser von 42cm 
-					(42er Miya). 1,6shaku sind entsprechend 48cm (bespielbarer) Felldurchmesser (48er Miya).</p>
+						<p>Eine <strong>48er Miya-daiko (bzw. 1,6 jap. shaku)</strong> ist eine sehr universelle Trommel. Du kannst sie mit 
+							sehr dicken Bachi spielen, was für die seitliche Schlagtechnik (jap. "Yoko-uchi" oder “Naname-uchi”) 
+							sehr interessant ist. Bedingt durch die Größe und einem Gewicht von ca. 20kg ist diese Trommel natürlich 
+						aufwendiger im Transport. Die Höhe der Miya-daiko beträgt 60cm.</p>
 
-				<p>Eine <strong>48er Miya-daiko (1,6shaku)</strong> ist eine sehr universelle Trommel. Du kannst sie mit 
-					sehr dicken Bachi spielen, was für die seitliche Schlagtechnik (jap. "Yoko-uchi" oder “Naname-uchi”) 
-					sehr interessant ist. Bedingt durch die Größe und einem Gewicht von ca. 20kg ist diese Trommel natürlich 
-				aufwendiger im Transport. Die Höhe der Miya-daiko beträgt 60cm.</p>
+						<p>Hier hat eine <strong>42er Miya-daiko (1,4shaku)</strong> klare Vorteile und steht optisch und 
+							klanglich ihrer etwas größeren Schwester in nichts nach. Sie wiegt unter 14kg und passt wohl 
+							in jeden PKW-Kofferraum und fährt auch gerne mal auf die Rücksitzbank mit. Ebenfalls macht sie 
+							eine gute Figur auf einem Schrägständer und kann noch mit mittleren Bachi kraftvoll gespielt 
+						werden. Die Höhe beträgt 52,5 cm. </p>
+					</article>
 
-				<p>Hier hat eine <strong>42er Miya-daiko (1,4shaku)</strong> klare Vorteile und steht optisch und 
-					klanglich ihrer etwas größeren Schwester in nichts nach. Sie wiegt unter 14kg und passt wohl 
-					in jeden PKW-Kofferraum und fährt auch gerne mal auf die Rücksitzbank mit. Ebenfalls macht sie 
-					eine gute Figur auf einem Schrägständer und kann noch mit mittleren Bachi kraftvoll gespielt 
-				werden. Die Höhe beträgt 52,5 cm. </p>
-
-				<img class=right src="image/hira-250px.jpg"><p>Wenn deine Taiko noch mobiler sein soll, Du gerne mit Bus und Bahn unterwegs bist und deine Taiko 
-					zu jedem Training oder Ausflug mit soll, passt eine <strong>Hira-daiko (jap. "flache Trommel")</strong> 
-					zu Dir. Wir bauen sie in 4 Größen als 42er (bespielbarer Felldurchmesser 42 cm)  bis 51cm (1,4 bis 1,7 shaku). 
-					Die Höhe des Trommelkörpers ist ungefähr nur halb so hoch wie bei einer Miya-daiko. So eine Trommel 
-					ist viel leichter und kann ohne Auto transportiert werden. Der Klang einer Hira-daiko ist ebenfalls 
-					flacher und der Ton länger als bei einer Miya. Für die Taiko-stile Yoko-uchi (jap. "seitlich schlagen") 
-					und Naname-uchi (jap. "schräg schlagen") benötigst du aber eine oben beschriebene Miya-daiko.</p>
+					<img class="right stdphoto photoframe" src="image/hira-250px.jpg">
+					<article id="ARTICLE_DRUMTYPE_HIRA" class="localize">
+						<p>Wenn deine Taiko noch mobiler sein soll, Du gerne mit Bus und Bahn unterwegs bist und deine Taiko 
+						zu jedem Training oder Ausflug mit soll, passt eine <strong>Hira-daiko (jap. "flache Trommel")</strong> 
+						zu Dir. Wir bauen sie in 4 Größen als 42er (bespielbarer Felldurchmesser 42 cm)  bis 51cm (1,4 bis 1,7 shaku). 
+						Die Höhe des Trommelkörpers ist ungefähr nur halb so hoch wie bei einer Miya-daiko. So eine Trommel 
+						ist viel leichter und kann ohne Auto transportiert werden. Der Klang einer Hira-daiko ist ebenfalls 
+						flacher und der Ton länger als bei einer Miya. Für die Taiko-stile Yoko-uchi (jap. "seitlich schlagen") 
+						und Naname-uchi (jap. "schräg schlagen") benötigst du aber eine oben beschriebene Miya-daiko.</p>
+					</article>	
 
 				<h1>So entsteht der Körper deiner Taiko:</h1>
 				<p>Die Dauben werden zunächst ausgesägt, angeschrägt und dann verleimt. Die Taicut.cnc-Fräsmaschine 
 				bringt den Rohling dann auf Maß und in Form. Nach dem Schleifen kann es an die 
 				Oberfächenbehandlung gehen.</p>
-				<img src="image/galery/20190720_145402-thumbnail.jpg"/>
-				<img src="image/galery/20190722_161403-thumbnail.jpg"/>
-				<img src="image/galery/20190725_170428-thumbnail.jpg"/>
-				<img src="image/galery/20190803_111805-thumbnail.jpg"/>
-				<img src="image/galery/taicut.cnc-thumbnail.jpg"/>
-				<img src="image/galery/taicut.cnc-fraeser-thumbnail.jpg"/>
-				<img src="image/galery/20191113_110129-thumbnail.jpg"/>
+				<img class="stdphoto photoframe"  src="image/galery/20190720_145402-thumbnail.jpg"/>
+				<img class="stdphoto photoframe" src="image/galery/20190722_161403-thumbnail.jpg"/>
+				<img class="stdphoto photoframe"  src="image/galery/20190725_170428-thumbnail.jpg"/>
+				<img class="stdphoto photoframe"  src="image/galery/20190803_111805-thumbnail.jpg"/>
+				<img class="stdphoto photoframe"  src="image/galery/taicut.cnc-thumbnail.jpg"/>
+				<img class="stdphoto photoframe"  src="image/galery/taicut.cnc-fraeser-thumbnail.jpg"/>
+				<img class="stdphoto photoframe"  src="image/galery/20191113_110129-thumbnail.jpg"/>
 				
 				<div class="button" 
 						onmouseover="buttonHighlightStart(this);" 
@@ -194,11 +194,10 @@
 						Haltegriffe auswählen >> 
 					</div>
 					<div class=cleardiv></div>					
-	
 				</div>
 
-				<figure class=right>
-				  <img src="image/20191118_101202.jpg" alt /> 
+				<figure class="stdphoto_off right">
+				  <img class=" photoframe" src="image/20191118_101202.jpg" alt /> 
 				  <figcaption>Links: Farbton rot-braun, rechts: Farbton: Birne </figcaption>
 				</figure>
 				<p>Wir verwenden hochwertige, europäische Esche. Als Holz liefert es die Qualität die wir  
@@ -209,7 +208,7 @@
 					hartes Holz mit weniger Maserung.</p>
 
 				<p>Gerne verwende ich Holz auch in seiner Naturfarbe. So hat z.B. Rüster (Ulmenholz) 
-					einen schönen braunton, den man dann nicht überbeizen sollte.</p>
+					einen schönen Braunton, den man dann nicht überbeizen sollte.</p>
 
 				<p>Empfehlen möchten wir Dir Esche!</p>
 
@@ -262,7 +261,7 @@
 					auch ohne Griffe leicht.</p>
 
 				<figure class="right">
-				  <img src="image/kan-20160407_112602-300px.jpg"/>
+				  <img class="photoframe" src="image/kan-20160407_112602-300px.jpg"/>
 				  <figcaption>Grundplatte, Rosette und Kloben </figcaption>
 				</figure>
 				 
@@ -332,6 +331,7 @@
 				<h1>Deine Taiko</h1>
 				<form action="mailer.php">
 				<input type=hidden name="sys_betreff" value="Anfrage mytaikodrum.de">
+				<input type=hidden name="sys_ok" value="formular-ok.html">
 				<div class="choice">
 					<div class="button" 
 							onmouseover="buttonHighlightStart(this);" 
@@ -365,8 +365,7 @@
 					</div>
 					<div class=cleardiv></div>			
 
-					<p>Geschafft! Nun hast Du Deine Wunsch-Taiko erschaffen:</p>
-					<div id=offer-content></div>
+					<div id=offer-content><p>Bitte mindestens Trommeltyp und Größe angeben.</p></div>
 					<p><strong>Inklusive:</strong></p>
 					<div class=smallertext>		
 						<ul>				
@@ -447,23 +446,23 @@
 			function resetDrumSpec()
 			{
 				global.drum.id = "";
-
-				// if (global.drum.woodId == "")
-					global.drum.woodId = "WOOD_ASH";
-
-				// if (global.drum.colorId == "")
-					global.drum.colorId = "WOODCOLOR_PEAR";
-
-				// if (global.drum.handleId == "")
-					global.drum.handleId = "HANDLE_NONE";
-
-				// if (global.drum.nailId == "")
-					global.drum.nailId = "NAIL_20MM";
-
-				// if (global.drum.nailrowId == "")
-					global.drum.nailrowId = "NAILROWS_2";
+				global.drum.woodId = "WOOD_ASH";
+				global.drum.colorId = "WOODCOLOR_PEAR";
+				global.drum.handleId = "HANDLE_NONE";
+				global.drum.nailId = "NAIL_20MM";
+				global.drum.nailrowId = "NAILROWS_2";
 			}
 
+
+			function name(obj,lang)
+			{
+				var text = null;
+
+				if (lang == "en")
+					text = obj.name_en;
+
+				return text != null ? text : obj.name;
+			}	
 
 			function description(obj,lang)
 			{
@@ -571,18 +570,14 @@
 					onclick_drumcolor(document.querySelector("#WOODCOLOR_NATURAL"));
 				}
 
-				storeDrumSpec();
-	
-				/*
-				document.querySelector("#wood-color").style.display 
-					= element.value == "WOOD_ELM" /TODO/? 'none' : 'block';
-					*/
+				// storeDrumSpec();
+
 			}
 
 			function onclick_drumcolor(image)
 			{
 				global.drum.colorId = image.id;
-				storeDrumSpec();
+				// storeDrumSpec();
 
 				var allOptions = image.parentElement.querySelectorAll("img");
 
@@ -591,16 +586,26 @@
 					allOptions[i].classList.remove("img-option-selected");
 				}
 
-				image.classList.add("img-option-selected");		
-				document.querySelector("#color-option-text").innerHTML
-					 = description(TAIKO_DATA_JSON.getWoodcolorDataForId(global.drum.colorId),global.lang);
+				image.classList.add("img-option-selected");	
+
+				var text = document.querySelector("#color-option-text");
+
+				text.innerHTML = description(TAIKO_DATA_JSON.getWoodcolorDataForId(global.drum.colorId),global.lang);
+
+				if (global.drum.woodId == "WOOD_ELM" 
+				&&  global.drum.colorId != "WOODCOLOR_NATURAL")
+					text.innerHTML += " (Farbton nicht möglich bei Rüster)";
+
+				if (TAIKO_DATA_JSON.getWoodtypeDataForId(global.drum.woodId).natural == "0"
+				&&  global.drum.colorId == "WOODCOLOR_NATURAL")
+					text.innerHTML += " (Farbton nicht möglich bei der ausgewählten Holzart)";
 			}
 
 
 			function onclick_drumhandle(image)
 			{
 				global.drum.handleId = image.id;
-				storeDrumSpec();
+				// storeDrumSpec();
 
 				var handleText = document.querySelector("#handle_option_text");
 				var allOptions = image.parentElement.querySelectorAll("img");
@@ -648,7 +653,7 @@
 			function onclick_nail(image)
 			{
 				global.drum.nailId = image.id;
-				storeDrumSpec();
+				// storeDrumSpec();
 
 				var allOptions = image.parentElement.querySelectorAll("img");
 
@@ -667,7 +672,7 @@
 			function onclick_nailrow(image)
 			{
 				global.drum.nailrowId = image.id;
-				storeDrumSpec();
+				// storeDrumSpec();
 
 				var allOptions = image.parentElement.querySelectorAll("img");
 
@@ -701,7 +706,9 @@
 
 				if (drumData != null)	
 				{	
-					drumPrice.innerHTML = drumData.name + " für Basispreis von " + drumData.price + ",- Euro";
+					drumPrice.innerHTML = name(drumData,global.lang) + " " 
+								+ LOC_DATA_JSON.getLocstring("TEXT_BASICPRICE",global.lang)
+									 + " " + drumData.price + ",- Euro";
 					draft.src = "image/" + drumData.thumbnail_size;
 					draft.style.display = "inline";
 				}
@@ -731,6 +738,19 @@
 				}
 			}
 
+			function localizeSection(sectionname)
+			{
+				var section = document.querySelector("#" + sectionname);
+				var elements = section.querySelectorAll(".localize");
+
+				for (var i=0; i<elements.length; i++)
+				{
+					var locText = LOC_DATA_JSON.getLocstring(elements[i].id,global.lang);
+
+					if (locText != null)
+						elements[i].innerHTML = locText;
+				}
+			}
 
 			function open_sectiontype(edit)
 			{				
@@ -753,6 +773,8 @@
 
 					onclick_drumtype(drumtypeSelect);	
 				}
+
+				localizeSection("section-type");
 			}
 
 
@@ -855,6 +877,14 @@
 				var drumData = TAIKO_DATA_JSON.getDrumDataForId(global.drum.id);
 				var woodTypeData = TAIKO_DATA_JSON.getWoodtypeDataForId(global.drum.woodId);
 				var woodPrice = TAIKO_DATA_JSON.getPriceForWood(woodTypeData,global.drum.id);
+
+				// Farbe und Holzart checken
+				//
+				if (woodTypeData.natural == "1")
+					global.drum.colorId = "WOODCOLOR_NATURAL"; // fix für Ulme
+				else if (global.drum.colorId == "WOODCOLOR_NATURAL")
+					global.drum.colorId = "WOODCOLOR_PEAR";
+
 				var woodColorData = TAIKO_DATA_JSON.getWoodcolorDataForId(global.drum.colorId);
 				var handleData = TAIKO_DATA_JSON.getHandleDataForId(global.drum.handleId);
 				var nailData = TAIKO_DATA_JSON.getNailDataForId(global.drum.nailId);
@@ -862,40 +892,56 @@
 				var offerContent = document.querySelector("#offer-content");
 				var handleText = description(handleData, global.lang);
 				var woodText = description(woodTypeData, global.lang);
-				var colorText = description(woodColorData, global.lang);
+				var colorText = (woodTypeData.natural == "1" ? "" : description(woodColorData, global.lang)); // Ulme nur in "Natur"
 				var drumPrice = parseInt(drumData.price);
 				var handlePrice = parseInt(handleData.price);
 				var nailInfo = getNailInfo();
 				var totalPrice = drumPrice + woodPrice + handlePrice + nailInfo.price;
 
-				offerContent.innerHTML = ""
-					+ "<img height=200 width=auto style='margin-right:10px' src='image/" 
+				offerContent.innerHTML = "<p>Geschafft! Hier ist Deine Wunsch-Taiko:</p>";
+
+				// Bild der Taiko
+				//
+				offerContent.innerHTML += ""
+					+ "<img height=200 width=auto class='photoframe' style='margin-right:10px' src='image/" 
 					+ (TAIKO_DATA_JSON.isMiya(global.drum.id) ? woodColorData.thumbnail_miya : woodColorData.thumbnail_hira) + "'/>";
 
-				if (handleData.id != "HANDLE_NONE")
-					offerContent.innerHTML += "<img height=125 width=auto "
-						+ " style='padding: 10px; margin-right:10px; background-image:url(image/" + woodColorData.thumbnail + ")'"
-						+ " src='image/" + handleData.thumbnail + "'/>"
+				// Farbe und Griffe
+				//
+				var colorAndHandle = ("<img height=125 width=125 class='photoframe' "
+						+ " style='padding: 10px; margin-right:10px; background-image:url(image/" + woodColorData.thumbnail + ")'");
 
-				offerContent.innerHTML += "<img height=125 width=auto src='image/" 
+				if (handleData.id != "HANDLE_NONE")
+					colorAndHandle += " src='image/" + handleData.thumbnail + "'/>";
+				else
+					colorAndHandle += " />";
+
+				offerContent.innerHTML += colorAndHandle;
+
+				// Schwarz-weiß-Bild für Größe
+				//
+				offerContent.innerHTML += "<img height=125 width=auto class='photoframe' src='image/" 
 					+ drumData.thumbnail_size + "'/>";		
 
+				// Preise
+				//
 				offerContent.innerHTML 
-					+= "<p>"+ drumData.name + " / " + drumData.description + "</p>"
-					+ "<p style='text-align:right; margin-top:-40px;'>"+ drumPrice + ",- Euro </p>"
-					+ "<p>"+ woodTypeData.description + " " + colorText + "</p>"
-					+ "<p style='text-align:right; margin-top:-40px;'>"+ woodPrice + ",- Euro </p>"
-					+ "<p>"+ handleText + "</p>"
-					+ "<p style='text-align:right; margin-top:-40px;'>"+ handlePrice + ",- Euro </p>"
-					+ "<p>"+ nailInfo.description + "</p>"
-					+ "<p style='text-align:right; margin-top:-40px;'>"+ nailInfo.price + ",- Euro </p>"
-					+ "<p><strong>Summe</strong></p>"
-					+ "<p style='text-align:right; margin-top:-40px;'><strong>"+ totalPrice + ",- Euro </strong></p>"
+					+= "<p style='width:75%'>" /* + drumData.name + " / " */ + drumData.description + "</p>"
+					+ "<p class=price>"+ drumPrice + ",- Euro </p>"
+					+ "<p style='width:75%'>"+ woodTypeData.description + " " + colorText + "</p>"
+					+ "<p class=price>" + woodPrice + ",- Euro </p>"
+					+ "<p style='width:75%'>"+ handleText + "</p>"
+					+ "<p class=price>" + handlePrice + ",- Euro </p>"
+					+ "<p style='width:75%'>"+ nailInfo.description + "</p>"
+					+ "<p class=price>" + nailInfo.price + ",- Euro </p>"
+					+ "<p style='width:75%'><strong>Summe</strong></p>"
+					+ "<p class=price><strong>"+ totalPrice + ",- Euro </strong></p>"
 
 					+ "<input type=hidden name='drum' value='" + drumData.name + "'>"
 					+ "<input type=hidden name='wood' value='" + woodText + " " + colorText.replace("'", "") + "'>"
 					+ "<input type=hidden name='handle' value='" + handleText + "'>"
 					+ "<input type=hidden name='nails' value='" + nailInfo.description + "'>"
+					+ "<input type=hidden name='price' value='" + totalPrice + "'>"
 					;
 			}
 

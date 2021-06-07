@@ -7,19 +7,19 @@ const TAIKO_DATA_JSON =
 	  			diameter: "20.0",
 	  			thumbnail: "nagel-20mm-120px.jpg", 	
 	  			description: "20mm Nägel aus deutscher Produktion",
-	  			description_en: "20mm nail from Germany" }
+	  			description_en: "20mm nails from Germany" }
 		, { id: "NAIL_19MM", 			
 	  			price: "0.22",
 	  			diameter: "19.0",
 	  			thumbnail: "nagel-19mm-120px.jpg", 	
 	  			description: "19mm Nägel, Japan-Qualität",
-	  			description_en: "19mm nail from Japan" }
+	  			description_en: "19mm nails from Japan" }
 		, { id: "NAIL_16MM", 			
 	  			price: "0.20",
 	  			diameter: "17.0",
 	  			thumbnail: "nagel-16mm-120px.jpg", 	
 	  			description: "16mm Nägel, Japan-Qualität",
-	  			description_en: "16mm nail from Japan" }
+	  			description_en: "16mm nails from Japan" }
 	]
 	,
 	handles : 
@@ -60,14 +60,16 @@ const TAIKO_DATA_JSON =
 	[
 		{ 
 		  	id: "WOOD_ASH",   
+		  	natural: "0",
 		  	description: "Esche gebeizt",
-		  	description_en: "Ash"
+		  	description_en: "Ash stained"
 		}
 		, 
 		{ 
 			id: "WOOD_MAPLE", 
+			natural: "0",
 			description: "Ahorn gebeizt", 
-			description_en: "Maple",
+			description_en: "Maple stained",
 			prices:
 			[
 				  { drumid: "HIRA_DAIKO_14", price: "15" }
@@ -82,6 +84,7 @@ const TAIKO_DATA_JSON =
 		, 
 		{ 
 			id: "WOOD_ELM",   
+			natural: "1",
 			description: "Rüster natur",
 			description_en: "Elm natural",
 			prices:
@@ -114,7 +117,7 @@ const TAIKO_DATA_JSON =
 		  	thumbnail_miya: "miya-pear.jpg",
 		  	thumbnail_hira: "hira.jpg",
 			description: "Farbton Birne/Rüster",
-			description_en: "Pear/Elmwood"
+			description_en: "Color Pear/Elmwood"
 		}
 		, 
 		{ 
@@ -123,7 +126,7 @@ const TAIKO_DATA_JSON =
 		  	thumbnail_miya: "miya-darkbrown.jpg",
 		  	thumbnail_hira: "hira.jpg",
 			description: "Farbton Nuss/Dunkelbraun",
-			description_en: "Nut/darkbrown"
+			description_en: "Color Nut/darkbrown"
 		}
 		, 
 		{ 
@@ -132,7 +135,7 @@ const TAIKO_DATA_JSON =
 		  	thumbnail_miya: "miya-redbrown.jpg",
 		  	thumbnail_hira: "hira.jpg",
 			description: "Farbton Rotbraun",
-			description_en: "Redbrown" 
+			description_en: "Color Redbrown" 
 		}
 		, 
 		{ 
@@ -141,12 +144,12 @@ const TAIKO_DATA_JSON =
 		  	thumbnail_hira: "hira.jpg",
 		  	thumbnail: "woodcolor-darkred.jpg",   
 			description: "Farbton Dunkelrot",
-			description_en: "Darkred" 
+			description_en: "Color Darkred" 
 		}
 		, 
 		{ 
 			id: "WOODCOLOR_SPECIAL", 
-		  	thumbnail_miya: "miya-pear.jpg",
+		  	thumbnail_miya: "miya-special.jpg",
 		  	thumbnail_hira: "hira.jpg",
 		  	thumbnail: "woodcolor-special.jpg",   
 			description: "Wunschfarbe",
@@ -163,79 +166,87 @@ const TAIKO_DATA_JSON =
 	[
 		{
 			id: 			"HIRA_DAIKO_14", 
-			name: 			"Hira daiko 1,4 shaku",
+			name: 			"Hira daiko 42cm",
 			diameter:		"1.4",
 			thumbnail: 		"hira.jpg",
 			thumbnail_size: "hira-14-masse.jpg",
-			description: 	"Fell-Durchmesser 42cm, Höhe 24,5cm",
-			description_en: "Skin-d: 42cm",
+			description: 	"Hira daiko, Fell-Durchmesser 42cm, Höhe 24,5cm",
+			description_en: "Hira daiko, skin diameter 42cm, height: 24.5cm",
 			price: 			"750",
 			option_handle : [ "HANDLE_NONE", "HANDLE_BRASS_SMALL", "HANDLE_STEEL_SMALL", "HANDLE_STEEL_NOBASE" ]
 		}
 		,
 		{
 			id: 			"HIRA_DAIKO_15", 
-			name: 			"Hira daiko 1,5 shaku",
+			name: 			"Hira daiko 45cm",
 			diameter:		"1.5",
 			thumbnail: 		"hira.jpg",
 			thumbnail_size: "hira-15-masse.jpg",
-			description: 	"Fell-Durchmesser 45cm, Höhe 26cm",
+			description: 	"Hira daiko, Fell-Durchmesser 45cm (1,5shaku), Höhe 26cm",
+			description_en: "Hira daiko, skin diameter 45cm (1.5shaku), height: 26cm",
 			price: 			"850",
 			option_handle : [ "HANDLE_NONE", "HANDLE_BRASS_SMALL", "HANDLE_STEEL_SMALL", "HANDLE_STEEL_NOBASE" ]
 		}
 		,
 		{
 			id: 			"HIRA_DAIKO_16", 
-			name: 			"Hira daiko 1,6 shaku",
+			name: 			"Hira daiko 48cm",
 			diameter:		"1.6",
 			thumbnail: 		"hira.jpg",
 			thumbnail_size: "hira-16-masse.jpg",
-			description: 	"Fell-Durchmesser 48cm, Höhe 27,5cm",
+			description: 	"Hira daiko, Fell-Durchmesser 48cm (1,6shaku), Höhe 27,5cm",
+			description_en: "Hira daiko, skin diameter 48cm (1.6shaku), height: 27.5cm",			
 			price: 			"950",
 			option_handle : [ "HANDLE_NONE", "HANDLE_BRASS_SMALL", "HANDLE_STEEL_SMALL", "HANDLE_STEEL_NOBASE" ]
 		}
 		,
 		{
 			id: 			"HIRA_DAIKO_17", 
-			name: 			"Hira daiko 1,7 shaku",
+			name: 			"Hira daiko 51cm",
 			diameter:		"1.7",
 			thumbnail: 		"hira.jpg",
 			thumbnail_size: "hira-17-masse.jpg",
-			description: 	"Fell-Durchmesser 51cm, Höhe 29cm",
+			description: 	"Hira daiko, Fell-Durchmesser 51cm (1,7shaku), Höhe 29cm",
+			description_en: "Hira daiko, skin diameter 51cm (1.7shaku), height: 29cm",
 			price: 			"1050",
 			option_handle : [ "HANDLE_NONE", "HANDLE_BRASS_SMALL", "HANDLE_STEEL_SMALL", "HANDLE_STEEL_NOBASE" ]
 		}
 		,
 		{
 			id: 			"MIYA_DAIKO_14", 
-			name: 			"Miya daiko 1,4 shaku",
+			name: 			"Miya daiko 42cm",
+			name_en: 		"Nagado daiko 42cm",
 			diameter:		"1.5",
 			thumbnail: 		"miya-redbrown.jpg",
 			thumbnail_size: "miya-14-masse.jpg",
-			description: 	"Fell-Durchmesser 42cm",
-			description_en: "Skin-d: 42cm",
+			description: 	"Miya daiko, Fell-Durchmesser 42cm (1,4shaku)",
+			description_en: "Nagado daiko, skin-diameter 42cm (1.4shaku)",
 			price: 			"1100",
 			option_handle : [ "HANDLE_NONE", "HANDLE_BRASS_SMALL", "HANDLE_BRASS_BIG", "HANDLE_STEEL_SMALL", "HANDLE_STEEL_BIG", "HANDLE_STEEL_NOBASE" ]
 		}
 		,
 		{
 			id: 			"MIYA_DAIKO_15", 
-			name: 			"Miya daiko 1,5 shaku",
+			name: 			"Miya daiko 45cm",
+			name_en: 		"Nagado daiko 45cm",
 			diameter:		"1.5",
 			thumbnail: 		"miya-redbrown.jpg",
 			thumbnail_size: "miya-15-masse.jpg",
-			description: 	"Fell-Durchmesser 45cm",
+			description: 	"Miya daiko, Fell-Durchmesser 45cm (1,5shaku)",
+			description_en: "Nagado daiko, skin-diameter 45cm (1.5shaku)",
 			price: 			"1275",
 			option_handle : [ "HANDLE_NONE", "HANDLE_BRASS_SMALL", "HANDLE_BRASS_BIG", "HANDLE_STEEL_SMALL", "HANDLE_STEEL_BIG", "HANDLE_STEEL_NOBASE" ]
 		}
 		,
 		{
 			id: 			"MIYA_DAIKO_16", 
-			name: 			"Miya daiko 1,6 shaku",
+			name: 			"Miya daiko 48cm",
+			name_en: 		"Nagado daiko 48cm",
 			diameter:		"1.6",
 			thumbnail: 		"miya-redbrown.jpg",
 			thumbnail_size: "miya-16-masse.jpg",
-			description: 	"Fell-d: 48cm",
+			description: 	"Miya daiko, Fell-Durchmesser 48cm (1,6shaku)",
+			description_en: "Nagado daiko, skin-diameter 48cm (1.6shaku)",
 			price: 			"1450",
 			option_handle : [ "HANDLE_NONE", "HANDLE_BRASS_SMALL", "HANDLE_BRASS_BIG", "HANDLE_STEEL_SMALL", "HANDLE_STEEL_BIG", "HANDLE_STEEL_NOBASE" ]
 		}
