@@ -35,6 +35,10 @@
 	cursor: pointer;
 }
 
+.menuitem-mytaikodrum::after
+{
+}
+
 .menuitem-active 
 { 
 	background-color: lightblue; 
@@ -43,6 +47,7 @@
 
 #logo
 {
+	display: none;
 	height: 30px; 
 	width: auto;
 	margin-top: 10px;

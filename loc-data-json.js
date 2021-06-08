@@ -1,6 +1,6 @@
 const LOC_DATA_JSON = 
 {
-	articles: 
+	locstrings: 
 	[
 		{ 
 			id: "HEADLINE_SIZEANDTYPE",
@@ -36,6 +36,30 @@ const LOC_DATA_JSON =
 			id: "LABEL_SIZE",
 			language: "en",
 			text: " in the size of "
+		}
+		,
+		{ 
+			id: "OPTION_SIZE_14",
+			language: "en",
+			text: "42cm skin diameter "
+		}
+		,
+		{ 
+			id: "OPTION_SIZE_15",
+			language: "en",
+			text: "45cm skin diameter "
+		}
+		,
+		{ 
+			id: "OPTION_SIZE_16",
+			language: "en",
+			text: "48cm skin diameter "
+		}
+		,
+		{ 
+			id: "OPTION_SIZE_17",
+			language: "en",
+			text: "51cm skin diameter "
 		}
 		,
 		{ 
@@ -80,17 +104,17 @@ const LOC_DATA_JSON =
 	
 	],
 
-	getLocstring : function(articleId, language)
+	getLocstring : function(locId, language)
 	{
-		for (i=0; i<this.articles.length ; i++)
+		for (i=0; i<this.locstrings.length ; i++)
 		{
-			if (this.articles[i].id == articleId)
+			if (this.locstrings[i].id == locId)
 			{
-				if (this.articles[i].language != null)
+				if (this.locstrings[i].language != null)
 				{
-					if (this.articles[i].language == language)
+					if (this.locstrings[i].language == language)
 					{
-						return this.articles[i].text;
+						return this.locstrings[i].text;
 					}
 				}
 				else
@@ -98,9 +122,9 @@ const LOC_DATA_JSON =
 					var text = null;
 
 					if (language == "en")
-						text = this.articles[i].text_en;
+						text = this.locstrings[i].text_en;
 
-					return text != null ? text : this.articles[i].text;
+					return text != null ? text : this.locstrings[i].text;
 				}
 			}
 		}

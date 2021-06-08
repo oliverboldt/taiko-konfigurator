@@ -115,7 +115,7 @@ const TAIKO_DATA_JSON =
 			id: "WOODCOLOR_PEAR",   
 		  	thumbnail: "woodcolor-pear.jpg",   
 		  	thumbnail_miya: "miya-pear.jpg",
-		  	thumbnail_hira: "hira.jpg",
+		  	thumbnail_hira: "hira-pear.jpg",
 			description: "Farbton Birne/Rüster",
 			description_en: "Color Pear/Elmwood"
 		}
@@ -124,7 +124,7 @@ const TAIKO_DATA_JSON =
 			id: "WOODCOLOR_NUT",   
 		  	thumbnail: "woodcolor-nut.jpg",   
 		  	thumbnail_miya: "miya-darkbrown.jpg",
-		  	thumbnail_hira: "hira.jpg",
+		  	thumbnail_hira: "hira-darkbrown.jpg",
 			description: "Farbton Nuss/Dunkelbraun",
 			description_en: "Color Nut/darkbrown"
 		}
@@ -133,7 +133,7 @@ const TAIKO_DATA_JSON =
 			id: "WOODCOLOR_REDBROWN", 
 		  	thumbnail: "woodcolor-redbrown.jpg",   
 		  	thumbnail_miya: "miya-redbrown.jpg",
-		  	thumbnail_hira: "hira.jpg",
+		  	thumbnail_hira: "hira-redbrown.jpg",
 			description: "Farbton Rotbraun",
 			description_en: "Color Redbrown" 
 		}
@@ -141,7 +141,7 @@ const TAIKO_DATA_JSON =
 		{ 
 			id: "WOODCOLOR_RED", 
 		  	thumbnail_miya: "miya-darkred.jpg",
-		  	thumbnail_hira: "hira.jpg",
+		  	thumbnail_hira: "hira-darkred.jpg",
 		  	thumbnail: "woodcolor-darkred.jpg",   
 			description: "Farbton Dunkelrot",
 			description_en: "Color Darkred" 
@@ -150,7 +150,7 @@ const TAIKO_DATA_JSON =
 		{ 
 			id: "WOODCOLOR_SPECIAL", 
 		  	thumbnail_miya: "miya-special.jpg",
-		  	thumbnail_hira: "hira.jpg",
+		  	thumbnail_hira: "hira-special.jpg",
 		  	thumbnail: "woodcolor-special.jpg",   
 			description: "Wunschfarbe",
 			description_en: "Color of choice" 

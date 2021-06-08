@@ -86,10 +86,10 @@
 					<span id="LABEL_SIZE" class="localize">in der Größe</span>
 					<select id="drum-size" onchange="onclick_drumsize(this);">
 						<option id="OPTION_CHOOSE" class="localize" value="-1" selected>Bitte auswählen...</option>
-						<option value="14">42cm Felldurchmesser</option>
-						<option value="15">45cm Felldurchmesser</option>
-						<option value="16">48cm Felldurchmesser</option>
-						<option id=shaku17 value="17">51cm Felldurchmesser</option>
+						<option id="OPTION_SIZE_14" class="localize" value="14">42cm Felldurchmesser</option>
+						<option id="OPTION_SIZE_15" class="localize" value="15">45cm Felldurchmesser</option>
+						<option id="OPTION_SIZE_16" class="localize" value="16">48cm Felldurchmesser</option>
+						<option id="OPTION_SIZE_17" class="localize" value="17">51cm Felldurchmesser</option>
 					</select>
 					</div>
 					
@@ -103,7 +103,6 @@
 					<div class=cleardiv></div>
 
 				</div>				
-				<img class="right stdphoto photoframe" src="image/miya-redbrown.jpg">
 				<article>
 					<h1 id="ARTICLE_DRUMTYPE" class="localize">Welche Trommel passt zu mir? Miya-Daiko oder Hira-Daiko?</h1>
 				</article>
@@ -113,6 +112,8 @@
 							entspricht ziemlich genau 30cm. Somit entspricht 1,4shaku einen bespielbaren Felldurchmesser von 42cm 
 							(42er Miya). 1,6shaku sind entsprechend 48cm (bespielbarer) Felldurchmesser (48er Miya).</p>
 
+						<h1>Miya-daiko</h1>
+						<img class="right stdphoto photoframe" src="image/miya-redbrown.jpg">
 						<p>Eine <strong>48er Miya-daiko (bzw. 1,6 jap. shaku)</strong> ist eine sehr universelle Trommel. Du kannst sie mit 
 							sehr dicken Bachi spielen, was für die seitliche Schlagtechnik (jap. "Yoko-uchi" oder “Naname-uchi”) 
 							sehr interessant ist. Bedingt durch die Größe und einem Gewicht von ca. 20kg ist diese Trommel natürlich 
@@ -125,7 +126,8 @@
 						werden. Die Höhe beträgt 52,5 cm. </p>
 					</article>
 
-					<img class="right stdphoto photoframe" src="image/hira-250px.jpg">
+					<h1>Hira-daiko</h1>
+					<img class="right stdphoto photoframe" src="image/hira-darkbrown.jpg">
 					<article id="ARTICLE_DRUMTYPE_HIRA" class="localize">
 						<p>Wenn deine Taiko noch mobiler sein soll, Du gerne mit Bus und Bahn unterwegs bist und deine Taiko 
 						zu jedem Training oder Ausflug mit soll, passt eine <strong>Hira-daiko (jap. "flache Trommel")</strong> 
@@ -270,6 +272,11 @@
 				 	befindet sich dann entweder eine flache Messingrosette oder eine dickere Stahlrosette. 
 				 	Letztere kann sogar ohne die Grundplatte verwendet werden - eine sehr schöne Option 
 				 	für kleinere Trommeln.</p>
+				 <p>Die kleinere Grundplatte hat einen Kantenlänge von 10,5cm, die größere von 12cm.
+				 Bei einer Miya-daiko ab 48cm kannst du die große Ausführung nehmen. Ansonsten sehen die kleineren 
+				immer gut aus.</p>
+				<p>Bei einer Hira-daiko würden sich die Spitzen der Platte unterhalb der Fellkanten befinden. Für diesen Fall gibt 
+				es die Option 'Stahlrosette ohne Grundplatte'.</p>
 			</div>
 
 
@@ -536,7 +543,7 @@
 				var drumType = element.value;
 				var drumSizeElement = document.querySelector("#drum-size")
 				var drumSize = drumSizeElement.value;
-				var shaku17 = document.querySelector("#shaku17");
+				var shaku17 = document.querySelector("#OPTION_SIZE_17");
 
 				if (drumType == "MIYA")
 				{
@@ -972,6 +979,13 @@
 			if (searchParams.has("lang"))
 			{
 				global.lang = searchParams.get("lang");
+				localStorage.setItem("lang", global.lang);
+			}
+			else
+			{
+				var lang = localStorage.getItem("lang");
+
+				global.lang = lang;
 			}
 
 			var section = searchParams.get("section");
