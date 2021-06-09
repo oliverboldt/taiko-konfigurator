@@ -72,7 +72,9 @@ const TAIKO_DATA_JSON =
 			description_en: "Maple stained",
 			prices:
 			[
-				  { drumid: "HIRA_DAIKO_14", price: "15" }
+				  { drumid: "SHIME_DAIKO_3", price: "15" }
+				, { drumid: "SHIME_DAIKO_4", price: "15" }
+				, { drumid: "HIRA_DAIKO_14", price: "15" }
 				, { drumid: "HIRA_DAIKO_15", price: "15" }
 				, { drumid: "HIRA_DAIKO_16", price: "20" }
 				, { drumid: "HIRA_DAIKO_17", price: "20" }
@@ -89,7 +91,9 @@ const TAIKO_DATA_JSON =
 			description_en: "Elm natural",
 			prices:
 			[
-				  { drumid: "HIRA_DAIKO_14", price: "15" }
+				  { drumid: "SHIME_DAIKO_3", price: "15" }
+				, { drumid: "SHIME_DAIKO_4", price: "15" }
+				, { drumid: "HIRA_DAIKO_14", price: "15" }
 				, { drumid: "HIRA_DAIKO_15", price: "15" }
 				, { drumid: "HIRA_DAIKO_16", price: "20" }
 				, { drumid: "HIRA_DAIKO_17", price: "20" }
@@ -107,6 +111,7 @@ const TAIKO_DATA_JSON =
 		  	thumbnail: "woodcolor-nature.jpg",   
 		  	thumbnail_miya: "miya-pear.jpg",
 		  	thumbnail_hira: "hira.jpg",
+		  	thumbnail_shime: "shime.jpg",
 		  	description: "Rüster Natur",
 		  	description_en: "Elm natural"  
 		}
@@ -116,6 +121,7 @@ const TAIKO_DATA_JSON =
 		  	thumbnail: "woodcolor-pear.jpg",   
 		  	thumbnail_miya: "miya-pear.jpg",
 		  	thumbnail_hira: "hira-pear.jpg",
+		  	thumbnail_shime: "shime.jpg",
 			description: "Farbton Birne/Rüster",
 			description_en: "Color Pear/Elmwood"
 		}
@@ -125,6 +131,7 @@ const TAIKO_DATA_JSON =
 		  	thumbnail: "woodcolor-nut.jpg",   
 		  	thumbnail_miya: "miya-darkbrown.jpg",
 		  	thumbnail_hira: "hira-darkbrown.jpg",
+		  	thumbnail_shime: "shime.jpg",
 			description: "Farbton Nuss/Dunkelbraun",
 			description_en: "Color Nut/darkbrown"
 		}
@@ -134,15 +141,17 @@ const TAIKO_DATA_JSON =
 		  	thumbnail: "woodcolor-redbrown.jpg",   
 		  	thumbnail_miya: "miya-redbrown.jpg",
 		  	thumbnail_hira: "hira-redbrown.jpg",
+		  	thumbnail_shime: "shime.jpg",
 			description: "Farbton Rotbraun",
 			description_en: "Color Redbrown" 
 		}
 		, 
 		{ 
 			id: "WOODCOLOR_RED", 
+		  	thumbnail: "woodcolor-darkred.jpg", 
 		  	thumbnail_miya: "miya-darkred.jpg",
 		  	thumbnail_hira: "hira-darkred.jpg",
-		  	thumbnail: "woodcolor-darkred.jpg",   
+		  	thumbnail_shime: "shime.jpg",  
 			description: "Farbton Dunkelrot",
 			description_en: "Color Darkred" 
 		}
@@ -151,6 +160,7 @@ const TAIKO_DATA_JSON =
 			id: "WOODCOLOR_SPECIAL", 
 		  	thumbnail_miya: "miya-special.jpg",
 		  	thumbnail_hira: "hira-special.jpg",
+		  	thumbnail_shime: "shime.jpg",
 		  	thumbnail: "woodcolor-special.jpg",   
 			description: "Wunschfarbe",
 			description_en: "Color of choice" 
@@ -250,6 +260,28 @@ const TAIKO_DATA_JSON =
 			price: 			"1450",
 			option_handle : [ "HANDLE_NONE", "HANDLE_BRASS_SMALL", "HANDLE_BRASS_BIG", "HANDLE_STEEL_SMALL", "HANDLE_STEEL_BIG", "HANDLE_STEEL_NOBASE" ]
 		}
+		,
+		{
+			id: 			"SHIME_DAIKO_3", 
+			name: 			"Shime daiko Größe 3",
+			name_en: 		"Shime daiko Type 3",
+			thumbnail: 		"shime.jpg",
+			thumbnail_size: "shime-3-masse.jpg",
+			description: 	"Shime daiko #3, Durchmesser 35cm, Höhe 18cm",
+			description_en: "Shime daiko #3, Diameter 35cm, height 18cm ",
+			price: 			"780"
+		}
+		,
+		{
+			id: 			"SHIME_DAIKO_4", 
+			name: 			"Shime daiko Größe 4",
+			name_en: 		"Shime daiko Type 4",
+			thumbnail: 		"shime.jpg",
+			thumbnail_size: "shime-4-masse.jpg",
+			description: 	"Shime daiko #4, Durchmesser 35cm, Höhe 21cm",
+			description_en: "Shime daiko #4, Diameter 35cm, height 21cm ",
+			price: 			"850"
+		}
 	],
 
 	getDrumDataForId : function(drumId)
@@ -347,5 +379,9 @@ const TAIKO_DATA_JSON =
 	{
 		return drumId.includes("HIRA_DAIKO");
 	}
-	
+	,
+	isShime : function(drumId)
+	{
+		return drumId.includes("SHIME_DAIKO");
+	}	
 };
