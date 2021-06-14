@@ -66,6 +66,13 @@ figcaption { font-size: 12px; }
 	margin-left: 20px;
 }
 
+.rechtliches
+{				
+	float: right;
+	margin-left: 20px;
+	font-size: 12px; 
+}
+
 .section
 {
 	display: block;

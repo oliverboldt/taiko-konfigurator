@@ -65,7 +65,7 @@
 				<div class="link menuitem-mytaikodrum right" 
 					onmouseover_off="buttonHighlightStart(this);" 
 					onmouseout_off="buttonHighlightStop(this);">
-					<a href="start.html">my<strong>taiko</strong>drum.de</a>
+					<a href="index.html">my<strong>taiko</strong>drum.de</a>
 				</div>
 				<div class=cleardiv></div>
 			</div>
@@ -76,7 +76,7 @@
 					<img id="drum-draft" class="stdphoto photoframe left" />
 					<div style="display: inline-block; margin-top: 10px;">
 						<span id="LABEL_TYPE" class="localize">Ich möchte eine </span>
-						<select id="drum-type" onchange="onclick_drumtype(this);">
+						<select id="drum-type" onchange="onclick_drumtype_popup(this);">
 							<option id="OPTION_CHOOSE" class="localize" value="-1" selected>Bitte auswählen...</option>
 							<option value="HIRA">Hira-daiko</option>
 							<option id="OPTION_MIYA" class="localize" value="MIYA">Miya-daiko</option>
@@ -85,14 +85,8 @@
 						</div>
 					<div style="display: inline-block; margin-top: 10px;">
 					<span id="LABEL_SIZE" class="localize">in der Größe</span>
-					<select id="drum-size" onchange="onclick_drumsize(this);">
+					<select id="drum-size" onchange="onclick_drumsize_popup(this);">
 						<option id="OPTION_CHOOSE" class="localize" value="-1" selected>Bitte auswählen...</option>
-						<option id="OPTION_SIZE_14" class="localize"  value="14">42cm Felldurchmesser</option>
-						<option id="OPTION_SIZE_15" class="localize" value="15">45cm Felldurchmesser</option>
-						<option id="OPTION_SIZE_16" class="localize" value="16">48cm Felldurchmesser</option>
-						<option id="OPTION_SIZE_17" class="localize" value="17">51cm Felldurchmesser</option>
-						<option id="OPTION_SIZE_3" class="localize" value="3">Größe 3</option>
-						<option id="OPTION_SIZE_4" class="localize" value="4">Größe 4</option>
 					</select>
 					</div>
 					
@@ -100,25 +94,26 @@
 					<div id="BUTTON_CHOOSE_WOOD" class="button right forward localize" 
 						onmouseover="buttonHighlightStart(this);" 
 						onmouseout="buttonHighlightStop(this);" 
-						onclick="onclick_sectionwood(this);"> 
+						onclick="onclick_sectionwood(this,false);"> 
 						Holzart & Farbe auswählen >> 
 					</div>
 					<div class=cleardiv></div>
 
 				</div>				
 				<article>
-					<h1 id="ARTICLE_DRUMTYPE" class="localize">Welche Trommel passt zu mir? Miya-Daiko oder Hira-Daiko?</h1>
+					<h1 id="ARTICLE_DRUMTYPE" class="localize">Welche Trommel passt zu mir? Miya-, Hira oder Shime-Daiko?</h1>
 				</article>
 					<article id="ARTICLE_DRUMTYPE_MIYA" class="localize">
-						<p>Wir bieten dir Miya-daikos und Hira-daikos in verschiedenen Größen. Unsere Taikos werden in 
+						<p>Wir bieten dir Taikos in verschiedenen Größen. Unsere Taikos werden in 
 							Form & Größe präzise so hergestellt wie in Japan und in der Maßeinheit Shaku angegeben. Ein Shaku 
 							entspricht ziemlich genau 30cm. Somit entspricht 1,4shaku einen bespielbaren Felldurchmesser von 42cm 
-							(42er Miya). 1,6shaku sind entsprechend 48cm (bespielbarer) Felldurchmesser (48er Miya).</p>
+							(42er Miya). 1,6shaku sind entsprechend 48cm (bespielbarer) Felldurchmesser (48er Miya). Für Shime-daikos gibt
+						es in Japan die Größen 1 bis 5.</p>
 
 						<h1>Miya-daiko</h1>
 						<img class="right stdphoto photoframe" src="image/miya-redbrown.jpg">
-						<p>Eine <strong>48er Miya-daiko (bzw. 1,6 jap. shaku)</strong> ist eine sehr universelle Trommel. Du kannst sie mit 
-							sehr dicken Bachi spielen, was für die seitliche Schlagtechnik (jap. "Yoko-uchi" oder “Naname-uchi”) 
+						<p>Eine <strong>48er Miya-daiko (bzw. 1,6 japanische shaku)</strong> ist eine sehr universelle Trommel. Du kannst sie mit 
+							sehr dicken Bachi spielen, was für die seitliche Schlagtechnik (japanisch "Yoko-uchi" oder “Naname-uchi”) 
 							sehr interessant ist. Bedingt durch die Größe und einem Gewicht von ca. 20kg ist diese Trommel natürlich 
 						aufwendiger im Transport. Die Höhe der Miya-daiko beträgt 60cm.</p>
 
@@ -133,12 +128,12 @@
 					<img class="right stdphoto photoframe" src="image/hira-darkbrown.jpg">
 					<article id="ARTICLE_DRUMTYPE_HIRA" class="localize">
 						<p>Wenn deine Taiko noch mobiler sein soll, Du gerne mit Bus und Bahn unterwegs bist und deine Taiko 
-						zu jedem Training oder Ausflug mit soll, passt eine <strong>Hira-daiko (jap. "flache Trommel")</strong> 
+						zu jedem Training oder Ausflug mit soll, passt eine <strong>Hira-daiko (japanisch "flache Trommel")</strong> 
 						zu Dir. Wir bauen sie in 4 Größen als 42er (bespielbarer Felldurchmesser 42 cm)  bis 51cm (1,4 bis 1,7 shaku). 
 						Die Höhe des Trommelkörpers ist ungefähr nur halb so hoch wie bei einer Miya-daiko. So eine Trommel 
 						ist viel leichter und kann ohne Auto transportiert werden. Der Klang einer Hira-daiko ist ebenfalls 
-						flacher und der Ton länger als bei einer Miya. Für die Taiko-stile Yoko-uchi (jap. "seitlich schlagen") 
-						und Naname-uchi (jap. "schräg schlagen") benötigst du aber eine oben beschriebene Miya-daiko.</p>
+						flacher und der Ton länger als bei einer Miya. Für die Taiko-stile Yoko-uchi (japanisch "seitlich schlagen") 
+						und Naname-uchi (japanisch "schräg schlagen") benötigst du aber eine oben beschriebene Miya-daiko.</p>
 					</article>	
 					<h1>Shime-daiko</h1>
 					<img class="right stdphoto photoframe" src="image/shime.jpg">
@@ -148,8 +143,8 @@
 						<p>Nur die besten Teile einer Haut kommem beim Bau zum Einsatz und sorgen für den typischen, knackigen
 						Sound. Ca. 6kg bringt dieses Seil-Modell auf die Waage. Wir zeigen dir gerne, wie man die Shime ohne 
 						technische Hilfsmittel nachspannt.</p>
-						<p>Die Größe 3 ist ein echter Klassiker und immer erste Wahl. Der Körper der 
-							Größe 4 ist mit 21cm um 3cm höher als bei der '3er' und es kommen dickere Felle zum Einsatz. Diese Trommel lässt sich noch höher spannen.</p>
+						<p><strong>Die Größe 3 ist ein echter Klassiker</strong> und immer erste Wahl. Der Körper der 
+							Größe 4 ist mit 21cm um 3cm höher als bei der '3er' und es kommen dickere Felle zum Einsatz. Diese Trommel lässt sich noch höher spannen - bei entsprechendem Kraftaufwand.</p>
 					</article>	
 				<h1>So entsteht der Körper deiner Taiko:</h1>
 				<p>Die Dauben werden zunächst ausgesägt, angeschrägt und dann verleimt. Die Taicut.cnc-Fräsmaschine 
@@ -166,7 +161,7 @@
 				<div class="button" 
 						onmouseover="buttonHighlightStart(this);" 
 						onmouseout="buttonHighlightStop(this);" 
-						onclick="onclick_sectionwood(this);"> 
+						onclick="onclick_sectionwood(this,false);"> 
 						Welche Farbe möchtest Du ? 
 					</div>
 			</div>
@@ -176,7 +171,7 @@
 					<div class="button left backwards" 
 							onmouseover="buttonHighlightStart(this);" 
 							onmouseout="buttonHighlightStop(this);" 
-							onclick="onclick_sectiontype(this);"> 
+							onclick="onclick_sectiontype(this,false);"> 
 							<< Typ & Größe auswählen
 					</div>
 					<div class=cleardiv></div>
@@ -215,7 +210,7 @@
 				  <img class=" photoframe" src="image/20191118_101202.jpg" alt /> 
 				  <figcaption>Links: Farbton rot-braun, rechts: Farbton: Birne </figcaption>
 				</figure>
-				<p>Wir verwenden hochwertige, europäische Esche. Als Holz liefert es die Qualität die wir  
+				<p>Wir verwenden hochwertige, europäische Esche. Als Hartholz liefert es die Qualität die wir  
 					zum Taikobau benötigen. Es ist relativ hell und lässt sich damit gut auf den
 				 	Wunschfarbton beizen. Und dabei bleibt die wunderschöne Eschen-Maserung weiterhin sichtbar. </p>
 
@@ -230,6 +225,9 @@
 				<p>Bei der Wahl deiner Farbe solltest Du berücksichtigen, ob die Taiko mit anderen 
 					Instrumenten aus Deiner Taikogruppe auf der Bühne stehen soll. In diesem Fall ist 
 					es von Vorteil, die Optik passend zu den anderen Taikos zu wählen.</p>
+
+				<h1></h1>
+				<p></p>
 			</div>
 			<div id=section-handles class=section>
 				<h1>Haltegriffe</h1>
@@ -285,7 +283,7 @@
 				 	befindet sich dann entweder eine flache Messingrosette oder eine dickere Stahlrosette. 
 				 	Letztere kann sogar ohne die Grundplatte verwendet werden - eine sehr schöne Option 
 				 	für kleinere Trommeln.</p>
-				 <p>Die kleinere Grundplatte hat einen Kantenlänge von 10,5cm, die größere von 12cm.
+				 <p>Die kleinere Grundplatte hat eine Kantenlänge von 10,5cm, die größere von 12cm.
 				 Bei einer Miya-daiko ab 48cm kannst du die große Ausführung nehmen. Ansonsten sehen die kleineren 
 				immer gut aus.</p>
 				<p>Bei einer Hira-daiko würden sich die Spitzen der Platte unterhalb der Fellkanten befinden. Für diesen Fall gibt 
@@ -399,6 +397,22 @@
 							nachhaltige Investition.
 						</ul>
 					</div>
+					<p><strong>Zubehör:</strong></p>
+					<div class=smallertext>		
+						<ul>				
+							<li>Wir bieten dir für deine Taiko auch einen passenden <strong>Ständer</strong> an, 
+							und zwar angepasst an deine Wunsch-Spielhöhe.</li>
+							<li><strong>Standard-Bachis</strong> haben wir immer vorrätig. Sie werden exklusiv für uns angefertigt. </li>
+							<li>Wir stellen keine <strong>Taschen</strong> her, aber helfen dir etwas passendes auf dem Taiko-
+							/Schlagzeugmarkt zu finden.</li> 
+						</ul>
+					</div>
+					<p><strong>Lieferzeit:</strong></p>
+					<div class=smallertext>		
+						<p>Für den Bau deiner Taiko benötigen wir ca. 5 Wochen. Bei der konkreten Bestellung können wir es dir noch 
+							genauer sagen. Du kaufst hier nichts 'von der Stange'. Der aufwendige Spannvorgang dauert 3 Wochen
+							 und der Korpus wird 'ab Bohle' komplett aufgebaut. Das braucht seine Zeit.</p>
+					</div>
 
 				</div>
 				<div id=formpart>
@@ -420,7 +434,8 @@
 			</div>
 
 			<div class="footer">
-				<a href="impressum.html">Impressum</a> | <a href="ueber.html">über:mytaikodrum.de</a>
+				<a href="ueber.html">Über my<b>taiko</b>drum.de</a> 
+				<div class="rechtliches"> <a href="impressum.html">Impressum</a> | <a href="dsgvo.html">DSGVO</a></div>
 			</div>
 		</div>
 
@@ -548,42 +563,49 @@
 			function onclick_newdesign(element)
 			{
 				resetDrumSpec();
-				onclick_sectiontype(element);
+				onclick_sectiontype(element,false);
 			}
 
-			function onclick_drumtype(element,editMode)
+			function fill_drumsize_popup(drumtype)
 			{
-				var drumType = element.value;
-				var drumSizeElement = document.querySelector("#drum-size")
-				var drumSize = parseInt(drumSizeElement.value);
-				var sizeOptions = document.querySelectorAll("#drum-size option");
+				var drumSizeElement = document.querySelector("#drum-size");
 
-				var defValue = sizeOptions[0].style.display;
-				// alert(defValue);
+				var options = "<option id='OPTION_CHOOSE' class='localize' value='-1' selected>Bitte auswählen...</option>";
 
-				for (i=0; i<sizeOptions.length; i++)
+				if (drumtype == "HIRA" || drumtype == "MIYA")
 				{
-					var value = parseInt(sizeOptions[i].value);
-
-					if (value > 0)
-					{
-						sizeOptions[i].style.display = defValue;
-
-						if (drumType == "HIRA")
-						{
-							sizeOptions[i].style.display = (value >= 14) ? defValue : "none";
-						}
-						else if (drumType == "MIYA")
-						{
-							sizeOptions[i].style.display = (value >= 14 && value <= 16) ? defValue : "none";
-						}
-						else if (drumType == "SHIME")
-						{
-							sizeOptions[i].style.display = (value < 5) ? defValue : "none";
-						}
-					}
+					options += "<option id='OPTION_SIZE_14' class='localize' value='14'>42cm Felldurchmesser</option>";
+					options += "<option id='OPTION_SIZE_15' class='localize' value='15'>45cm Felldurchmesser</option>";
+					options += "<option id='OPTION_SIZE_16' class='localize' value='16'>48cm Felldurchmesser</option>";
 				}
 
+				if (drumtype == "HIRA")
+				{
+					options += "<option id='OPTION_SIZE_17' class='localize' value='17'>51cm Felldurchmesser</option>";
+				}
+				
+				if (drumtype == "SHIME")
+				{
+					options += "<option id='OPTION_SIZE_3' class='localize' value='3'>Größe 3</option>";
+					options += "<option id='OPTION_SIZE_4' class='localize' value='4'>Größe 4</option>";
+				}
+				
+				// var oldValue = drumSizeElement.value;
+				drumSizeElement.innerHTML = options;
+			}
+
+			function onclick_drumtype_popup(element)
+			{
+				var drumType = element.value;
+				var drumSizeElement = document.querySelector("#drum-size");
+				var drumSize = parseInt(drumSizeElement.value);
+				var oldValue = drumSizeElement.value;
+
+				alert(drumType + ", " + drumSizeElement.value);
+
+				fill_drumsize_popup(drumType);
+				drumSizeElement.value = oldValue;
+			
 				if (drumType == "MIYA" && (drumSize < 14 ||  drumSize > 16))
 					drumSizeElement.value = "-1";
 				else if (drumType == "HIRA" && (drumSize < 14))
@@ -594,7 +616,7 @@
 				updateDrumIdAndPrice();
 			}
 
-			function onclick_drumsize(element)
+			function onclick_drumsize_popup(element)
 			{
 				updateDrumIdAndPrice();
 			}
@@ -733,20 +755,10 @@
 			}
 
 
-			function updateDrumIdAndPrice()
+			function showBasicPriceAndDraft()
 			{
-				var drumType = document.querySelector("#drum-type").value;
-				var drumSize = document.querySelector("#drum-size").value;
 				var drumPrice = document.querySelector("#drum-price");
 				var draft = document.querySelector("#drum-draft");
-
-				if (drumType != "-1" && drumSize > 0)
-					global.drum.id = drumType + "_DAIKO_" + drumSize;
-				else
-					global.drum.id = "";
-
-				storeDrumSpec();
-
 				var drumData = TAIKO_DATA_JSON.getDrumDataForId(global.drum.id);
 
 				if (drumData != null)	
@@ -761,9 +773,22 @@
 				{
 					drumPrice.innerHTML = "";	
 					draft.style.display = "none";
-				}
-							
+				}			
 			}
+
+			function updateDrumIdAndPrice()
+			{
+				var drumType = document.querySelector("#drum-type").value;
+				var drumSize = document.querySelector("#drum-size").value;
+
+				if (drumType != "-1" && drumSize > 0)
+					global.drum.id = drumType + "_DAIKO_" + drumSize;
+				else
+					global.drum.id = "";
+
+				showBasicPriceAndDraft();							
+			}
+
 
 			function switchToEditMode(section)
 			{
@@ -816,9 +841,16 @@
 					else if (global.drum.id.indexOf("SHIME") == 0)
 						drumtypeSelect.value = "SHIME";
 
+					fill_drumsize_popup(drumtypeSelect.value);
 					drumsizeSelect.value = drumSize;
-
-					onclick_drumtype(drumtypeSelect);	
+					showBasicPriceAndDraft();
+				}
+				else
+				{
+					// Default
+					// drumsizeSelect.value = ;
+					fill_drumsize_popup("HIRA");
+					// onclick_drumtype_popup(drumtypeSelect);
 				}
 
 				localizeSection("section-type");

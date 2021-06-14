@@ -206,7 +206,7 @@ const TAIKO_DATA_JSON =
 			thumbnail_size: "hira-16-masse.jpg",
 			description: 	"Hira daiko, Fell-Durchmesser 48cm (1,6shaku), Höhe 27,5cm",
 			description_en: "Hira daiko, skin diameter 48cm (1.6shaku), height: 27.5cm",			
-			price: 			"950",
+			price: 			"935",
 			option_handle : [ "HANDLE_NONE", "HANDLE_BRASS_SMALL", "HANDLE_STEEL_SMALL", "HANDLE_STEEL_NOBASE" ]
 		}
 		,
@@ -218,7 +218,7 @@ const TAIKO_DATA_JSON =
 			thumbnail_size: "hira-17-masse.jpg",
 			description: 	"Hira daiko, Fell-Durchmesser 51cm (1,7shaku), Höhe 29cm",
 			description_en: "Hira daiko, skin diameter 51cm (1.7shaku), height: 29cm",
-			price: 			"1050",
+			price: 			"980",
 			option_handle : [ "HANDLE_NONE", "HANDLE_BRASS_SMALL", "HANDLE_STEEL_SMALL", "HANDLE_STEEL_NOBASE" ]
 		}
 		,
@@ -244,7 +244,7 @@ const TAIKO_DATA_JSON =
 			thumbnail_size: "miya-15-masse.jpg",
 			description: 	"Miya daiko, Fell-Durchmesser 45cm (1,5shaku)",
 			description_en: "Nagado daiko, skin-diameter 45cm (1.5shaku)",
-			price: 			"1275",
+			price: 			"1245",
 			option_handle : [ "HANDLE_NONE", "HANDLE_BRASS_SMALL", "HANDLE_BRASS_BIG", "HANDLE_STEEL_SMALL", "HANDLE_STEEL_BIG", "HANDLE_STEEL_NOBASE" ]
 		}
 		,
@@ -257,7 +257,7 @@ const TAIKO_DATA_JSON =
 			thumbnail_size: "miya-16-masse.jpg",
 			description: 	"Miya daiko, Fell-Durchmesser 48cm (1,6shaku)",
 			description_en: "Nagado daiko, skin-diameter 48cm (1.6shaku)",
-			price: 			"1450",
+			price: 			"1390",
 			option_handle : [ "HANDLE_NONE", "HANDLE_BRASS_SMALL", "HANDLE_BRASS_BIG", "HANDLE_STEEL_SMALL", "HANDLE_STEEL_BIG", "HANDLE_STEEL_NOBASE" ]
 		}
 		,

@@ -4,28 +4,20 @@
 
 	<head>
 		<meta charset="UTF-8" />
-		<title>Start</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Willkommen - mytaikodrum.de</title>
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet" >
 		<link rel="stylesheet" href="css/common.css">
 		<link rel="stylesheet" href="css/menu.css">
 		<script src="common.js"></script>
-		<style type="text/css">	
-
-			img
-			{
-				width: 250px;
-			}	
-
-		</style>
 	</head>
 
 	<body>
 		<div id=wrapper>
 			<div id=menu>
 				<img id="logo" src="image/logo.jpg"/>
-				<div class="willkommen">
-				</div>
+				<div class="willkommen"></div>
 				<div class="menuitem-mytaikodrum right">
 					<span style="font-size: 20px; margin-right: 70px">
 						Herzlich willkommen auf ...</span> my<strong>taiko</strong>drum.de
@@ -33,19 +25,54 @@
 				<div class=cleardiv></div>
 			</div>
 			<div class=section>
-				<img src='image/miya-pear.jpg'>
-				<img src='image/miya-redbrown.jpg'>
-				<img src='image/miya-darkbrown.jpg'>
-				<p>Mit einem fulminanten <strong>D O N</strong> begrüßen wir dich auf my<strong>taiko</strong>drum.de !
-					Dies ist der richtige Ort, um zu deiner persönlichen Wunsch-Taiko zu kommen. Schritt für Schritt
-					begleiten und beraten wir dich darin, eine passende Taiko zu finden und diese an deine
-					Vorstellung anzupassen.
+				<p>
+				<img style="vertical-align: middle;"  class="stdphoto photoframe" src='image/miya-pear.jpg'>
+				<img id="HIRA" style="vertical-align: middle;" class="stdphoto photoframe" 
+						src='image/hira-redbrown.jpg' style_off="height: 211px; width=auto;">
+				<img style="vertical-align: middle;"  class="stdphoto photoframe" src='image/miya-darkbrown.jpg'>
 				</p>
-				<p style="color:red;">Etwas musst du dich leider noch gedulden, aber demnächst wird diese Website freigeschaltet.</p>
+				<p>	Mit einem fulminanten <strong>D O N</strong> begrüßen wir dich auf my<strong>taiko</strong>drum.de ! 
+					Dies ist der richtige Ort, um Dich auf den Weg zu deiner persönlichen Wunsch-Taiko zu begeben. Schritt 
+					für Schritt begleiten und beraten wir dich darin, Deine passende Taiko auszuwählen und diese an deine
+					 Vorstellung anzupassen.
+				</p>
+				<p id="TEST">Bereit? Dann klicke auf "Meine Taiko"</p>
+				<div class="button" 
+					onmouseover="buttonHighlightStart(this);" 
+					onmouseout="buttonHighlightStop(this);">
+					<a href='meine-taiko.html'>Meine Taiko !</a>
+				</div>
+				<div style="margin-top: 60px">
+					<p>Über my<strong>taiko</strong>drum.de:</p>
+
+					<p><a href="ueber.html"><u>WIR sind die Menschen hinter mytaikodrum.de</u> und lieben es, Dich auf dem Weg zur eigenen Taiko zu begleiten, in Deinem Rhythmus und Deinem ganz persönlichen Style.</u></a></p>
+				</div>
+							
 			</div>
 			<div class="footer">
-				<a href="impressum.html">Impressum</a>
+				<div class="rechtliches"> <a href="impressum.html">Impressum</a> | <a href="dsgvo.html">DSGVO</a></div>
+				<div class="cleardiv"></div>
 			</div>
+
+			<script type="text/javascript">
+				var images = [ "image/hira-redbrown.jpg", "image/hira-special.jpg", "image/hira-darkred.jpg", 
+									"image/hira-pear.jpg"];
+				var imageAt = 0;
+
+				function animateImage()
+				{
+					imageAt++;
+
+					if (imageAt >= images.length)
+						imageAt = 0;
+
+					// document.querySelector("#TEST").innerHTML += ".";
+					document.querySelector("#HIRA").src = images[imageAt];
+				}
+
+				setInterval(animateImage,3000);
+			</script>
+
 		</div>
 	</body>
 
