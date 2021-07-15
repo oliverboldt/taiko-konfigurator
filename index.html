@@ -73,6 +73,12 @@
 				setInterval(animateImage,3000);
 			</script>
 
+			<script type="text/javascript">
+				var request = new XMLHttpRequest();
+				request.open("POST","logging/log.php");
+				request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // ?
+				request.send('referrer=' + encodeURI(document.referrer));
+			</script>
 		</div>
 	</body>
 

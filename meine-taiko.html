@@ -1100,8 +1100,21 @@
 					+ "<input type=hidden name='nails' value='" + nailInfo.description + "'>"
 					+ "<input type=hidden name='price' value='" + totalPrice + "'>"
 					;
-			}
 
+				// Logging
+				//
+				var request = new XMLHttpRequest();
+				request.open("POST","logging/log.php");
+				request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // ?
+
+				var params = "drumId="+global.drum.id;
+
+				params += "&colorId="+global.drum.woodId;
+				params += "&woodId="+global.drum.colorId;
+				if (! isShime)
+					params += "&handleId="+global.drum.handleId;
+				request.send(params);
+			}
 
 			// Startup code
 			//
