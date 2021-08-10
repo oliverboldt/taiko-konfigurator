@@ -11,9 +11,10 @@
 		<link rel="stylesheet" href="css/common.css">
 		<link rel="stylesheet" href="css/menu.css">
 		<link rel="stylesheet" href="css/taiko.css">
-		<script src="common.js"></script>
-		<script src="taiko-data-json.js"></script>
-		<script src="loc-data-json.js"></script>
+		<script src="js/common.js"></script>
+		<script src="js/taiko-data-json.js"></script>
+		<script src="js/loc-data-json.js"></script>
+		<script src="js/logging.js"></script>
 		<style type="text/css">	
 
 			#section-wood {	display: none; }
@@ -1101,19 +1102,6 @@
 					+ "<input type=hidden name='price' value='" + totalPrice + "'>"
 					;
 
-				// Logging
-				//
-				var request = new XMLHttpRequest();
-				request.open("POST","logging/log.php");
-				request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // ?
-
-				var params = "drumId="+global.drum.id;
-
-				params += "&colorId="+global.drum.woodId;
-				params += "&woodId="+global.drum.colorId;
-				if (! isShime)
-					params += "&handleId="+global.drum.handleId;
-				request.send(params);
 			}
 
 			// Startup code
@@ -1176,8 +1164,11 @@
 			}
 			else
 			{
+				section = "type";
 				open_sectiontype(edit);
 			}
+
+			logDrum(section,global.drum);
 	
 		</script>
 	</body>

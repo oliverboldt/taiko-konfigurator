@@ -5,12 +5,18 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Willkommen - mytaikodrum.de</title>
+		<title id="INDEX_TITLE" class="localize">Willkommen - mytaikodrum.de</title>
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet" >
 		<link rel="stylesheet" href="css/common.css">
 		<link rel="stylesheet" href="css/menu.css">
-		<script src="common.js"></script>
+		<script src="js/common.js"></script>
+		<script src="js/loc-data-json.js"></script>
+		<script src="js/logging.js"></script>
+		<style>
+			.vert-center { vertical-align: middle; }
+			#expo { margin-right: 15px; border: 1px solid black; padding: 10px; }
+		</style>
 	</head>
 
 	<body>
@@ -19,38 +25,46 @@
 				<img id="logo" src="image/logo.jpg"/>
 				<div class="willkommen"></div>
 				<div class="menuitem-mytaikodrum right">
-					<span style="font-size: 20px; margin-right: 70px">
-						Herzlich willkommen auf ...</span> my<strong>taiko</strong>drum.de
+					<span id="WELCOME" class="localize" style="font-size: 20px; margin-right: 70px">
+						Herzlich willkommen auf ...</span> <span id="MYTAIKODRUM" class="localize">my<strong>taiko</strong>drum.de</span>
 				</div>
 				<div class=cleardiv></div>
 			</div>
 			<div class=section>
 				<p>
-				<img style="vertical-align: middle;"  class="stdphoto photoframe" src='image/miya-pear.jpg'>
-				<img id="HIRA" style="vertical-align: middle;" class="stdphoto photoframe" 
-						src='image/hira-redbrown.jpg' style_off="height: 211px; width=auto;">
-				<img style="vertical-align: middle;"  class="stdphoto photoframe" src='image/miya-darkbrown.jpg'>
+				<a href='meine-taiko.html'>
+					<img class="stdphoto photoframe vert-center" src='image/miya-pear.jpg'></a>
+				<a href='meine-taiko.html'>
+					<img id="HIRA" class="stdphoto photoframe vert-center" 
+						src='image/hira-redbrown.jpg' ></a>
+				<a href='meine-taiko.html'>
+					<img class="stdphoto photoframe vert-center" src='image/miya-darkbrown.jpg'></a>
 				</p>
-				<p>	Mit einem fulminanten <strong>D O N</strong> begrüßen wir dich auf my<strong>taiko</strong>drum.de ! 
+				<p id="INDEX_PARAGRAPH_1" class="localize">Mit einem fulminanten <strong>D O N</strong> begrüßen wir dich auf my<strong>taiko</strong>drum.de ! 
 					Dies ist der richtige Ort, um Dich auf den Weg zu deiner persönlichen Wunsch-Taiko zu begeben. Schritt 
 					für Schritt begleiten und beraten wir dich darin, Deine passende Taiko auszuwählen und diese an deine
 					 Vorstellung anzupassen.
 				</p>
-				<p id="TEST">Bereit? Dann klicke auf "Meine Taiko"</p>
+				<div id="expo" class="right">
+					<span id="INDEX_EXPO" class="localize">Besucht uns auf der</span><br/>
+					<img style="margin-top:5px;" src="image/ETE21.png" />
+				</div>
+				<p id="INDEX_READY" class="localize">Bereit? Dann klicke auf "Meine Taiko"</p>
 				<div class="button" 
 					onmouseover="buttonHighlightStart(this);" 
 					onmouseout="buttonHighlightStop(this);">
-					<a href='meine-taiko.html'>Meine Taiko !</a>
+					<a id="INDEX_BUTTON" class="localize" href='meine-taiko.html'>Meine Taiko !</a>
 				</div>
 				<div style="margin-top: 60px">
-					<p>Über my<strong>taiko</strong>drum.de:</p>
+					<p id="INDEX_ABOUT" class="localize">Über my<strong>taiko</strong>drum.de:</p>
 
-					<p><a style="text-decoration: none;" href="ueber.html"><u>WIR sind die Menschen hinter mytaikodrum.de</u> und lieben es, Dich auf dem Weg zur eigenen Taiko zu begleiten, in Deinem Rhythmus und Deinem ganz persönlichen Style.</u></a></p>
+					<p><a id="INDEX_ABOUT_MORE" class="localize" style="text-decoration: none;" href="ueber.html"><u>WIR sind die Menschen hinter mytaikodrum.de</u> und lieben es, Dich auf dem Weg zur eigenen Taiko zu begleiten, in Deinem Rhythmus und Deinem ganz persönlichen Style.</a></p>
 				</div>
 							
 			</div>
 			<div class="footer">
-				<div class="rechtliches"> <a href="impressum.html">Impressum</a> | <a href="dsgvo.html">DSGVO</a></div>
+				<div class="rechtliches"> <a id="IMPRESSUM" class="localize" href="impressum.html">Impressum</a> 
+					| <a id="DATENSCHUTZ" class="localize" href="dsgvo.html">Datenschutz</a></div>
 				<div class="cleardiv"></div>
 			</div>
 
@@ -70,14 +84,20 @@
 					document.querySelector("#HIRA").src = images[imageAt];
 				}
 
-				setInterval(animateImage,3000);
-			</script>
+				// Lenkt das ab??
+				// setInterval(animateImage,3000);
 
-			<script type="text/javascript">
-				var request = new XMLHttpRequest();
-				request.open("POST","logging/log.php");
-				request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // ?
-				request.send('referrer=' + encodeURI(document.referrer));
+				var url = new URL(window.location.href);
+				var searchParams = url.searchParams;
+
+				if (searchParams.has("lang"))
+					localStorage.setItem("lang", searchParams.get("lang"));
+				else if (localStorage.getItem("lang") == null 
+					 &&  window.location.hostname.includes("mytaikodrum.eu"))
+						localStorage.setItem("lang", "en");
+
+				LOC_DATA_JSON.localizePage();
+				logPage("index.html");
 			</script>
 		</div>
 	</body>
