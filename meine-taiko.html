@@ -64,7 +64,7 @@
 		<div id=wrapper>
 			<div id=menu>
 				<img id="logo" src="image/logo.jpg"/>
-				<div class="link menuitem-mytaikodrum right" 
+				<div id="MYTAIKODRUM" class="localize link menuitem-mytaikodrum right" 
 					onmouseover_off="buttonHighlightStart(this);" 
 					onmouseout_off="buttonHighlightStop(this);">
 					<a href="index.html">my<strong>taiko</strong>drum.de</a>
@@ -102,30 +102,31 @@
 					<div class=cleardiv></div>
 
 				</div>				
-				<article>
-					<h1 id="ARTICLE_DRUMTYPE" class="localize">Welche Trommel passt zu mir? Miya-, Hira oder Shime-Daiko?</h1>
-				</article>
-					<article id="ARTICLE_DRUMTYPE_MIYA" class="localize">
+					<h1 id="ARTICLE_DRUMTYPE_HEADLINE" class="localize">
+						Welche Trommel passt zu mir? Miya-, Hira oder Shime-Daiko?</h1>
+					<article id="ARTICLE_DRUMTYPE" class="localize">
 						<p>Wir bieten dir Taikos in verschiedenen Größen. Unsere Taikos werden in 
 							Form & Größe präzise so hergestellt wie in Japan und in der Maßeinheit Shaku angegeben. Ein Shaku 
 							entspricht ziemlich genau 30cm. Somit entspricht 1,4shaku einen bespielbaren Felldurchmesser von 42cm 
 							(42er Miya). 1,6shaku sind entsprechend 48cm bespielbarer Felldurchmesser (48er Miya). 
 							Für Shime-daikos gibt es in Japan die Größen 1 bis 5.</p>
-
-						<h1>Miya-daiko</h1>
-						<img class="right stdphoto photoframe" src="image/miya-redbrown.jpg">
-						<p>Eine <strong>48er Miya-daiko (bzw. 1,6 japanische shaku)</strong> ist eine sehr universelle 
-							Trommel. Du kannst sie mit 	sehr dicken Bachi spielen, was für die seitliche Schlagtechnik 
-							(japanisch "Yoko-uchi" oder “Naname-uchi”) 	sehr interessant ist. Bedingt durch die Größe 
-							und einem Gewicht von ca. 20kg ist diese Trommel natürlich aufwendiger im Transport. Die Höhe 
-							der Miya-daiko beträgt 60cm.</p>
-
-						<p>Hier hat eine <strong>42er Miya-daiko (1,4shaku)</strong> klare Vorteile und steht optisch und 
-							klanglich ihrer etwas größeren Schwester in nichts nach. Sie wiegt unter 14kg und passt wohl 
-							in jeden PKW-Kofferraum und fährt auch gerne mal auf der Rücksitzbank mit. Ebenfalls macht sie 
-							eine gute Figur auf einem Schrägständer und kann noch mit mittleren Bachi kraftvoll gespielt 
-						werden. Die Höhe beträgt 52,5 cm. </p>
 					</article>
+
+					<h1 id="MIYA_DAIKO" class="localize">Miya-daiko</h1>
+					<img class="right stdphoto photoframe" src="image/miya-redbrown.jpg">
+					<article id="ARTICLE_DRUMTYPE_MIYA" class="localize">
+					<p>Eine <strong>48er Miya-daiko (bzw. 1,6 japanische shaku)</strong> ist eine sehr universelle 
+						Trommel. Du kannst sie mit 	sehr dicken Bachi spielen, was für die seitliche Schlagtechnik 
+						(japanisch "Yoko-uchi" oder “Naname-uchi”) sehr interessant ist. Bedingt durch die Größe 
+						und einem Gewicht von ca. 20kg ist diese Trommel natürlich aufwendiger im Transport. Die Höhe 
+						der Miya-daiko beträgt 60cm.</p>
+
+					<p>Hier hat eine <strong>42er Miya-daiko (1,4shaku)</strong> klare Vorteile und steht optisch und 
+						klanglich ihrer etwas größeren Schwester in nichts nach. Sie wiegt unter 14kg und passt wohl 
+						in jeden PKW-Kofferraum und fährt auch gerne mal auf der Rücksitzbank mit. Ebenfalls macht sie 
+						eine gute Figur auf einem Schrägständer und kann noch mit mittleren Bachi kraftvoll gespielt 
+					werden. Die Höhe beträgt 52,5 cm. </p>
+					</article>	
 
 					<h1>Hira-daiko</h1>
 					<img class="right stdphoto photoframe" src="image/hira-darkbrown.jpg">
@@ -140,7 +141,8 @@
 						(japanisch "schräg schlagen") benötigst du aber eine oben beschriebene Miya-daiko.
 						Das Spielgefühl bei einer Hira ist einer Miya-Daiko gleichwertig.</p>
 					</article>	
-					<h1>Shime-daiko</h1>
+
+					<div style="display:block;clear:both;"><h1>Shime-daiko</h1>
 					<img class="right stdphoto photoframe" src="image/shime.jpg">
 					<article id="ARTICLE_DRUMTYPE_SHIME" class="localize">
 						<p>Die geschnürte Shime-daiko darf in keiner Gruppe fehlen. Wir bauen sie bereits seit dem Jahre 2000
@@ -152,7 +154,8 @@
 							Größe 4 ist mit 21cm um 3cm höher als bei der '3er' und es kommen dickere 
 							Felle zum Einsatz. Diese Trommel lässt sich noch höher spannen 
 							- bei entsprechendem Kraftaufwand.</p>
-					</article>	
+					</article>
+					</div>	
 			</div>
 			<div id="section-wood" class="section">
 				<h1>Holzart & Farbe</h1>
@@ -215,7 +218,7 @@
 				<p>Bei der Wahl der Farbe solltest Du berücksichtigen, ob die Taiko mit anderen 
 					Instrumenten aus Deiner <b>Taikogruppe</b> auf der Bühne stehen soll. In diesem Fall ist 
 					es von Vorteil, die Optik passend zu den anderen Taikos zu wählen.</p>
-					</article>
+				</article>
 
 				<h1>Formfaktor und Sound</h1>
 				<img class="right" src="image/miya-daiko-profil-klein.jpg"/>
@@ -234,6 +237,7 @@
 					innere Krümmung erhöhe (siehe Bild). Es entsteht eine Daube, die in der Mitte etwas 
 					schlanker ist und nach außen dicker wird.</p>
 				</article>
+
 				<h1>Klangunterschiede der Hölzer</h1>
 				<article>
 				<p>Alle von uns gebauten Taikos sind aus Hartholz und haben die oben beschriebene Form - innen wie außen. 
@@ -243,6 +247,7 @@
 					optischen Aspekten für Holz und Farbton entscheiden.</p>
 				</article>
 			</div>
+
 			<div id="section-handles" class="section">
 				<h1>Haltegriffe</h1>
 				<div class="choice">
@@ -280,9 +285,8 @@
 							Felle & Nägel auswählen >>
 					</div>
 					<div class=cleardiv></div>				
-					
 				</div>
-				<p>Haltegriffe sind dekorativ und funktionell. Wenn du eine 20kg schwere Miya-daiko auf einen 
+				<p id="HANDLE_INTRO-todo" class="localize">Haltegriffe sind dekorativ und funktionell. Wenn du eine 20kg schwere Miya-daiko auf einen 
 					hohen Ständer heben musst, sind sie fast unverzichtbar. Bei kleineren Trommeln wie den 
 					Hira-daikos kann man sie, wenn optisch gewünscht, gerne anbringen. Das Handling einer Hira
 					gelingt auch ohne Griffe leicht.</p>
@@ -292,16 +296,18 @@
 				  <figcaption>Grundplatte, Rosette und Kloben </figcaption>
 				</figure>
 				 
-				 <p>Unsere Haltegriffe werden von einem Kloben gehalten, der durch die Trommelwand hindurchgeführt  
-				 	und von innen verschraubt wird. Die schwarze Grundplatte gibt es in zwei Größen. Darauf 
-				 	befindet sich dann entweder eine flache Messingrosette oder eine dickere Stahlrosette. 
-				 	Letztere kann sogar ohne die Grundplatte verwendet werden - eine sehr schöne Option 
-				 	für kleinere Trommeln.</p>
-				 <p>Die kleinere Grundplatte hat eine Kantenlänge von 10,5cm, die größere von 12cm.
-				 	Bei einer Miya-daiko ab 48cm Durchmesser kannst du die große Ausführung nehmen. 
-				 	Ansonsten sehen die kleineren immer gut aus.</p>
-				<p>Bei einer Hira-daiko würden sich die Spitzen der schwarzen Platte unterhalb der Fellbespannung
-				 	befinden. Für diesen Fall gibt es die Option 'Stahlrosette ohne Grundplatte'.</p>
+				 <article id="HANDLE_MORE-todo" class="localize">
+					<p>Unsere Haltegriffe werden von einem Kloben gehalten, der durch die Trommelwand hindurchgeführt  
+					 	und von innen verschraubt wird. Die schwarze Grundplatte gibt es in zwei Größen. Darauf 
+					 	befindet sich dann entweder eine flache Messingrosette oder eine dickere Stahlrosette. 
+					 	Letztere kann sogar ohne die Grundplatte verwendet werden - eine sehr schöne Option 
+					 	für kleinere Trommeln.</p>
+					<p>Die kleinere Grundplatte hat eine Kantenlänge von 10,5cm, die größere von 12cm.
+					 	Bei einer Miya-daiko ab 48cm Durchmesser kannst du die große Ausführung nehmen. 
+					 	Ansonsten sehen die kleineren immer gut aus.</p>
+					<p>Bei einer Hira-daiko würden sich die Spitzen der schwarzen Platte unterhalb der Fellbespannung
+					 	befinden. Für diesen Fall gibt es die Option 'Stahlrosette ohne Grundplatte'.</p>
+				</article>
 			</div>
 
 
@@ -340,25 +346,30 @@
 					</div>
 					<div class=cleardiv></div>
 				</div>
+
 				<h1>Nägel</h1>
-				<p>In der Regel kommen Nägel mit 20mm-Kopf aus deutscher Herstellung zum Einsatz. Zweireihig in 
-					Hartholz genagelt, erzeugen sie eine hohe Festigkeit.</p>
-				<p>Alternativ gibt es Nägel aus Japan. Ihr Kopf ist mit 19mm bzw. 17mm etwas kleiner und stärker 
-					gekrümmt, ein "Look" wie man ihn in Japan gewohnt ist. Der Nagelstift ist länger und dicker 
-					und sorgt für noch besseren	Halt. Interessant für eine einreihige Nagelung oder größere Trommeln 
-					mit sehr dicken Fellen.</p>
+				<article>
+					<p>In der Regel kommen Nägel mit 20mm-Kopf aus deutscher Herstellung zum Einsatz. Zweireihig in 
+						Hartholz genagelt, erzeugen sie eine hohe Festigkeit.</p>
+					<p>Alternativ gibt es Nägel aus Japan. Ihr Kopf ist mit 19mm bzw. 17mm etwas kleiner und stärker 
+						gekrümmt, ein "Look" wie man ihn in Japan gewohnt ist. Der Nagelstift ist länger und dicker 
+						und sorgt für noch besseren	Halt. Interessant für eine einreihige Nagelung oder größere Trommeln 
+						mit sehr dicken Fellen.</p>
+				</article>
 
 				<h1>T-Skins: Rindspergament und eine Prise Magie</h1>
-				<p>Für alle Hiras und Miyas benutzen wir 'Rindspergament natur' (ungebleicht) in einer optimalen Stärke
-					passend zur Größe der Trommel. Zunächst haben die rohen Felle eine Farbe zwischen Honig und Brauntönen. 
-					Später, durch das starke Spannen, werden die Felle sehr hell.</p>
-				<p>Bevor wir die Felle das erste Mal aufziehen, werden sie zu 'T-Skins' (bzw. 'Taiko-Skins') weiterverarbeitet. 
-					Dieses Verfahren ist über einen Zeitraum von 15 Jahren entwickelt worden, mit dem Ziel, 
-					Felle zu bekommen, die besser klingen und ihren Klang längerfristig wahren.</p>
-				<p>Jedes Fell wird zweimal aufgezogen: beim ersten Durchgang entsteht bei noch mäßiger Spannung die 
-					charakteristische Form der Felle mit geradem Rand und den typischen 'Röhrchen-Ohren'. Nach dem Trocknen wird 
-					dann die Schlagfläche nochmals eingeweicht und mit maximaler Kraft gespannt. Insgesamt bedarf es also 4 Spannvorgänge
-					für jede Taiko - und ca. 3 Wochen Zeit.</p>
+				<article>
+					<p>Für alle Hiras und Miyas benutzen wir 'Rindspergament natur' (ungebleicht) in einer optimalen Stärke
+						passend zur Größe der Trommel. Zunächst haben die rohen Felle eine Farbe zwischen Honig und Brauntönen. 
+						Später, durch das starke Spannen, werden die Felle sehr hell.</p>
+					<p>Bevor wir die Felle das erste Mal aufziehen, werden sie zu 'T-Skins' (bzw. 'Taiko-Skins') weiterverarbeitet. 
+						Dieses Verfahren ist über einen Zeitraum von 15 Jahren entwickelt worden, mit dem Ziel, 
+						Felle zu bekommen, die besser klingen und ihren Klang längerfristig wahren.</p>
+					<p>Jedes Fell wird zweimal aufgezogen: beim ersten Durchgang entsteht bei noch mäßiger Spannung die 
+						charakteristische Form der Felle mit geradem Rand und den typischen 'Röhrchen-Ohren'. Nach dem Trocknen wird 
+						dann die Schlagfläche nochmals eingeweicht und mit maximaler Kraft gespannt. Insgesamt bedarf es 
+					also 4 Spannvorgänge für jede Taiko - und ca. 3 Wochen Zeit.</p>
+				</article>
 			</div>
 			<div id="section-sound" class="section">
 				<h1>Sound</h1>
@@ -470,7 +481,7 @@
 				</div>
 				<div id=formpart>
 					<p>Wie geht es jetzt weiter? Schick uns diesen, Deinen Taiko-Entwurf und  
-						wir beraten Dich unverbindlich weiter. <b>Dies ist keine Bestellung</b></p>
+						wir beraten Dich unverbindlich weiter. <b>Dies ist keine Bestellung!</b></p>
 					<table>				
 						<tr><td class="formcol1">Name</td><td><input name="Name" type="text"></td></tr>
 						<tr><td class="formcol1">Email</td><td><input name="liame" type="email"></td></tr>
@@ -486,10 +497,14 @@
 				</form>
 			</div>
 
-			<div class="footer">
-				<a href="ueber.html">Über my<b>taiko</b>drum.de</a> 
-				| <a href="werkstatt.html">Werkstatt</a>
-				<div class="rechtliches"> <a href="impressum.html">Impressum</a> | <a href="dsgvo.html">DSGVO</a></div>
+			<div id="footer" class="footer">
+				<a id="LINK_ABOUT"class="localize" href="ueber.html">Über my<b>taiko</b>drum.de</a> 
+				| <a id="LINK_WORKSHOP" class="localize" href="werkstatt.html">Werkstatt</a>
+				<div class="rechtliches"> 
+					<a id="IMPRESSUM" class="localize" href="impressum.html">Impressum</a> 
+					| <a id="DATENSCHUTZ" class="localize" href="dsgvo.html">Datenschutz</a>
+				</div>
+				<div class="cleardiv"></div>
 			</div>
 		</div>
 
@@ -646,6 +661,7 @@
 				
 				// var oldValue = drumSizeElement.value;
 				drumSizeElement.innerHTML = options;
+				LOC_DATA_JSON.localizeElement("drum-size");
 			}
 
 			function onclick_drumtype_popup(element)
@@ -860,6 +876,7 @@
 				}
 			}
 
+/*
 			function localizeSection(sectionname)
 			{
 				var section = document.querySelector("#" + sectionname);
@@ -873,7 +890,7 @@
 						elements[i].innerHTML = locText;
 				}
 			}
-
+*/
 			function open_sectiontype(edit)
 			{				
 				var drumtypeSelect = document.querySelector("#drum-type");
@@ -905,7 +922,7 @@
 					// onclick_drumtype_popup(drumtypeSelect);
 				}
 
-				localizeSection("section-type");
+				LOC_DATA_JSON.localizeElement("section-type");
 			}
 
 
@@ -1187,6 +1204,9 @@
 				section = "type";
 				open_sectiontype(edit);
 			}
+
+			LOC_DATA_JSON.localizeElement("menu");
+			LOC_DATA_JSON.localizeElement("footer");
 
 			logDrum(section,global.drum);
 	

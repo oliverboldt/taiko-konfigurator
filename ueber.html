@@ -12,6 +12,7 @@
 		<link rel="stylesheet" href="css/menu.css">
 		<script src="js/common.js"></script>
 		<script src="js/logging.js"></script>
+		<script src="js/loc-data-json.js"></script>
 		<style type="text/css">	
 		.kontakt { margin: 20px; }
 		</style>
@@ -21,76 +22,83 @@
 		<div id=wrapper>
 			<div id=menu>
 				<img id="logo" src="image/logo.jpg"/>
-				<div class="menuitem-mytaikodrum right" onclick="history.back();">
+				<div id="MYTAIKODRUM" class="localize menuitem-mytaikodrum right" onclick="history.back();">
 					my<strong>taiko</strong>drum.de
 				</div>
 				<div class=cleardiv></div>
 			</div>
 			<div class=section>
 				<div style="margin-top: 30px">
-					<p>Über uns:</p>
-					<p>Wer aktiv Taiko spielt, bekommt früher oder später den Wunsch nach einer eigenen Trommel. 
-					So ging es auch uns:</p>
-					<div style="height:20px; width:100%;"></div>
-					<h1>Marion Hacker</h1>
-					<img class="right photoframe" style="width: 200px; height: auto;" src="image/marion.jpg"/>
-					
-					<p>Ich spiele seit 2017 intensiv Taiko, besuche, wann immer es möglich ist, gerne Workshops 
-					und liebe den Kontakt zu anderen Trommler/-innen und den damit verbundenen intensiven Austausch.</p>
+					<p id="ABOUT_US_HEADLINE" class="localize">Über uns:</p>
+								
+						<p id="ABOUT_INTRO" class="localize">Wer aktiv Taiko spielt, bekommt früher oder später den Wunsch nach einer eigenen Trommel. 
+						So ging es auch uns:</p>
+						<div style="height:20px; width:100%;"></div>
+						<h1>Marion Hacker</h1>
+						<img class="right photoframe" style="width: 200px; height: auto;" src="image/marion.jpg"/>
+						<article id="ABOUT_ARTICLE_MARION" class="localize">
+							<p>Ich spiele seit 2017 intensiv Taiko, besuche, wann immer es möglich ist, gerne Workshops 
+							und liebe den Kontakt zu anderen Trommler/-innen und den damit verbundenen intensiven Austausch.</p>
 
-					<p>Eines verbindet uns alle: Die Suche nach einem hochwertigen, bezahlbaren Instrument. 
-					Daraus entstand die Idee für my<b>taiko</b>drum.de. Durch geduldige Beratung, Schritt für Schritt zur 
-					eigenen Taiko, die perfekt zu Dir passt.</p>
+							<p>Eines verbindet uns alle: Die Suche nach einem hochwertigen, bezahlbaren Instrument. 
+							Daraus entstand die Idee für my<b>taiko</b>drum.de. Durch geduldige Beratung, Schritt für Schritt zur 
+							eigenen Taiko, die perfekt zu Dir passt.</p>
 
-					<p>Also sprach ich meinen 'Taiko-Kumpel' Oliver Boldt aus Hamburg an, dessen Knowhow, 
-					professionellen Sachverstand, Geduld und Menschlichkeit ich sehr schätze. Oliver 
-					baut seit Ende der 1990er Jahre japanische Trommeln. Anfangs im Schwerpunkt für den 
-					Eigenbedarf für seine eigene Taikogruppe, dann zunehmend im Kundenauftrag. Seine 
-					Taikobau-Werkstatt ist perfekt ausgestattet. Einerseits orientiert Oliver sich an 
-					den Originalen aus Japan, andererseits fließen seine eigenen vielseitigen Erfahrungen 
-					und die der Trommler/-innen sowie Deine Wünsche ein. Seit der Entwicklung seiner 
-					'Taicut.cnc'-Fräsmaschine ist er allerbestens aufgestellt, um hochwertige Taikos zu 
-					einem fairen Preis anbieten zu können.</p>
-					<div id="KONTAKT_MARION" class="kontakt">
-					Kontakt:  
-					</div>
+							<p>Also sprach ich meinen 'Taiko-Kumpel' Oliver Boldt aus Hamburg an, dessen Knowhow, 
+							professionellen Sachverstand, Geduld und Menschlichkeit ich sehr schätze. Oliver 
+							baut seit Ende der 1990er Jahre japanische Trommeln. Anfangs im Schwerpunkt für den 
+							Eigenbedarf für seine eigene Taikogruppe, dann zunehmend im Kundenauftrag. Seine 
+							Taikobau-Werkstatt ist perfekt ausgestattet. Einerseits orientiert Oliver sich an 
+							den Originalen aus Japan, andererseits fließen seine eigenen vielseitigen Erfahrungen 
+							und die der Trommler/-innen sowie Deine Wünsche ein. Seit der Entwicklung seiner 
+							'Taicut.cnc'-Fräsmaschine ist er allerbestens aufgestellt, um hochwertige Taikos zu 
+							einem fairen Preis anbieten zu können.</p>
+						</article>
+					<div id="KONTAKT_MARION" class="localize kontakt">Kontakt:</div>
 					<div style="height:20px; width:100%;"></div>
 					<h1 >Oliver Boldt</h1>
 					<img class="right photoframe" style="width: 200px; height: auto;" src="image/oliver.jpg"/>
-					<p>Als ich 1998 mit dem Taiko begann, gab es noch kein Angebot für Instrumente in Europa. Notgedrungen
-					bauten wir in einem kleinen Team unsere ersten Shime-Daikos. Dann wurden einige Weinfässer zu Trommeln
-					veredelt. Mit der Einrichtung meiner Taiko-Werkstatt wurden die Arbeiten zunehmend leichter und die
-					Qualität gleichzeitig besser. Dabei kam mir meine handwerkliche Ausbildung zu Gute.</p>
-					<p>Für meine Gruppe Yo Bachi Daiko baute ich über die Jahre alle Instrumente: Shimen, Miyas, 
-					O-Daikos und Okedos. Und auch die externen Anfragen nahmen zu. Bis Anfang 2015 war ich 
-					hauptberuflich als Software-Entwickler tätig. Dieser Beruf kam mir zugute, als ich das 
-					Konzept für die Taicut.cnc-Fräsmaschine entwarf. Diese präzise Maschine bringt den 
-					Korpusrohling in die perfekte Form für unseren einzigartigen Sound. Es war der letzte Schritt, 
-					um den Taikobau in Europa auf ein neues Niveau zu heben.</p>
-					<div id="KONTAKT_OLIVER" class="kontakt">Kontakt: </div>
-					<p class="kontakt"><a href="werkstatt.html">Blick in die Werkstatt</a></p>
-					<a class="nolink" style="text-decoration: none;" href="javascript:history.back()" ><< zurück</a>
+					<article id="ABOUT_ARTICLE_OLIVER" class="localize">
+						<p>Als ich 1998 mit dem Taiko begann, gab es noch kein Angebot für Instrumente in Europa. Notgedrungen
+						bauten wir in einem kleinen Team unsere ersten Shime-Daikos. Dann wurden einige Weinfässer zu Trommeln
+						veredelt. Mit der Einrichtung meiner Taiko-Werkstatt wurden die Arbeiten zunehmend leichter und die
+						Qualität gleichzeitig besser. Dabei kam mir meine handwerkliche Ausbildung zu Gute.</p>
+						<p>Für meine Gruppe Yo Bachi Daiko baute ich über die Jahre alle Instrumente: Shimen, Miyas, 
+						O-Daikos und Okedos. Und auch die externen Anfragen nahmen zu. Bis Anfang 2015 war ich 
+						hauptberuflich als Software-Entwickler tätig. Dieser Beruf kam mir zugute, als ich das 
+						Konzept für die Taicut.cnc-Fräsmaschine entwarf. Diese präzise Maschine bringt den 
+						Korpusrohling in die perfekte Form für unseren einzigartigen Sound. Es war der letzte Schritt, 
+						um den Taikobau in Europa auf ein neues Niveau zu heben.</p>
+					</article>
+					<div id="KONTAKT_OLIVER" class="localize kontakt">Kontakt: </div>
+					<p class="kontakt"><a id="LINK_SPOT_WORKSHOP" class="localize" href="werkstatt.html">Blick in die Werkstatt</a></p>
+					<a id="LINK_BACK" class="nolink localize" style="text-decoration: none;" href="javascript:history.back()" ><< zurück</a>
 				</div>
-				<script type="text/javascript">
-					function printEmailAddress(element, name)
-					{
-						var at = "@";
-						var mailAddress = name + at + "mytaikodrum.de";
-
-						element.innerHTML += "<a href='mailto:" + mailAddress + "'>" + mailAddress + "</a>";
-					}
-
-					printEmailAddress(document.querySelector("#KONTAKT_MARION"), "marion");
-					printEmailAddress(document.querySelector("#KONTAKT_OLIVER"), "oliver");
-					logPage("ueber.html");
-				</script>
+				
 			</div>
 			<div class="footer">
-				<a href="werkstatt.html">Werkstatt</a>
-				<div class="rechtliches"> <a href="impressum.html">Impressum</a> | <a href="dsgvo.html">DSGVO</a></div>
+				<a id="LINK_WORKSHOP" class="localize" href="werkstatt.html">Werkstatt</a>
+				<div class="rechtliches"> 
+					<a id="IMPRESSUM" class="localize" href="impressum.html">Impressum</a> 
+					| <a id="DATENSCHUTZ" class="localize" href="dsgvo.html">Datenschutz</a>
+				</div>
 				<div class="cleardiv"></div>
 			</div>
 		</div>
+		<script type="text/javascript">
+			function printEmailAddress(element, name)
+			{
+				var at = "@";
+				var mailAddress = name + at + "mytaikodrum.de";
+
+				element.innerHTML += " <a href='mailto:" + mailAddress + "'>" + mailAddress + "</a>";
+			}
+
+			LOC_DATA_JSON.localizePage(); // zuerst !
+			printEmailAddress(document.querySelector("#KONTAKT_MARION"), "marion"); // dann...
+			printEmailAddress(document.querySelector("#KONTAKT_OLIVER"), "oliver");
+			logPage("ueber.html");
+		</script>
 	</body>
 
 </html>
