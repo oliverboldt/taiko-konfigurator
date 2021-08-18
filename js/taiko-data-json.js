@@ -123,7 +123,7 @@ const TAIKO_DATA_JSON =
 		  	thumbnail_hira: "hira-pear.jpg",
 		  	thumbnail_shime: "shime.jpg",
 			description: "Farbton Birne/Rüster",
-			description_en: "Color Pear/Elmwood"
+			description_en: "Colour Pear/Elmwood"
 		}
 		, 
 		{ 
@@ -133,7 +133,7 @@ const TAIKO_DATA_JSON =
 		  	thumbnail_hira: "hira-darkbrown.jpg",
 		  	thumbnail_shime: "shime.jpg",
 			description: "Farbton Nuss/Dunkelbraun",
-			description_en: "Color Nut/darkbrown"
+			description_en: "Colour Nut/darkbrown"
 		}
 		, 
 		{ 
@@ -143,7 +143,7 @@ const TAIKO_DATA_JSON =
 		  	thumbnail_hira: "hira-redbrown.jpg",
 		  	thumbnail_shime: "shime.jpg",
 			description: "Farbton Rotbraun",
-			description_en: "Color Redbrown" 
+			description_en: "Colour Redbrown" 
 		}
 		, 
 		{ 
@@ -153,7 +153,7 @@ const TAIKO_DATA_JSON =
 		  	thumbnail_hira: "hira-darkred.jpg",
 		  	thumbnail_shime: "shime.jpg",  
 			description: "Farbton Dunkelrot",
-			description_en: "Color Darkred" 
+			description_en: "Colour Darkred" 
 		}
 		, 
 		{ 
@@ -163,7 +163,7 @@ const TAIKO_DATA_JSON =
 		  	thumbnail_shime: "shime.jpg",
 		  	thumbnail: "woodcolor-special.jpg",   
 			description: "Wunschfarbe",
-			description_en: "Color of choice" 
+			description_en: "Colour of choice" 
 		}
 	]
 	,

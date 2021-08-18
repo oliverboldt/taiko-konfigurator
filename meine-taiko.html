@@ -64,10 +64,10 @@
 		<div id=wrapper>
 			<div id=menu>
 				<img id="logo" src="image/logo.jpg"/>
-				<div id="MYTAIKODRUM" class="localize link menuitem-mytaikodrum right" 
+				<div class="link menuitem-mytaikodrum right" 
 					onmouseover_off="buttonHighlightStart(this);" 
 					onmouseout_off="buttonHighlightStop(this);">
-					<a href="index.html">my<strong>taiko</strong>drum.de</a>
+					<a id="MYTAIKODRUM" class="localize" href="index.html">my<strong>taiko</strong>drum.de</a>
 				</div>
 				<div class=cleardiv></div>
 			</div>
@@ -158,17 +158,17 @@
 					</div>	
 			</div>
 			<div id="section-wood" class="section">
-				<h1>Holzart & Farbe</h1>
+				<h1 id="WOOD_HEADLINE" class="localize">Holzart & Farbe</h1>
 				<div class="choice">
-					<div class="button left backwards" 
+					<div id="BACKBUTTON_TYPEANDSIZE" class="button left backwards localize" 
 							onmouseover="buttonHighlightStart(this);" 
 							onmouseout="buttonHighlightStop(this);" 
 							onclick="onclick_sectiontype(this,false);"> 
 							<< Typ & Größe auswählen
 					</div>
 					<div class=cleardiv></div>
-					<p>Für meine Taiko möchte ich
-						<select id=wood-type onchange="onchange_woodtype(this);">
+					<p><span id="WOOD_LABEL_WOODTYPE" class="localize">Für meine Taiko möchte ich</span>
+						<select id="wood-type" onchange="onchange_woodtype(this);">
 							<option value=WOOD_ASH>...</option>
 							<option value=WOOD_MAPLE>...</option>
 							<option value=WOOD_ELM>...</option>
@@ -189,7 +189,7 @@
 							onclick="onclick_drumcolor(this)"/>
 						<p id=color-option-text class=option-text>...</p>	
 					</div>
-					<div class="button right forward" style="margin-top:-30px;"
+					<div id="WOOD_FORWARDBUTTON_HANDLE" class="button right forward localize" style="margin-top:-30px;"
 						onmouseover="buttonHighlightStart(this);" 
 						onmouseout="buttonHighlightStop(this);" 
 						onclick="onclick_sectionhandle(this,false);"> 
@@ -200,10 +200,10 @@
 
 				<figure class="stdphoto_off right">
 				  <img class=" photoframe" src="image/20191118_101202.jpg" alt /> 
-				  <figcaption>Links: Farbton rot-braun, rechts: Farbton: Birne </figcaption>
+				  <figcaption id="WOOD_SAMPLECOLOUR" class="localize">Links: Farbton rot-braun, rechts: Farbton Birne </figcaption>
 				</figure>
-				<h1>Holzart</h1>
-				<article>
+				<h1 id="WOOD_TYPE" class="localize">Holzart</h1>
+				<article id="WOOD_TYPE_ARTICLE" class="localize">
 					<p>Wir verwenden hochwertige, europäische Esche. Als Hartholz liefert es die Qualität die wir  
 						zum Taikobau benötigen. Es ist relativ hell und lässt sich gut auf den
 					 	Wunschfarbton beizen - dabei bleibt die wunderschöne Eschen-Maserung weiterhin sichtbar. </p>
@@ -213,16 +213,16 @@
 					<p>Empfehlen möchten wir Dir Esche!</p>
 				</article>
 
-				<h1>Farbe</h1>
-				<article>
+				<h1 id="WOOD_COLOUR" class="localize">Farbe</h1>
+				<article id="WOOD_COLOUR_ARTICLE" class="localize">
 				<p>Bei der Wahl der Farbe solltest Du berücksichtigen, ob die Taiko mit anderen 
 					Instrumenten aus Deiner <b>Taikogruppe</b> auf der Bühne stehen soll. In diesem Fall ist 
 					es von Vorteil, die Optik passend zu den anderen Taikos zu wählen.</p>
 				</article>
 
-				<h1>Formfaktor und Sound</h1>
+				<h1 id="WOOD_FORMFACTOR" class="localize">Formfaktor und Sound</h1>
 				<img class="right" src="image/miya-daiko-profil-klein.jpg"/>
-				<article>
+				<article id="WOOD_FORMFACTOR_ARTICLE" class="localize">
 					<p>Unsere Taikos wurden auf Taiko-Festivals schon häufig von Gästen gespielt. Oft wurde uns gesagt 
 					- gerade von sehr erfahrenen Trommlern, dass unsere Trommeln sich klanglich positiv abheben. 
 					Woran liegt das? Es gibt eine Reihe von Faktoren, die den Klang beeinflussen:</p>
@@ -238,8 +238,8 @@
 					schlanker ist und nach außen dicker wird.</p>
 				</article>
 
-				<h1>Klangunterschiede der Hölzer</h1>
-				<article>
+				<h1 id="WOOD_SOUND" class="localize">Klangunterschiede der Hölzer</h1>
+				<article id="WOOD_SOUND_ARTICLE" class="localize">
 				<p>Alle von uns gebauten Taikos sind aus Hartholz und haben die oben beschriebene Form - innen wie außen. 
 					In Kombination mit der aufwendigen Bespannung ist das der Grund für den charakteristischen Klang 
 					unserer Trommeln. Es ist richtig, dass auch die Holzarten etwas unterschiedlich klingen. 
@@ -249,16 +249,16 @@
 			</div>
 
 			<div id="section-handles" class="section">
-				<h1>Haltegriffe</h1>
+				<h1 id="HANDLE_HEADLINE" class="localize">Haltegriffe</h1>
 				<div class="choice">
-					<div class="button left backwards" 
+					<div id="HANDLE_BACKBUTTON" class="button left backwards localize" 
 							onmouseover="buttonHighlightStart(this);" 
 							onmouseout="buttonHighlightStop(this);" 
 							onclick="onclick_sectionwood(this,false);"> 
 							<< Holzart & Farbe auswählen
 					</div>
 					<div class=cleardiv></div>
-					<p>Ich möchte folgende Griffe:</p>
+					<p id="HANDLE_LABEL" class="localize">Ich möchte folgende Griffe:</p>
 					<div id=drum-handle>
 						<img id=HANDLE_NONE class="img-option img-option-selected" src='image/woodcolor-pear.jpg'
 							onclick="onclick_drumhandle(this)"/>
@@ -278,7 +278,7 @@
 							onclick="onclick_drumhandle(this)"/>
 					</div>
 					<p id=handle_option_text>Ohne Haltegriffe</p>
-					<div class="button right forward" style="margin-top: -20px;"
+					<div id="HANDLE_NEXTBUTTON" class="button right forward localize" style="margin-top: -20px;"
 							onmouseover="buttonHighlightStart(this);" 
 							onmouseout="buttonHighlightStop(this);" 
 							onclick="onclick_sectionskin(this,false);"> 
@@ -286,17 +286,17 @@
 					</div>
 					<div class=cleardiv></div>				
 				</div>
-				<p id="HANDLE_INTRO-todo" class="localize">Haltegriffe sind dekorativ und funktionell. Wenn du eine 20kg schwere Miya-daiko auf einen 
+				<p id="HANDLE_INTRO" class="localize">Haltegriffe sind dekorativ und funktionell. Wenn du eine 20kg schwere Miya-daiko auf einen 
 					hohen Ständer heben musst, sind sie fast unverzichtbar. Bei kleineren Trommeln wie den 
 					Hira-daikos kann man sie, wenn optisch gewünscht, gerne anbringen. Das Handling einer Hira
 					gelingt auch ohne Griffe leicht.</p>
 
 				<figure class="right">
 				  <img class="photoframe" src="image/kan-20160407_112602-300px.jpg"/>
-				  <figcaption>Grundplatte, Rosette und Kloben </figcaption>
+				  <figcaption id="HANDLE_IMAGE" class="localize">Grundplatte, Rosette und Kloben </figcaption>
 				</figure>
 				 
-				 <article id="HANDLE_MORE-todo" class="localize">
+				 <article id="HANDLE_ARTICLE" class="localize">
 					<p>Unsere Haltegriffe werden von einem Kloben gehalten, der durch die Trommelwand hindurchgeführt  
 					 	und von innen verschraubt wird. Die schwarze Grundplatte gibt es in zwei Größen. Darauf 
 					 	befindet sich dann entweder eine flache Messingrosette oder eine dickere Stahlrosette. 
@@ -312,16 +312,16 @@
 
 
 			<div id="section-skin" class="section">
-				<h1>Felle & Nägel</h1>
+				<h1 id="SKINS_HEADLINE" class="localize">Felle & Nägel</h1>
 				<div class="choice">				
-					<div class="button left backwards" 
+					<div id="SKIN_BACKBUTTON" class="button left backwards localize" 
 							onmouseover="buttonHighlightStart(this);" 
 							onmouseout="buttonHighlightStop(this);" 
 							onclick="onclick_sectionhandle(this,false);"> 
 							<< Haltegriffe auswählen
 					</div>
 					<div class=cleardiv></div>
-					<p>Folgende Nägel stehen zur Auswahl</p>
+					<p id="TACKS_LABEL" class="localize">Folgende Nägel stehen zur Auswahl:</p>
 					<div style="display:inline-block;">
 						<img id=NAIL_20MM class="img-nail-option img-option-selected" src="image/nagel-20mm-120px.jpg"
 							onclick="onclick_nail(this)"/>
@@ -338,7 +338,7 @@
 
 					</div>
 					<p id=nail_option_text>xxx</p>
-					<div class="button right forward"  style="margin-top: -20px;"
+					<div id="TACKS_NEXTBUTTON" class="button right forward localize"  style="margin-top: -20px;"
 							onmouseover="buttonHighlightStart(this);" 
 							onmouseout="buttonHighlightStop(this);" 
 							onclick="onclick_sectionoffer(this);"> 
@@ -347,8 +347,8 @@
 					<div class=cleardiv></div>
 				</div>
 
-				<h1>Nägel</h1>
-				<article>
+				<h1 id="TACKS_HEADLINE" class="localize">Nägel</h1>
+				<article id="TACKS_ARTICLE" class="localize">
 					<p>In der Regel kommen Nägel mit 20mm-Kopf aus deutscher Herstellung zum Einsatz. Zweireihig in 
 						Hartholz genagelt, erzeugen sie eine hohe Festigkeit.</p>
 					<p>Alternativ gibt es Nägel aus Japan. Ihr Kopf ist mit 19mm bzw. 17mm etwas kleiner und stärker 
@@ -357,8 +357,8 @@
 						mit sehr dicken Fellen.</p>
 				</article>
 
-				<h1>T-Skins: Rindspergament und eine Prise Magie</h1>
-				<article>
+				<h1 id="TSKINS_HEADLINE" class="localize">T-Skins: Rindspergament und eine Prise Magie</h1>
+				<article id="SKINS_ARTICLE" class="localize">
 					<p>Für alle Hiras und Miyas benutzen wir 'Rindspergament natur' (ungebleicht) in einer optimalen Stärke
 						passend zur Größe der Trommel. Zunächst haben die rohen Felle eine Farbe zwischen Honig und Brauntönen. 
 						Später, durch das starke Spannen, werden die Felle sehr hell.</p>
@@ -410,36 +410,36 @@
 			</div>
 
 			<div id="section-offer" class="section">
-				<h1>Deine Taiko</h1>
+				<h1 id="OFFER_HEADLINE" class="localize">Deine Taiko</h1>
 				<form action="mailer.php">
 				<input type=hidden name="sys_betreff" value="Anfrage mytaikodrum.de">
 				<input type=hidden name="sys_ok" value="formular-ok.html">
 				<div class="choice">
-					<div class="button" 
+					<div id="BUTTON_TYPE" class="button localize" 
 							onmouseover="buttonHighlightStart(this);" 
 							onmouseout="buttonHighlightStop(this);" 
 							onclick="onclick_sectiontype(this,true);"> 
 							Typ & Größe
 					</div>
-					<div class="button" 
+					<div id="BUTTON_WOOD"  class="button localize" 
 							onmouseover="buttonHighlightStart(this);" 
 							onmouseout="buttonHighlightStop(this);" 
 							onclick="onclick_sectionwood(this,true);"> 
 							Holz & Farbe
 					</div>
-					<div id="OFFER_BUTTON_HANDLE" class="button" 
+					<div id="OFFER_BUTTON_HANDLE" class="button localize" 
 							onmouseover="buttonHighlightStart(this);" 
 							onmouseout="buttonHighlightStop(this);" 
 							onclick="onclick_sectionhandle(this,true);"> 
 							Griffe
 					</div>
-					<div id="OFFER_BUTTON_NAILS" class="button" 
+					<div id="OFFER_BUTTON_NAILS" class="button localize" 
 							onmouseover="buttonHighlightStart(this);" 
 							onmouseout="buttonHighlightStop(this);" 
 							onclick="onclick_sectionskin(this,true);"> 
 							Felle & Nägel
 					</div>
-					<div class="button right" 
+					<div id="BUTTON_NEWDESIGN"  class="button right localize" 
 							onmouseover="buttonHighlightStart(this);" 
 							onmouseout="buttonHighlightStop(this);" 
 							onclick="onclick_newdesign(this);"> 
@@ -447,10 +447,10 @@
 					</div>
 					<div class=cleardiv></div>			
 
-					<div id=offer-content><p>Bitte mindestens Trommeltyp und Größe angeben.</p></div>
-					<p><strong>Inklusive:</strong></p>
-					<div class=smallertext>		
-						<ul>				
+					<div id="offer-content"><p>Bitte mindestens Trommeltyp und Größe angeben.</p></div>
+					<p><strong id="OFFER_INCLUDING" class="localize">Inklusive:</strong></p>
+					<div class="smallertext">		
+						<ul id="OFFER_INCLUDING_CONTENT" class="localize">				
 							<li><strong>Standardgrößen</strong> der Taikos nach dem Japanischen Shaku-System, d.h. authentisches
 							Aussehen und kompatibel mit Standardzubehör. </li>
 							<li><strong>Form-Faktor</strong> nach japanischen Vorbild: Trommelkörper sind innen stärker gekrümmt als 
@@ -461,9 +461,9 @@
 							nachhaltige Investition.
 						</ul>
 					</div>
-					<p><strong>Zubehör:</strong></p>
-					<div class=smallertext>		
-						<ul>				
+					<p><strong id="OFFER_ACCESSORIES" class="localize">Zubehör:</strong></p>
+					<div class="smallertext">		
+						<ul id="OFFER_ACCESSORIES_CONTENT" class="localize">				
 							<li>Wir bieten dir für deine Taiko auch einen passenden <strong>Ständer</strong> an, 
 							und zwar angepasst an deine Wunsch-Spielhöhe.</li>
 							<li><strong>Standard-Bachis</strong> haben wir immer vorrätig. Sie sind exklusiv angefertigt. </li>
@@ -471,8 +471,8 @@
 								auf dem Taiko- /Schlagzeugmarkt zu finden.</li> 
 						</ul>
 					</div>
-					<p><strong>Lieferzeit:</strong></p>
-					<div class=smallertext>		
+					<p><strong id="OFFER_DELIVERY" class="localize">Lieferzeit:</strong></p>
+					<div id="OFFER_DELIVERY_INFO" class="smallertext localize">		
 						<p>Für den Bau deiner Taiko benötigen wir ca. 5 Wochen. Bei der konkreten Bestellung können wir es dir noch 
 							genauer sagen. Du kaufst hier nichts 'von der Stange'. Der aufwendige Spannvorgang dauert 3 Wochen
 							 und der Korpus wird 'ab Bohle' komplett aufgebaut. Das braucht seine Zeit.</p>
@@ -480,17 +480,17 @@
 
 				</div>
 				<div id=formpart>
-					<p>Wie geht es jetzt weiter? Schick uns diesen, Deinen Taiko-Entwurf und  
+					<p id="OFFER_FORM" class="localize">Wie geht es jetzt weiter? Schick uns diesen, Deinen Taiko-Entwurf und  
 						wir beraten Dich unverbindlich weiter. <b>Dies ist keine Bestellung!</b></p>
 					<table>				
 						<tr><td class="formcol1">Name</td><td><input name="Name" type="text"></td></tr>
 						<tr><td class="formcol1">Email</td><td><input name="liame" type="email"></td></tr>
-						<tr><td class="formcol1">Telefon</td><td><input name="Telefon" type="text"></td></tr>
-						<tr><td class="formcol1">Anmerkungen <br>& Fragen</td><td>
+						<tr><td id="OFFER_PHONE" class="formcol1 localize">Telefon</td><td><input name="Telefon" type="text"></td></tr>
+						<tr><td id="OFFER_REMARKS" class="formcol1 localize">Anmerkungen <br>& Fragen</td><td>
 								<textarea name="Anmerkungen" rows="10"></textarea></td>
 						</tr>
 							<td></td>
-							<td><button type=submit>Taiko unverbindlich anfragen</button></td>
+							<td><button id="OFFER_SUBMIT" class="localize" type="submit">Taiko unverbindlich anfragen</button></td>
 						</tr>
 					</table>
 				</div>
@@ -740,7 +740,7 @@
 				var allOptions = image.parentElement.querySelectorAll("img");
 				var handleData = TAIKO_DATA_JSON.getHandleDataForId(global.drum.handleId)
 
-				for (i=0; i<allOptions.length; i++)
+				for (var i=0; i<allOptions.length; i++)
 				{
 					allOptions[i].classList.remove("img-option-selected");
 				}
@@ -749,7 +749,7 @@
 				handleText.innerHTML = description(handleData,global.lang);
 
 				if (parseInt(handleData.price) > 0)
-					handleText.innerHTML += ", Aufpreis " + handleData.price + ",- Euro";
+					handleText.innerHTML += ", " + LOC_DATA_JSON.localize("Aufpreis",global.lang) + " " + handleData.price + ",- Euro";
 			}
 
 
@@ -774,13 +774,13 @@
 				
 
 				info.price = Math.round(totalNailPrice/5.0)*5.0;
-				info.description = description(nailData,global.lang)
-										+ (rows == 1 ? ", einreihig" : ", zweireihig");
+				info.description = description(nailData,global.lang) + ", "
+										+ (rows == 1 ? LOC_DATA_JSON.localize("einreihig",global.lang) : LOC_DATA_JSON.localize("zweireihig",global.lang));
 
 				info.descriptionWithPrice = info.description;						
 
 				if (totalNailPrice > 0)
-					info.descriptionWithPrice += ", Aufpreis " + info.price + ",- Euro"; // (" + numberOfNails + " Nägel)";
+					info.descriptionWithPrice += ", " + LOC_DATA_JSON.localize("Aufpreis",global.lang) + " " + info.price + ",- Euro"; 
 
 				return info;
 			}
@@ -865,32 +865,17 @@
 
 				if (forward != null)
 				{
-					forward.innerHTML = "übernehmen";
+					forward.innerHTML = LOC_DATA_JSON.localize("übernehmen",global.lang);
 					forward.onclick = function() { onclick_sectionoffer(forward); }
 				}
 
 				if (backwards != null)
 				{
-					backwards.innerHTML = "verwerfen";
+					backwards.innerHTML = LOC_DATA_JSON.localize("verwerfen",global.lang);;
 					backwards.onclick = function() { history.back(); }
 				}
 			}
 
-/*
-			function localizeSection(sectionname)
-			{
-				var section = document.querySelector("#" + sectionname);
-				var elements = section.querySelectorAll(".localize");
-
-				for (var i=0; i<elements.length; i++)
-				{
-					var locText = LOC_DATA_JSON.getLocstring(elements[i].id,global.lang);
-
-					if (locText != null)
-						elements[i].innerHTML = locText;
-				}
-			}
-*/
 			function open_sectiontype(edit)
 			{				
 				var drumtypeSelect = document.querySelector("#drum-type");
@@ -933,20 +918,6 @@
 
 				var section = document.querySelector("#section-wood");
 
-				if (edit == "1")
-				{
-					switchToEditMode(section);
-				}
-				else if (TAIKO_DATA_JSON.isShime(global.drum.id))
-				{
-					var forward = section.querySelector(".forward");
-
-					if (forward != null)
-					{
-						forward.innerHTML = "Meine Taiko";
-						forward.onclick = function() { onclick_sectionoffer(forward); }
-					}
-				}
 
 				// Update woodtype-select
 				//
@@ -963,7 +934,7 @@
 
 					if (woodPrice > 0)
 					{
-						priceTag = "(Aufpreis " + woodPrice + ",- Euro)";
+						priceTag = "(" + LOC_DATA_JSON.localize("Aufpreis",global.lang) + " " + woodPrice + ",- Euro)";
 					}
 
 					options += "<option value=" + TAIKO_DATA_JSON.woodtypes[i].id + ">" 
@@ -991,6 +962,22 @@
 						colorElement.classList.remove("img-option-selected");
 				}
 
+				LOC_DATA_JSON.localizeElement("section-wood");
+
+				if (edit == "1")
+				{
+					switchToEditMode(section);
+				}
+				else if (TAIKO_DATA_JSON.isShime(global.drum.id))
+				{
+					var forward = section.querySelector(".forward");
+
+					if (forward != null)
+					{
+						forward.innerHTML = "Meine Taiko"; // todo loc
+						forward.onclick = function() { onclick_sectionoffer(forward); }
+					}
+				}
 			}
 
 
@@ -1000,9 +987,6 @@
 
 				document.querySelector("#section-type").style.display = "none";
 				handleSection.style.display = "block";
-
-				if (edit == "1")
-					switchToEditMode(handleSection);
 
 				var handleElement = document.querySelector("#" + global.drum.handleId); 
 
@@ -1017,6 +1001,11 @@
 					document.querySelector("#handle_option_text").innerHTML 
 								= description(TAIKO_DATA_JSON.handles[0],global.lang);
 				}
+
+				LOC_DATA_JSON.localizeElement("section-handles");
+
+				if (edit == "1")
+					switchToEditMode(handleSection); // After lovcalization
 			}
 
 			function open_sectionskin(edit)
@@ -1024,11 +1013,13 @@
 				document.querySelector("#section-type").style.display = "none";
 				document.querySelector("#section-skin").style.display = "block";
 
-				if (edit == "1")
-					switchToEditMode(document.querySelector("#section-skin"));
-
 				onclick_nail(document.querySelector("#"+global.drum.nailId));
 				onclick_nailrow(document.querySelector("#"+global.drum.nailrowId));
+
+				LOC_DATA_JSON.localizeElement("section-skin");
+
+				if (edit == "1")
+					switchToEditMode(document.querySelector("#section-skin"));
 			}
 
 			function open_sectionsound(edit)
@@ -1081,7 +1072,7 @@
 				var nailInfo = getNailInfo();
 				var totalPrice = drumPrice + woodPrice + handlePrice + nailInfo.price;
 
-				offerContent.innerHTML = "<p>Trommelwirbel - hier ist Deine Wunsch-Taiko:</p>";
+				offerContent.innerHTML = "<p id='OFFER_DRUMROLL' class='localize'>Trommelwirbel - hier ist Deine Wunsch-Taiko:</p>";
 
 				// Bild der Taiko
 				//
@@ -1114,9 +1105,9 @@
 				// Preise
 				//
 				offerContent.innerHTML 
-					+= "<p style='width:75%'>" + drumData.description + "</p>"
+					+= "<p style='width:75%'>" + description(drumData,global.lang) + "</p>"
 					+ "<p class=price>"+ drumPrice + ",- Euro </p>"
-					+ "<p style='width:75%'>"+ woodTypeData.description + " " + colorText + "</p>"
+					+ "<p style='width:75%'>"+ description(woodTypeData,global.lang) + " " + colorText + "</p>"
 					+ "<p class=price>" + woodPrice + ",- Euro </p>";
 
 				if (! isShime)
@@ -1129,7 +1120,7 @@
 				}
 
 				offerContent.innerHTML 
-					+= "<p style='width:75%'><strong>Summe</strong></p>"
+					+= "<p style='width:75%'><strong id='OFFER_TOTAL' class='localize'>Summe</strong></p>"
 					+ "<p class=price><strong>"+ totalPrice + ",- Euro </strong></p>"
 
 					+ "<input type=hidden name='drum' value='" + drumData.description + "'>"
@@ -1139,6 +1130,7 @@
 					+ "<input type=hidden name='price' value='" + totalPrice + "'>"
 					;
 
+				LOC_DATA_JSON.localizeElement("section-offer");
 			}
 
 			// Startup code

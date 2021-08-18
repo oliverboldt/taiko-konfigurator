@@ -14,22 +14,23 @@
 		<link rel="stylesheet" href="js/lightbox2-2.11.3/dist/css/lightbox.css">
 		<script src="js/common.js"></script>
 		<script src="js/logging.js"></script>
+		<script src="js/loc-data-json.js"></script>
 	</head>
 
 	<body>
 		<div id=wrapper>
 			<div id=menu>
 				<img id="logo" src="image/logo.jpg"/>
-				<div class="menuitem-mytaikodrum right" onclick="history.back();">
+				<div id="MYTAIKODRUM" class="localize menuitem-mytaikodrum right" onclick="history.back();">
 					my<strong>taiko</strong>drum.de
 				</div>
 				<div class=cleardiv></div>
 			</div>
 			<div class=section>
-				<strong>Blick in die Werkstatt</strong>
+				<strong id="WORKSHOP_HEADLINE" class="localize">Blick in die Werkstatt</strong>
 			
-				<h2>So entsteht der Körper deiner Taiko:</h2>
-				<p>Die Dauben werden zunächst ausgesägt, angeschrägt und verleimt. Die Taicut.cnc-Fräsmaschine 
+				<h2 id="WORKSHOP_BODYCREATION" class="localize">So entsteht der Körper deiner Taiko:</h2>
+				<p id="WORKSHOP_ARTICLE" class="localize">Die Dauben werden zunächst ausgesägt, angeschrägt und verleimt. Die Taicut.cnc-Fräsmaschine 
 				bringt den Rohling auf Maß und in Form. Dann folgen der Schleifvorgang, die Oberflächenbehandlung 
 				sowie viele weitere Arbeiten.</p>
 				<a data-lightbox="body" href="image/galery/20190720_145402.jpg">
@@ -54,17 +55,21 @@
 				title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
 				 gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-				<p><a style="text-decoration: none;" href="javascript:history.back()" ><< zurück</a></p>
+				<p><a id="LINK_BACK" class="nolink localize" style="text-decoration: none;" href="javascript:history.back()" ><< zurück</a></p>
 							
 			</div>
 			<div class="footer">
-				<div class="rechtliches"> <a href="impressum.html">Impressum</a> | <a href="dsgvo.html">DSGVO</a></div>
+				<div class="rechtliches"> 
+					<a id="IMPRESSUM" class="localize" href="impressum.html">Impressum</a> 
+					| <a id="DATENSCHUTZ" class="localize" href="dsgvo.html">Datenschutz</a>
+				</div>
 				<div class="cleardiv"></div>
 			</div>	
 			
 		</div>
 		<script src="js/lightbox2-2.11.3/dist/js/lightbox-plus-jquery.js"></script>
 		<script type="text/javascript">
+			LOC_DATA_JSON.localizePage();
 			logPage("werkstatt.html");
 		</script>
 	</body>
