@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>mytaikodrum.de - Taiko gestalten</title>
+		<title id="MYTAIKODRUM_TITLE" class="localize">mytaikodrum.de - Taiko gestalten</title>
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" > 
 		<link rel="stylesheet" href="css/common.css">
@@ -34,10 +34,11 @@
 				padding: 10;
 			}
 
-			#formpart
+			.formpart
 			{
 				border: 1px dashed black;
 				padding: 5px;
+				margin-bottom: 15px;
 			}
 
 			td 
@@ -63,6 +64,8 @@
 	<body>
 		<div id=wrapper>
 			<div id=menu>
+				<a id="languageswitchlink" title="Switch to English" href="#">
+					<img id="languageswitch" src="image/de-en.jpg"/ onclick="switchLanguage(global.section);"></a>
 				<img id="logo" src="image/logo.jpg"/>
 				<div class="link menuitem-mytaikodrum right" 
 					onmouseover_off="buttonHighlightStart(this);" 
@@ -75,7 +78,10 @@
 			<div id="section-type" class="section">
 				<h1 id="HEADLINE_SIZEANDTYPE" class="localize">Trommeltyp & Größe</h1>
 				<div class="choice">
-					<img id="drum-draft" class="stdphoto photoframe left" />
+					<a href="#">
+						<img id="drum-draft" class="stdphoto photoframe left" 
+								onclick="onclick_sectionwood(this,false)"/>
+					</a>
 					<div style="display: inline-block; margin-top: 10px;">
 						<span id="LABEL_TYPE" class="localize">Ich möchte eine </span>
 						<select id="drum-type" onchange="onclick_drumtype_popup(this);">
@@ -113,7 +119,8 @@
 					</article>
 
 					<h1 id="MIYA_DAIKO" class="localize">Miya-daiko</h1>
-					<img class="right stdphoto photoframe" src="image/miya-redbrown.jpg">
+						<img class="right stdphoto photoframe" src="image/miya-redbrown.jpg">
+
 					<article id="ARTICLE_DRUMTYPE_MIYA" class="localize">
 					<p>Eine <strong>48er Miya-daiko (bzw. 1,6 japanische shaku)</strong> ist eine sehr universelle 
 						Trommel. Du kannst sie mit 	sehr dicken Bachi spielen, was für die seitliche Schlagtechnik 
@@ -479,8 +486,8 @@
 					</div>
 
 				</div>
-				<div id=formpart>
-					<p id="OFFER_FORM" class="localize">Wie geht es jetzt weiter? Schick uns diesen, Deinen Taiko-Entwurf und  
+				<div class="formpart">
+					<p id="OFFER_FORM" class="localize">Wie geht es jetzt weiter? <strong>Option 1: </strong>Schick uns diesen, Deinen Taiko-Entwurf und  
 						wir beraten Dich unverbindlich weiter. <b>Dies ist keine Bestellung!</b></p>
 					<table>				
 						<tr><td class="formcol1">Name</td><td><input name="Name" type="text"></td></tr>
@@ -495,6 +502,123 @@
 					</table>
 				</div>
 				</form>
+
+				<div id="SHOWDRUMLINK_FORM" class="formpart">
+					<input class="DRUMLINK_FIELD" type="hidden" name="sys_subject" value="Ich möchte Dir meine Wunsch-Taiko zeigen">
+					<input class="DRUMLINK_FIELD" type="hidden" name="sys_template" value="taiko-zeigen.html">
+					<input class="DRUMLINK_FIELD" id="INPUT_DRUMLINK" type="hidden" name="LINK" value="https://mytaikodrum.de">
+					<p><strong>Option 2: Schick doch auch gerne deinem Taikokumpel eine Mail</strong> und zeige ihm/ihr deine Trommel: 
+						Einfach das Formular ausfüllen.</p>
+					<table>				
+						<tr>
+							<td class="formcol1">Dein Name</td>
+							<td><input class="DRUMLINK_FIELD" name="NAME" type="text"></td>
+						</tr>
+						<tr>
+							<td class="formcol1">Deine Email</td>
+							<td><input class="DRUMLINK_FIELD" name="sys_from" type="email"> (wir setzen dich auf 'cc')</td>
+						</tr>
+						<tr>
+							<td class="formcol1 localize">Deine Nachricht</td>
+							<td><textarea class="DRUMLINK_FIELD" name="Nachricht" style="width: 100%;" rows="10"></textarea></td>
+						</tr>
+						<tr>
+							<td class="formcol1">Der Link</td>
+							<td><a id="A_DRUMLINK" href="https://mytaikodrum.de">Der Link zu Deiner Taiko</a></td>
+						</tr>
+						<tr>
+							<td class="formcol1">Email des Empfängers</td><td><input id="ZIELMAIL" class="DRUMLINK_FIELD" name="sys_liame" type="email"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td id="SHOWDRUMLINK_FEEDBACK"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><button onclick="onclick_maildrumlink();">Email abschicken</button></td>
+						</tr>
+					</table>
+
+					<script type="text/javascript">
+						var drum = JSON.parse(localStorage.getItem("drumspec"));
+						var drumLink = new URL("https://mytaikodrum.de" + /*URL*/ "/meine-taiko.html");
+
+						drumLink.searchParams.append('section', 'offer');
+						drumLink.searchParams.append('id', drum.id);
+						drumLink.searchParams.append('woodId', drum.woodId);
+						drumLink.searchParams.append('colorId', drum.colorId);
+						drumLink.searchParams.append('handleId', drum.handleId);
+						drumLink.searchParams.append('nailId', drum.nailId);
+						drumLink.searchParams.append('nailrowId', drum.nailrowId);
+
+						document.querySelector("#A_DRUMLINK").setAttribute("href",drumLink);
+						document.querySelector("#INPUT_DRUMLINK").setAttribute("value",drumLink);
+
+						function isValidEmailAddress(value)
+						{
+							return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value);
+						}
+
+						function onclick_maildrumlink()
+						{
+							var feedback = document.querySelector("#SHOWDRUMLINK_FEEDBACK");
+
+							feedback.innerHTML = "";
+							feedback.style.color = "black";
+
+							if (! isValidEmailAddress(document.querySelector("#ZIELMAIL").value))
+							{
+								feedback.style.color = "red";
+								feedback.innerHTML = "Bitte gib die Email des Empfängers ein."
+								return;
+							}			
+
+							var request = new XMLHttpRequest();
+
+							request.onreadystatechange = function() 
+							{
+							    if (this.readyState == 4 && this.status == 200) 
+							    {
+							    	feedback.style.color = "green";
+							    	feedback.innerHTML = "Danke - deine Mail wurde erfolgreich verschickt!"
+							       	console.log(request.responseText);
+							    }
+							    else
+							    {
+							    	feedback.style.color = "red";
+							    	feedback.innerHTML = "Oops ... da ist leider etwas schief gelaufen! Probiere es nochmal oder \
+							    							verschicke den Link mit deinem Mail-Programme."
+							       	console.log(request.responseText);
+							    }
+							}
+
+							request.open("POST","/mailer/mailer-t.php");
+							request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // ?
+
+							var allFields = document.querySelectorAll(".DRUMLINK_FIELD");
+							var params = "";
+
+							for (var i=0; i<allFields.length; i++)
+							{
+								if (i>0)
+									params +="&";
+
+								params += allFields[i].getAttribute("name");
+								params += "=";
+
+								if (allFields[i].value.includes("\n"))
+								{
+									params += encodeURIComponent("<p>" + allFields[i].value.replace(/\n/g,"</p><p>") + "</p>");
+								}
+								else
+									params += encodeURIComponent(allFields[i].value); 
+							}
+
+							request.send(params);
+						}
+					</script>
+				</div>
+
 			</div>
 
 			<div id="footer" class="footer">
@@ -549,7 +673,7 @@
 
 			function resetDrumSpec()
 			{
-				global.drum.id = "";
+				global.drum.id = "MIYA_DAIKO_14";
 				global.drum.woodId = "WOOD_ASH";
 				global.drum.colorId = "WOODCOLOR_PEAR";
 				global.drum.handleId = "HANDLE_NONE";
@@ -601,7 +725,7 @@
 				{
 					var text = document.querySelector("#drum-price");
 
-					text.innerHTML = "Bitte Typ und Größe der Taiko auswählen."
+					text.innerHTML = LOC_DATA_JSON.getLocstring("PLEASE_CHOOSE_TYPE_AND_SIZE", global.lang);
 				}
 				else
 				{
@@ -668,18 +792,19 @@
 			{
 				var drumType = element.value;
 				var drumSizeElement = document.querySelector("#drum-size");
-				var drumSize = parseInt(drumSizeElement.value);
 				var oldValue = drumSizeElement.value;
+				var drumSize = parseInt(oldValue);
 
 				fill_drumsize_popup(drumType);
 				drumSizeElement.value = oldValue;
+				drumSize = parseInt(drumSizeElement.value);
 			
-				if (drumType == "MIYA" && (drumSize < 14 ||  drumSize > 16))
-					drumSizeElement.value = "-1";
-				else if (drumType == "HIRA" && (drumSize < 14))
-					drumSizeElement.value = "-1";
-				else if (drumType == "SHIME" && (drumSize > 4))
-					drumSizeElement.value = "-1";
+				if (drumType == "MIYA" && (isNaN(drumSize) || drumSize < 14 || drumSize > 16))
+					drumSizeElement.value = "14";
+				else if (drumType == "HIRA" && (isNaN(drumSize) || drumSize < 14))
+					drumSizeElement.value = "14";
+				else if (drumType == "SHIME" && (isNaN(drumSize) || drumSize < 3 || drumSize > 4))
+					drumSizeElement.value = "3";
 
 				updateDrumIdAndPrice();
 			}
@@ -721,13 +846,13 @@
 
 				text.innerHTML = description(TAIKO_DATA_JSON.getWoodcolorDataForId(global.drum.colorId),global.lang);
 
-				if (global.drum.woodId == "WOOD_ELM" 
+			if (global.drum.woodId == "WOOD_ELM" 
 				&&  global.drum.colorId != "WOODCOLOR_NATURAL")
-					text.innerHTML += " (Farbton nicht möglich bei Rüster)";
+					text.innerHTML += " " + LOC_DATA_JSON.getLocstring("WRONG_COLOUR_ELM", global.lang);
 
 				if (TAIKO_DATA_JSON.getWoodtypeDataForId(global.drum.woodId).natural == "0"
 				&&  global.drum.colorId == "WOODCOLOR_NATURAL")
-					text.innerHTML += " (Farbton nicht möglich bei der ausgewählten Holzart)";
+					text.innerHTML += " " + LOC_DATA_JSON.getLocstring("WRONG_COLOUR_FOR_WOOD", global.lang);
 			}
 
 
@@ -881,9 +1006,6 @@
 				var drumtypeSelect = document.querySelector("#drum-type");
 				var drumsizeSelect = document.querySelector("#drum-size");
 
-				if (edit == "1")
-					switchToEditMode(document.querySelector("#section-type"));
-
 				if (global.drum.id != "")
 				{
 					var drumSize = global.drum.id.substring(global.drum.id.indexOf("DAIKO_")+6);
@@ -902,12 +1024,13 @@
 				else
 				{
 					// Default
-					// drumsizeSelect.value = ;
 					fill_drumsize_popup("HIRA");
-					// onclick_drumtype_popup(drumtypeSelect);
 				}
 
 				LOC_DATA_JSON.localizeElement("section-type");
+
+				if (edit == "1")
+					switchToEditMode(document.querySelector("#section-type")); // after localisation
 			}
 
 
@@ -974,7 +1097,7 @@
 
 					if (forward != null)
 					{
-						forward.innerHTML = "Meine Taiko"; // todo loc
+						forward.innerHTML = LOC_DATA_JSON.getLocstring("TACKS_NEXTBUTTON",global.lang)
 						forward.onclick = function() { onclick_sectionoffer(forward); }
 					}
 				}
@@ -1139,7 +1262,7 @@
 			var searchParams = url.searchParams;
 
 
-			var global = { drum: { id: "", woodId: "WOOD_ASH", colorId: "WOODCOLOR_PEAR", 
+			var global = { drum: { id: "MIYA_DAIKO_14", woodId: "WOOD_ASH", colorId: "WOODCOLOR_PEAR", 
 									handleId: "HANDLE_NONE", nailId: "NAIL_20MM", nailrowId: "NAILROWS_2" } 
 						, lang: "de" };
 
@@ -1153,20 +1276,22 @@
 					global.drum = data;
 			}
 
-	
-			// resetDrumSpec();
-
+			// global.lang setzen via URL-Parameter oder Default
+			//
 			if (searchParams.has("lang"))
 			{
 				global.lang = searchParams.get("lang");
 				localStorage.setItem("lang", global.lang);
 			}
-			else
-			{
-				var lang = localStorage.getItem("lang");
+			else if (localStorage.getItem("lang") == null)
+			{ 
+				localStorage.setItem("lang", "de");
 
-				global.lang = lang;
+				if (window.location.hostname.includes("mytaikodrum.eu"))
+					localStorage.setItem("lang", "en");
 			}
+
+			global.lang = localStorage.getItem("lang");
 
 			var section = searchParams.get("section");
 			var edit = searchParams.get("edit");
@@ -1189,6 +1314,24 @@
 			}
 			else if (section == "offer")
 			{
+				if (searchParams.has("id"))
+				{
+					global.drum.id = searchParams.get("id");
+
+					if (searchParams.has("woodId"))
+						global.drum.woodId = searchParams.get("woodId");
+					if (searchParams.has("colorId"))
+						global.drum.colorId = searchParams.get("colorId");
+					if (searchParams.has("handleId"))
+						global.drum.handleId = searchParams.get("handleId");
+					if (searchParams.has("nailId"))
+						global.drum.nailId = searchParams.get("nailId");
+					if (searchParams.has("nailrowId"))
+						global.drum.nailrowId = searchParams.get("nailrowId");
+
+					storeDrumSpec();
+				}
+
 				open_sectionoffer();
 			}
 			else
@@ -1197,6 +1340,9 @@
 				open_sectiontype(edit);
 			}
 
+			global.section = section; // für switch language
+
+			LOC_DATA_JSON.localizeID("MYTAIKODRUM_TITLE");
 			LOC_DATA_JSON.localizeElement("menu");
 			LOC_DATA_JSON.localizeElement("footer");
 

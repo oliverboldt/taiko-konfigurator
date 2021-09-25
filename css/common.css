@@ -91,6 +91,11 @@ figcaption { font-size: 12px; }
 	background-color: #E3DDCB;
 }
 
+.choice-color
+{
+	background-color: #E3DDCB;
+}
+
 figure { margin: 0px; }
 
 .stdphoto

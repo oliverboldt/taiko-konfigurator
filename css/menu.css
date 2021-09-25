@@ -53,6 +53,14 @@
 	margin-top: 10px;
 }
 
+#languageswitch 
+{ 
+	height:  15px; 
+	width: auto; 
+	margin-top: 20px; 
+	vertical-align: bottom; 
+}
+
 
 .off
 {

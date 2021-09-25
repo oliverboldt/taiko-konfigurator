@@ -23,6 +23,8 @@ function userId()
 function logPage(page)
 {
 	var filtered = localStorage.getItem("filtered");
+	var lang = localStorage.getItem("lang");
+	var tld = window.location.hostname.includes("mytaikodrum.eu") ? "eu" : "de";
 	var request = new XMLHttpRequest();
 
 	request.onreadystatechange = function() 
@@ -35,24 +37,40 @@ function logPage(page)
 
 	request.open("POST","logging/log.php");
 	request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // ?
-	request.send('page=' + page + '&referrer=' + encodeURI(document.referrer) + "&filtered=" + filtered + "&userId=" + userId());
+	request.send('lang=' + lang 
+		+ '&tld=' + tld
+		+ '&page=' + page 
+		+ '&referrer=' + encodeURI(document.referrer) 
+		+ "&filtered=" + filtered 
+		+ "&userId=" + userId());
 }
 
 function logDrum(page, drum)
 {
 	var filtered = localStorage.getItem("filtered");
+	var lang = localStorage.getItem("lang");
+	var tld = window.location.hostname.includes("mytaikodrum.eu") ? "eu" : "de";
 	var request = new XMLHttpRequest();
 
 	request.open("POST","logging/log.php");
 	request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // ?
 
-	var params = "drumId="+drum.id;
+	var params = "";
 
-	params += "&woodId="+drum.woodId;
-	params += "&colorId="+drum.colorId;
-	if (! drum.id.includes("SHIME_DAIKO"))
-		params += "&handleId="+drum.handleId;
-	params += "&filtered=" + filtered;
+	if (drum.id != "")
+	{
+		params += "drumId="+drum.id;
+		params += "&woodId="+drum.woodId;
+		params += "&colorId="+drum.colorId;
+
+		if (! drum.id.includes("SHIME_DAIKO"))
+			params += "&handleId="+drum.handleId;
+
+		params += "&";
+	}
+	params += "filtered=" + filtered;
+	params += "&lang=" + lang;
+	params += '&tld=' + tld;
 	params += "&userId=" + userId();
 	params += "&page=" + page;
 	params += "&referrer=" + encodeURI(document.referrer); // ?

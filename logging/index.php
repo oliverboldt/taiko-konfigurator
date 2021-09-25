@@ -17,6 +17,7 @@
 		td { padding: 5px; }
 		th { text-align: left; }
 		#wrapper { width: 1000px; }
+		.green { color: green; font-weight: 500; }
 		</style>
 	</head>
 
@@ -57,18 +58,24 @@
 				
 				$filtered = $_REQUEST['filtered'];
 				$userId = $_REQUEST['userId'];
+				$page = $_REQUEST['page'];
 				$where = "";
 				
-				if (isset($userId))
+				if (isset($page))
+				{
+					$where = "WHERE page = '$page' and filtered = '0'";
+				}
+				else if (isset($userId))
 					$where = "WHERE userId = '$userId'";
 				else if (isset($filtered))
 					$where = "WHERE filtered = $filtered";
 
-				$sql = "SELECT filtered, userId, ip, city, page, date, referrer, drumId, woodId, colorId, handleId".
-						" FROM mytaikodrum  ".$where." ORDER BY date DESC LIMIT 300";				
+				$sql = "SELECT filtered, tld, lang, userId, ip, city, page, date, referrer, drumId, woodId, colorId, handleId".
+						" FROM mytaikodrum  ".$where." ORDER BY date DESC, userId LIMIT 300";				
 				$res = mysqli_query($dbconn,$sql);
 				
 				$lastdate = "";
+				$lastUserId = "";
 				
 				while ($eintrag = mysqli_fetch_object ($res)) 
 				{
@@ -78,20 +85,65 @@
 				    {
 				     	print "<tr>";
 				     	print "<td></td>";
-				     	print "</tr>";
+				     	print "</tr>";   	
 				    }
 				    
-				    $lastdate = $eintrag->date;
+				    $userId = " ";
+				    
+				    if ($eintrag->userId != null)
+				    	$userId = $eintrag->userId;
+				    
+				    if ($lastdate != $eintrag->date 
+				    ||  $lastUserId !=  $userId)
+				    	$printDate = $eintrag->date;
+				    else
+				    	$printDate = '';
+				    
 
-				    print "<tr>";
+					if ($eintrag->page == "offer")
+				    	print "<tr class='green'>";
+				    else
+				    	print "<tr>";    
+				    
 				    if ($eintrag->filtered == "1")
 				    	print "<td>f</td>";
 				    else
 				    	print "<td></td>";
-				    print "<td class='col24'>$eintrag->date</td>";
-				    print "<td class='userId'><a href='?userId=$eintrag->userId' title='$eintrag->userId'>".substr($eintrag->userId,strlen($eintrag->userId)-4)."</a></td>";
-				    print "<td class='col24-off'>$eintrag->city</td>";
-				    print "<td>$eintrag->page";
+				    
+				    if ($lastUserId	!= $userId)
+				    {    	
+				    	$printUserId = substr($userId,strlen($userId)-4);
+				    	$printCity = $eintrag->city;
+				    }
+				    else
+				    {
+				    	$printUserId = '';
+				    	$printCity = '';
+				    }
+				    	
+				    print "<td class='col24'>$printDate</td>";
+				    
+				    if ($lastUserId	!= $userId)
+				    	print "<td class='userId'><a href='?userId=$userId' title='$userId'>".$printUserId."</a></td>";
+				    else
+				    	print "<td class='userId'>".$printUserId."</td>";
+				    
+				    print "<td>$printCity</td>";
+			    	print "<td>";
+			    	
+			    	if ($eintrag->tld != null)
+			    	{
+			    		print $eintrag->tld."/".$eintrag->lang.", ";
+			    	}
+			    	
+			    	if ($eintrag->page == "offer")
+			    	{
+			    		print "<a href='?page=offer&filtered=0'>".$eintrag->page."</a>";
+			    	}
+			    	else
+			    	{
+			    		print $eintrag->page;
+			    	}
 				    
 				    if ($eintrag->referrer != "" 
 				    && stripos($eintrag->referrer,"mytaikodrum") === FALSE)
@@ -106,6 +158,9 @@
 				    print "<td>".str_replace("HANDLE_","",$eintrag->handleId)."</td>";				   
 				    print "</tr>"
 				    	.PHP_EOL;
+				    	
+				    $lastdate = $eintrag->date;
+				    $lastUserId = $eintrag->userId;
 				}
 				mysqli_free_result ($res);
 			?>
@@ -119,3 +174,4 @@
 	</body>
 
 </html>
+

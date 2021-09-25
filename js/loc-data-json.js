@@ -26,7 +26,6 @@ const LOC_DATA_JSON =
 			text: "With a splendid <b>D O N</b> we welcome you to mytaikodrum.eu\
 					You have come to the right place to embark on your journey to finding your own personalised and individual drum.\
 					Step by step we will accompany and advise you on choosing and adapting your individual Taiko In order to match and satisfy your wishes."
-
 		}
 		,
 		{
@@ -56,7 +55,7 @@ const LOC_DATA_JSON =
 		{
 			id: "INDEX_ABOUT_MORE",
 			language: "en",
-			text: "<u>WE are the people behind mytaikodrum.eu</u> and love to be able to advise you, \
+			text: "<u>WE are the people behind mytaikodrum.eu</u> and would love to be able to advise you, \
 					taking into account your own rhythm and particular style."
 		}	
 		,
@@ -88,6 +87,12 @@ const LOC_DATA_JSON =
 			id: "DATENSCHUTZ",
 			language: "en",
 			text: "Data protection"
+		}
+		,
+		{ 
+			id: "ABOUT_TITLE",
+			language: "en",
+			text: "About mytaikodrum"
 		}
 		,
 		{ 
@@ -131,7 +136,7 @@ const LOC_DATA_JSON =
 				My qualification as a craftsman came to my advantage.</p>\
 				<p>Over the years I have built all of the instruments for my group 'Yo Bachi Daiko.'\
 				Shimen, Nagados, O-Daikos and Okedos. External requests also increased. \
-				Until the beginning of 2015 my main occupation was working as a software developer. \
+				Until the beginning of 2015 my main occupation had been working as a software developer. \
 				This was a great help in designing the concept for the Taicut.cnc milling machine. \
 				This precision machine brings the rough form of the corpus into perfect shape, giving \
 				it our  unique sound. This was the last step to lifting Taikos built in Europe to a higher level.</p>"
@@ -156,6 +161,12 @@ const LOC_DATA_JSON =
 		}
 		,
 		{ 
+			id: "WORKSHOP_TITLE",
+			language: "en",
+			text: "The Workshop"
+		}
+		,
+		{ 
 			id: "WORKSHOP_HEADLINE",
 			language: "en",
 			text: "A peek into the workshop"
@@ -170,16 +181,21 @@ const LOC_DATA_JSON =
 		{ 
 			id: "WORKSHOP_ARTICLE",
 			language: "en",
-			text: "First the stakes are sawn off, bevelled and glued together. The Taicu.cnc-milling machine \
+			text: "The wooden planks are sawn to the correct length, bevelled and glued together. The Taicu.cnc-milling machine \
 				then brings the blanc into the precise measurement and shape required. The surface is \
 				then sanded down. Many procedures follow."
 		}
 		,
-		
+		{ 
+			id: "MYTAIKODRUM_TITLE",
+			language: "en",
+			text: "mytaikodrum - Design Taiko"
+		}
+		,
 		{ 
 			id: "HEADLINE_SIZEANDTYPE",
 			language: "en",
-			text: "Drum type and size"
+			text: "Drum Type and Size"
 		}
 		,
 		{ 
@@ -244,14 +260,14 @@ const LOC_DATA_JSON =
 		,
 		{ 
 			id: "TEXT_BASICPRICE",
-			text: "für Basispreis von",
+			text_de: "für Basispreis von",
 			text_en: "at the basic price of"
 		}
 		,
 		{ 
 			id: "BUTTON_CHOOSE_WOOD",
 			language: "en",
-			text: "Choose wood & color >>"
+			text: "Choose Type of Wood & Colour >>"
 		}
 		,
 		{ 
@@ -264,6 +280,12 @@ const LOC_DATA_JSON =
 			id: "ARTICLE_DRUMTYPE_HEADLINE",
 			language: "en",
 			text: "Which is the right drum for me? Nagado, Hira or Shime-daiko?"
+		}
+		,
+		{
+			id: "PLEASE_CHOOSE_TYPE_AND_SIZE",
+			text_de: "Bitte Typ und Größe der Taiko auswählen.",
+			text_en: "Please choose the type and size of the drum."
 		}
 		,
 		{ 
@@ -284,7 +306,7 @@ const LOC_DATA_JSON =
 				of its size and weight, approximately 20kg and at a height of 60cm. </p>\
 				<p><b>A 42cm Nagado-daiko (1.4shaku)</b> has a definite advantage. It  looks and sounds just like its \
 				bigger sister  weighing only about 14kg and with a height of 52,5cm it fits into every car boot or on the rear seat. \
-				It also looks good on the sland stand and can be energetically played with medium sized bachi. </p>"
+				It also looks good on the slanting stand and can be energetically played with medium sized bachi. </p>"
 		}
 		,
 		{ 
@@ -405,8 +427,8 @@ const LOC_DATA_JSON =
 			id: "WOOD_SOUND_ARTICLE",
 			language: "en",
 			text: "<p>All of the Taikos built by us are made of hardwood and are the same shape inside and out, \
-					as described above.This is the reason and in combination with the elaborate tension that \
-					gives our drums their characteristic sound. However the choice of wood does not affect the \
+					as described above and in combination with the elaborate tension this gives our drums their \
+					characteristic sound. However the choice of wood does not affect the \
 					sound as much as the shape and drumheads. Therefore your choice of wood and colour can be based \
 					upon the visual aspect and personal preference. </p>"
 		}
@@ -418,6 +440,18 @@ const LOC_DATA_JSON =
 		}
 		,
 		{ 
+			id: "WRONG_COLOUR_ELM",
+			text_de: "(Farbton nicht möglich bei Rüster)",
+			text_en: "(Colour not possible for Elm)"
+		}
+		,
+		{ 
+			id: "WRONG_COLOUR_FOR_WOOD",
+			text_de: "(Farbton nicht möglich bei der ausgewählten Holzart)",
+			text_en: "(Colour not possible for the given type of wood)"
+		}
+		,
+		{ 
 			id: "HANDLE_HEADLINE",
 			language: "en",
 			text: "Handles"
@@ -426,7 +460,7 @@ const LOC_DATA_JSON =
 		{ 
 			id: "HANDLE_BACKBUTTON",
 			language: "en",
-			text: "<< Choose Type of Wood and Color"
+			text: "<< Choose Type of Wood and Colour"
 		}
 		,
 		{ 
@@ -487,8 +521,8 @@ const LOC_DATA_JSON =
 		,
 		{ 
 			id: "TACKS_NEXTBUTTON",
-			language: "en",
-			text: "Your Taiko drum >>"
+			text_de: "Meine Taiko >>",
+			text_en: "Your Taiko drum >>"
 		}
 		,
 		{ 
@@ -502,7 +536,7 @@ const LOC_DATA_JSON =
 			language: "en",
 			text: "<p>Tacks made in Germany normally come in 20 mm-head. When tacked in two lines into hardwood they \
 				are very stable.</p>\
-				<p>As an alternative we offer 19mm or 17mm  tacks from Japan. They are slightly smaller and more crooked, \
+				<p>As an alternative we offer 19mm or 17mm  tacks from Japan. They are a little smaller and slightly more curved, \
 				a “look” more commonly known in Japan. The tack is longer and thicker and holds better. Interesting for a \
 				single line of tacks or larger drums with very thick skins.</p>"
 		}
@@ -541,14 +575,14 @@ const LOC_DATA_JSON =
 		,
 		{ 
 			id: "übernehmen",
-			language: "en",
-			text: "accept"
+			text_de: "Übernehmen >>",
+			text_en: "Accept >>"
 		}
 		,
 		{ 
 			id: "verwerfen",
-			language: "en",
-			text: "discard"
+			text_de: "<< Verwerfen",
+			text_en: "<< Discard"
 		}
 		,
 		{ 
@@ -560,7 +594,7 @@ const LOC_DATA_JSON =
 		{ 
 			id: "BUTTON_WOOD",
 			language: "en",
-			text: "Type of wood & Color"
+			text: "Type of Wood & Colour"
 		}
 		,
 		{ 
@@ -572,7 +606,7 @@ const LOC_DATA_JSON =
 		{ 
 			id: "OFFER_BUTTON_NAILS",
 			language: "en",
-			text: "Head & Nails"
+			text: "Heads & Tacks"
 		}
 		,
 		{ 
@@ -606,8 +640,8 @@ const LOC_DATA_JSON =
 				and compatible with standard equipment.</li>\
 				<li><strong>Form factor</strong> is based on the Japanese model. The taiko body is more curved on the inside wall than on \
 				the outside, giving it the typical warm sound.</li>\
-				<li>Original <strong>'Japanese tubular ears</strong>.</li>\
-				<li>The skins are <strong>stretched twice</strong> to taughten them and give a shapely edge.</li>\
+				<li>Original <strong>'Japanese tubular ears'</strong>.</li>\
+				<li>The skins are <strong>stretched twice</strong> to taughten them and give an attractive edge.</li>\
 				<li>A lasting and sustainable investment ‘Made in Germany‘ therefore  maintained in Germany.</li>"
 		}
 		,
@@ -654,7 +688,7 @@ const LOC_DATA_JSON =
 		{ 
 			id: "OFFER_FORM",
 			language: "en",
-			text: "What Now? Fill in  the form  and send us your above design  then we can discuss and \
+			text: "What Now? Fill in  the form  and send us your above design then we can discuss your choice and \
 				advise you without any obligation on your part. <b>This is not an order.</b>"
 		}
 		,
@@ -708,6 +742,8 @@ const LOC_DATA_JSON =
 
 					if (language == "en")
 						text = this.locstrings[i].text_en;
+					else if (language == "de")
+						text = this.locstrings[i].text_de;
 
 					return text != null ? text : this.locstrings[i].text;
 				}
@@ -754,6 +790,17 @@ const LOC_DATA_JSON =
 			if (locText != null)
 				elements[i].innerHTML = locText;
 		}
+	}
+	,
+	localizeID : function(name)
+	{
+		var element = document.querySelector("#" + name);
+		var lang = localStorage.getItem("lang");
+
+		var locText = this.getLocstring(element.id,lang);
+
+		if (locText != null)
+			element.innerHTML = locText;
 	}
 
 };

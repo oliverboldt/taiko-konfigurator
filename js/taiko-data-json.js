@@ -88,7 +88,7 @@ const TAIKO_DATA_JSON =
 			id: "WOOD_ELM",   
 			natural: "1",
 			description: "Rüster natur",
-			description_en: "Elm natural",
+			description_en: "Elmwood natural",
 			prices:
 			[
 				  { drumid: "SHIME_DAIKO_3", price: "15" }
@@ -113,7 +113,7 @@ const TAIKO_DATA_JSON =
 		  	thumbnail_hira: "hira.jpg",
 		  	thumbnail_shime: "shime.jpg",
 		  	description: "Rüster Natur",
-		  	description_en: "Elm natural"  
+		  	description_en: "Elmwood natural"  
 		}
 		, 
 		{ 

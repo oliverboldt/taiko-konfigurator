@@ -15,13 +15,14 @@
 		<script src="js/logging.js"></script>
 		<style>
 			.vert-center { vertical-align: middle; }
-			#expo { margin-right: 15px; border: 1px solid black; padding: 10px; }
+			#expo { display: none; margin-right: 15px; border: 1px solid black; padding: 10px; }
 		</style>
 	</head>
 
 	<body>
 		<div id=wrapper>
 			<div id=menu>
+				<a id="languageswitchlink" title="Switch to English" href="#"><img id="languageswitch" src="image/de-en.jpg"/ onclick="switchLanguage();"></a>
 				<img id="logo" src="image/logo.jpg"/>
 				<div class="willkommen"></div>
 				<div class="menuitem-mytaikodrum right">
@@ -91,11 +92,20 @@
 				var searchParams = url.searchParams;
 
 				if (searchParams.has("lang"))
+				{
 					localStorage.setItem("lang", searchParams.get("lang"));
-				else if (localStorage.getItem("lang") == null 
-					 &&  window.location.hostname.includes("mytaikodrum.eu"))
-						localStorage.setItem("lang", "en");
+				}
+				else if (localStorage.getItem("lang") == null)
+				{ 
+					localStorage.setItem("lang", "de");
 
+					if (window.location.hostname.includes("mytaikodrum.eu"))
+						localStorage.setItem("lang", "en");
+				}
+
+				if (localStorage.getItem("lang") != "de")
+					document.querySelector("#languageswitchlink").title = "Auf Deutsch umschalten";
+				
 				LOC_DATA_JSON.localizePage();
 				logPage("index.html");
 			</script>

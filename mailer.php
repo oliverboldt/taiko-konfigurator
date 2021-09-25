@@ -109,7 +109,6 @@
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=iso-8859-1">
-	<meta name="generator" content="Adobe GoLive">
 	<title>Mail verschicken</title>
 </head>
 <body bgcolor="#ffffff">

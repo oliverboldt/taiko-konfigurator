@@ -10,6 +10,8 @@
 	$ip = $_SERVER['REMOTE_ADDR'];
 	$city = "";
 	$filtered = ($_REQUEST['filtered'] == "1" ? 1 : 0);
+	$tld = $_REQUEST['tld'];
+	$lang = $_REQUEST['lang'];
 	$userId = $_REQUEST['userId'];
 	$page = $_REQUEST['page'];
 	$referrer = $_REQUEST['referrer'];
@@ -46,8 +48,8 @@
 		if ($geoip_obj->{'country_code'} != "DE")
 			$city = $geoip_obj->{'country_code'}."-".$city;
 	
-		$sql = "INSERT INTO mytaikodrum (`filtered`, userId, ip, city, date, page, referrer, drumId, colorId, woodId, handleId) ".
-				"VALUES ('$filtered', '$userId', '$ip', '$city', '$date', '$page', '$referrer', '$drumId', '$colorId', '$woodId', '$handleId');";
+		$sql = "INSERT INTO mytaikodrum (`filtered`, tld, lang, userId, ip, city, date, page, referrer, drumId, colorId, woodId, handleId) ".
+				"VALUES ('$filtered', '$tld', '$lang', '$userId', '$ip', '$city', '$date', '$page', '$referrer', '$drumId', '$colorId', '$woodId', '$handleId');";
 		$res = mysql_query($sql, $db);
 		print "SQL=$sql\nRes=$res";
 	}
