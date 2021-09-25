@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title id="INDEX_TITLE" class="localize">Willkommen - mytaikodrum.de</title>
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet" >
+		<link rel="stylesheet" href="../css/common.css">
+		<link rel="stylesheet" href="../css/menu.css">
+		<script src="../js/common.js"></script>
+		<script src="../js/loc-data-json.js"></script>
+		<script src="../js/logging.js"></script>
+		<style>
+			.vert-center { vertical-align: middle; }
+			#expo { display: none; margin-right: 15px; border: 1px solid black; padding: 10px; }
+		</style>
+	</head>
+
+	<body>
+		<div id=wrapper>
+			<div id=menu>
+				<a id="languageswitchlink" title="Switch to English" href="#"><img id="languageswitch" src="../image/de-en.jpg"/ onclick="switchLanguage();"></a>
+				<img id="logo" src="../image/logo.jpg"/>
+				<div class="willkommen"></div>
+				<div class="menuitem-mytaikodrum right">
+					<span id="WELCOME" class="localize" style="font-size: 20px; margin-right: 70px">
+						Herzlich willkommen auf ...</span> <span id="MYTAIKODRUM" class="localize">my<strong>taiko</strong>drum.de</span>
+				</div>
+				<div class=cleardiv></div>
+			</div>
+			<div class=section>
+				<div id="SHOWDRUMLINK_FORM">
+					<input class="DRUMLINK_FIELD" type="hidden" name="sys_subject" value="Ich möchte Dir meine Wunsch-Taiko zeigen">
+					<input class="DRUMLINK_FIELD" type="hidden" name="sys_template" value="taiko-zeigen.html">
+					<input class="DRUMLINK_FIELD" id="INPUT_DRUMLINK" type="hidden" name="LINK" value="https://mytaikodrum.de">
+					<p id="OFFER_FORM" class="localize">Schick doch gerne deinem Taikokumpel eine Mail und zeige ihm/ihr deine Trommel: 
+						Einfach das Formular ausfüllen.</p>
+					<table>				
+						<tr>
+							<td class="formcol1">Dein Name</td>
+							<td><input class="DRUMLINK_FIELD" name="NAME" type="text"></td>
+						</tr>
+						<tr>
+							<td class="formcol1">Deine Email</td>
+							<td><input class="DRUMLINK_FIELD" name="sys_from" type="email"> (wir setzen dich auf 'cc')</td>
+						</tr>
+						<tr>
+							<td class="formcol1 localize">Deine Nachricht</td>
+							<td><textarea class="DRUMLINK_FIELD" name="Nachricht" style="width: 100%;" rows="10"></textarea></td>
+						</tr>
+						<tr>
+							<td class="formcol1">Der Link</td>
+							<td><a id="A_DRUMLINK" href="https://mytaikodrum.de">Der Link zu Deiner Taiko</a></td>
+						</tr>
+						<tr>
+							<td class="formcol1">Email des Empfängers</td><td><input id="ZIELMAIL" class="DRUMLINK_FIELD" name="sys_liame" type="email"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td id="SHOWDRUMLINK_FEEDBACK"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><button onclick="onclick_maildrumlink();">Email abschicken</button></td>
+						</tr>
+					</table>
+					<script type="text/javascript">
+						var drum = JSON.parse(localStorage.getItem("drumspec"));
+						var drumLink = new URL("https://mytaikodrum.de" + /*URL*/ "/meine-taiko.html");
+
+						drumLink.searchParams.append('section', 'offer');
+						drumLink.searchParams.append('id', drum.id);
+						drumLink.searchParams.append('woodId', drum.woodId);
+						drumLink.searchParams.append('colorId', drum.colorId);
+						drumLink.searchParams.append('handleId', drum.handleId);
+						drumLink.searchParams.append('nailId', drum.nailId);
+						drumLink.searchParams.append('nailrowId', drum.nailrowId);
+
+						document.querySelector("#A_DRUMLINK").setAttribute("href",drumLink);
+						document.querySelector("#INPUT_DRUMLINK").setAttribute("value",drumLink);
+
+						function isValidEmailAddress(value)
+						{
+							return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value);
+						}
+
+						function onclick_maildrumlink()
+						{
+							var feedback = document.querySelector("#SHOWDRUMLINK_FEEDBACK");
+
+							feedback.innerHTML = "";
+							feedback.style.color = "black";
+
+							if (! isValidEmailAddress(document.querySelector("#ZIELMAIL").value))
+							{
+								feedback.style.color = "red";
+								feedback.innerHTML = "Bitte gib die Email des Empfängers ein."
+								return;
+							}			
+
+							var request = new XMLHttpRequest();
+
+							request.onreadystatechange = function() 
+							{
+							    if (this.readyState == 4 && this.status == 200) 
+							    {
+							    	feedback.style.color = "green";
+							    	feedback.innerHTML = "Danke - deine Mail wurde erfolgreich verschickt!"
+							       	console.log(request.responseText);
+							    }
+							}
+
+							request.open("POST","/mailer/mailer-t.php");
+							request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // ?
+
+							var allFields = document.querySelectorAll(".DRUMLINK_FIELD");
+							var params = "";
+
+							for (var i=0; i<allFields.length; i++)
+							{
+								if (i>0)
+									params +="&";
+
+								params += allFields[i].getAttribute("name");
+								params += "=";
+
+								if (allFields[i].value.includes("\n"))
+								{
+									params += encodeURIComponent("<p>" + allFields[i].value.replace(/\n/g,"</p><p>") + "</p>");
+								}
+								else
+									params += encodeURIComponent(allFields[i].value); 
+							}
+
+							request.send(params);
+						}
+					</script>
+				</div>
+
+
+			</div>
+			<div class="footer">
+				<div class="rechtliches"> <a id="IMPRESSUM" class="localize" href="../impressum.html">Impressum</a> 
+					| <a id="DATENSCHUTZ" class="localize" href="../dsgvo.html">Datenschutz</a></div>
+				<div class="cleardiv"></div>
+			</div>
+
+		</div>
+
+	</body>
+
+</html>
