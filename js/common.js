@@ -1,4 +1,4 @@
-
+﻿
 function buttonHighlightStart(element)
 {
 	element.style.backgroundColor = 'lightblue';
@@ -24,4 +24,9 @@ function switchLanguage(section)
 	}
 
 	document.location.assign(params);
+}
+
+function isValidEmailAddress(value)
+{
+	return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value);
 }

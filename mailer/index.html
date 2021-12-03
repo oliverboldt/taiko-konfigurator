@@ -32,10 +32,10 @@
 				<div class=cleardiv></div>
 			</div>
 			<div class=section>
-				<div id="SHOWDRUMLINK_FORM">
+				<form id="form_showDrumLink" >
 					<input class="DRUMLINK_FIELD" type="hidden" name="sys_subject" value="Ich möchte Dir meine Wunsch-Taiko zeigen">
 					<input class="DRUMLINK_FIELD" type="hidden" name="sys_template" value="taiko-zeigen.html">
-					<input class="DRUMLINK_FIELD" id="INPUT_DRUMLINK" type="hidden" name="LINK" value="https://mytaikodrum.de">
+					<input class="DRUMLINK_FIELD" id="element_input_drumLink" type="hidden" name="LINK" value="https://mytaikodrum.de">
 					<p id="OFFER_FORM" class="localize">Schick doch gerne deinem Taikokumpel eine Mail und zeige ihm/ihr deine Trommel: 
 						Einfach das Formular ausfüllen.</p>
 					<table>				
@@ -53,93 +53,83 @@
 						</tr>
 						<tr>
 							<td class="formcol1">Der Link</td>
-							<td><a id="A_DRUMLINK" href="https://mytaikodrum.de">Der Link zu Deiner Taiko</a></td>
+							<td><a id="element_a_drumlink" href="https://mytaikodrum.de">Der Link zu Deiner Taiko</a></td>
 						</tr>
 						<tr>
-							<td class="formcol1">Email des Empfängers</td><td><input id="ZIELMAIL" class="DRUMLINK_FIELD" name="sys_liame" type="email"></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td id="SHOWDRUMLINK_FEEDBACK"></td>
+							<td class="formcol1">Email des Empfängers</td>
+							<td><input id="element_input_zielMail" class="DRUMLINK_FIELD" name="sys_liame" type="email"></td>
 						</tr>
 						<tr>
 							<td></td>
-							<td><button onclick="onclick_maildrumlink();">Email abschicken</button></td>
+							<td id="element_showDrumLinkFeedback"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><button type="submit">Email abschicken</button></td>
 						</tr>
 					</table>
-					<script type="text/javascript">
-						var drum = JSON.parse(localStorage.getItem("drumspec"));
-						var drumLink = new URL("https://mytaikodrum.de" + /*URL*/ "/meine-taiko.html");
+				</form>
+				<script type="text/javascript">
 
-						drumLink.searchParams.append('section', 'offer');
-						drumLink.searchParams.append('id', drum.id);
-						drumLink.searchParams.append('woodId', drum.woodId);
-						drumLink.searchParams.append('colorId', drum.colorId);
-						drumLink.searchParams.append('handleId', drum.handleId);
-						drumLink.searchParams.append('nailId', drum.nailId);
-						drumLink.searchParams.append('nailrowId', drum.nailrowId);
+					var drum = JSON.parse(localStorage.getItem("drumspec"));
+					var drumLink = new URL("https://mytaikodrum.de" + /*URL*/ "/meine-taiko.html");
 
-						document.querySelector("#A_DRUMLINK").setAttribute("href",drumLink);
-						document.querySelector("#INPUT_DRUMLINK").setAttribute("value",drumLink);
+					drumLink.searchParams.append('section', 'offer');
+					drumLink.searchParams.append('id', drum.id);
+					drumLink.searchParams.append('woodId', drum.woodId);
+					drumLink.searchParams.append('colorId', drum.colorId);
+					drumLink.searchParams.append('handleId', drum.handleId);
+					drumLink.searchParams.append('nailId', drum.nailId);
+					drumLink.searchParams.append('nailrowId', drum.nailrowId);
 
-						function isValidEmailAddress(value)
+					element_a_drumlink.setAttribute("href",drumLink);
+					element_input_drumLink.setAttribute("value",drumLink);
+
+					function isValidEmailAddress(value)
+					{
+						return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value);
+					}
+
+					function submit_maildrumlink(event)
+					{
+						var feedback = element_showDrumLinkFeedback;
+
+						event.preventDefault();
+
+						feedback.innerHTML = "";
+						feedback.style.color = "black";
+
+						if (! element_input_zielMail.value)
 						{
-							return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value);
+							feedback.style.color = "red";
+							feedback.innerHTML = "Bitte gib die Email des Empfängers ein."
+							return;
+						}			
+
+						var request = new XMLHttpRequest();
+
+						request.onreadystatechange = function() 
+						{
+						    if (this.readyState == 4 && this.status == 200) 
+						    {
+						    	feedback.style.color = "green";
+						    	feedback.innerHTML = "Danke - deine Mail wurde erfolgreich verschickt!"
+						       	console.log(request.responseText);
+						    }
 						}
 
-						function onclick_maildrumlink()
-						{
-							var feedback = document.querySelector("#SHOWDRUMLINK_FEEDBACK");
+						request.open("POST",/*URL*/ "/mailer/mailer-t.php");
+						// request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // ?	
 
-							feedback.innerHTML = "";
-							feedback.style.color = "black";
+						var formData = new FormData(form_showDrumLink);		
 
-							if (! isValidEmailAddress(document.querySelector("#ZIELMAIL").value))
-							{
-								feedback.style.color = "red";
-								feedback.innerHTML = "Bitte gib die Email des Empfängers ein."
-								return;
-							}			
+						formData.set("Nachricht", "<p>" + formData.get("Nachricht").replace(/\n/g,"<br/>") + "</p>");
+						request.send(formData);
+					}
 
-							var request = new XMLHttpRequest();
+					form_showDrumLink.onsubmit = submit_maildrumlink;
 
-							request.onreadystatechange = function() 
-							{
-							    if (this.readyState == 4 && this.status == 200) 
-							    {
-							    	feedback.style.color = "green";
-							    	feedback.innerHTML = "Danke - deine Mail wurde erfolgreich verschickt!"
-							       	console.log(request.responseText);
-							    }
-							}
-
-							request.open("POST","/mailer/mailer-t.php");
-							request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // ?
-
-							var allFields = document.querySelectorAll(".DRUMLINK_FIELD");
-							var params = "";
-
-							for (var i=0; i<allFields.length; i++)
-							{
-								if (i>0)
-									params +="&";
-
-								params += allFields[i].getAttribute("name");
-								params += "=";
-
-								if (allFields[i].value.includes("\n"))
-								{
-									params += encodeURIComponent("<p>" + allFields[i].value.replace(/\n/g,"</p><p>") + "</p>");
-								}
-								else
-									params += encodeURIComponent(allFields[i].value); 
-							}
-
-							request.send(params);
-						}
-					</script>
-				</div>
-
+				</script>
 
 			</div>
 			<div class="footer">

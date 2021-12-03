@@ -1,56 +1,90 @@
+<!DOCTYPE html>
+<html>
+<body>
 <?php
-
-	// print "Hallo\n";
 	
-	$db = mysql_connect("localhost", "ollibo", "tortuga#db1");
-	mysql_select_db("oliver-boldt-db",$db);
-	// $dbconn = mysqli_connect("localhost", "ollibo", "tortuga#db1","oliver-boldt-db");
+	$conn = new mysqli("localhost", "ollibo", "tortuga#db1", "oliver-boldt-db");
+
+	if ($conn->connect_error) 
+	{
+	  die("Connection failed: " . $conn->connect_error);
+	}
 	
 	$date = date("Y-m-d");
-	$ip = $_SERVER['REMOTE_ADDR'];
 	$city = "";
-	$filtered = ($_REQUEST['filtered'] == "1" ? 1 : 0);
+
+	$ip = $_SERVER['REMOTE_ADDR'];
+	$filtered = ($_REQUEST['filtered'] == "1" ? 'i' /*intern*/ : 'r' /*real*/);
 	$tld = $_REQUEST['tld'];
 	$lang = $_REQUEST['lang'];
 	$userId = $_REQUEST['userId'];
+
 	$page = $_REQUEST['page'];
 	$referrer = $_REQUEST['referrer'];
-	$drumId = $_REQUEST['drumId'];
-	$woodId = $_REQUEST['woodId'];
-	$colorId = $_REQUEST['colorId'];
-	$handleId = $_REQUEST['handleId'];
+	$drumId = $_REQUEST['drumId'] ?? null;
+	$woodId = $_REQUEST['woodId'] ?? null;
+	$colorId = $_REQUEST['colorId'] ?? null;
+	$handleId = $_REQUEST['handleId'] ?? null;
 	
-	$checkDuplicate = is_null($drumId);
-	$isDuplicate = false;
-
-	if ($checkDuplicate)
+	
+	if (! isset($userId)) // vielleicht Suchmaschine...
+		return; 
+	
+	if (true)
 	{
-		$sql = "SELECT count(*) FROM mytaikodrum WHERE ip = '$ip' and `date`='$date'";
-		$res = mysql_query($sql,$db);
-		print "SQL=$sql\nRes=$res";
+		$sql = "SELECT city, filtered FROM mytaikodrum WHERE userId = '$userId' and `date`='$date'";
+		$res = $conn->query($sql);
+		// print "Query 1<br/>";
 		
-		if ($eintrag = mysql_fetch_array($res,MYSQL_NUM))
+		$eintrag = $res->fetch_object();
+		
+		if ($eintrag != null)
 		{
-			$zaehler = $eintrag[0];
-			$isDuplicate = $zaehler > 0;
+			$city = $eintrag->city;
+			$filtered = $eintrag->filtered;
 		}
-			
-		mysql_free_result ($res);
-		
 	}
+	
 
-	if (true) // ! $isDuplicate)
+	if (true)
 	{
-		$geoip = file_get_contents('http://api.ipstack.com/'.$ip.'?access_key=6216ea110558547a774d1e2094d20e39');
-		$geoip_obj = json_decode($geoip);	
-		$city = $geoip_obj->{'zip'}." ".$geoip_obj->{'city'};
-		
-		if ($geoip_obj->{'country_code'} != "DE")
-			$city = $geoip_obj->{'country_code'}."-".$city;
+		if ($city == "")
+		{
+			$accesskey = "6216ea110558547a774d1e2094d20e39";
+					
+			$geoip = file_get_contents('http://api.ipstack.com/'.$ip.'?access_key='.$accesskey);
+			$geoip_obj = json_decode($geoip);	
+			
+			print $geoip."<br/>";
+			
+			// 2. Geo-IP Account versuchen
+			//
+			if (property_exists($geoip_obj,'success')
+			&& $geoip_obj->{'success'} == false)
+			{
+				$accesskey = "eace2da410d83c0357f6eee5410c374a";
+				
+				$geoip = file_get_contents('http://api.ipstack.com/'.$ip.'?access_key='.$accesskey);
+				$geoip_obj = json_decode($geoip);	
+				print $geoip."<br/>";
+			}
+			
+			$city = $geoip_obj->zip." ".$geoip_obj->city;
+			
+			if ($geoip_obj->country_code != "DE")
+			{
+				$city = $geoip_obj->country_code."-".$city;
+				
+				if ($geoip_obj->country_code == "US"
+				||  $geoip_obj->country_code == "CN"
+				||  $geoip_obj->country_code == "SG")
+					$filtered = 's'; // Suchmaschine ?		
+			}
+		}
 	
 		$sql = "INSERT INTO mytaikodrum (`filtered`, tld, lang, userId, ip, city, date, page, referrer, drumId, colorId, woodId, handleId) ".
 				"VALUES ('$filtered', '$tld', '$lang', '$userId', '$ip', '$city', '$date', '$page', '$referrer', '$drumId', '$colorId', '$woodId', '$handleId');";
-		$res = mysql_query($sql, $db);
+		$res = $conn->query($sql);
 		print "SQL=$sql\nRes=$res";
 	}
 /*	else
@@ -60,5 +94,8 @@
 		print "SQL=$sql\nRes=$res";
 	}
 */
-
+	$conn->close(); 
 ?>
+
+</body>
+</html>

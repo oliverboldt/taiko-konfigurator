@@ -38,6 +38,12 @@
 		
 		$mailFrom = $_REQUEST['sys_from'];	
 		
+		/*
+		if (!isset($_REQUEST['sys_liame'])
+		{
+			http_response_code(400);
+		}*/
+		
 		if (!isset($mailFrom) || $mailFrom == "")
 			$mailFrom = "noreply@mytaikodrum.de";
 

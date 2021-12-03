@@ -57,6 +57,12 @@
 
 			textarea { width: 40em; }
 
+			@media only screen and (max-width: 700px)
+			{				
+				textarea { width: 100%; }
+			}		
+
+
 		</style>
 
 	</head>
@@ -418,9 +424,7 @@
 
 			<div id="section-offer" class="section">
 				<h1 id="OFFER_HEADLINE" class="localize">Deine Taiko</h1>
-				<form action="mailer.php">
-				<input type=hidden name="sys_betreff" value="Anfrage mytaikodrum.de">
-				<input type=hidden name="sys_ok" value="formular-ok.html">
+				
 				<div class="choice">
 					<div id="BUTTON_TYPE" class="button localize" 
 							onmouseover="buttonHighlightStart(this);" 
@@ -486,48 +490,118 @@
 					</div>
 
 				</div>
-				<div class="formpart">
-					<p id="OFFER_FORM" class="localize">Wie geht es jetzt weiter? <strong>Option 1: </strong>Schick uns diesen, Deinen Taiko-Entwurf und  
-						wir beraten Dich unverbindlich weiter. <b>Dies ist keine Bestellung!</b></p>
-					<table>				
-						<tr><td class="formcol1">Name</td><td><input name="Name" type="text"></td></tr>
-						<tr><td class="formcol1">Email</td><td><input name="liame" type="email"></td></tr>
-						<tr><td id="OFFER_PHONE" class="formcol1 localize">Telefon</td><td><input name="Telefon" type="text"></td></tr>
-						<tr><td id="OFFER_REMARKS" class="formcol1 localize">Anmerkungen <br>& Fragen</td><td>
-								<textarea name="Anmerkungen" rows="10"></textarea></td>
-						</tr>
-							<td></td>
-							<td><button id="OFFER_SUBMIT" class="localize" type="submit">Taiko unverbindlich anfragen</button></td>
-						</tr>
-					</table>
-				</div>
+				<form id="FORM_INQUIRY" style="width: 100%;">
+					<div class="formpart">
+						<p id="OFFER_FORM" class="localize">Wie geht es jetzt weiter? <strong>Option 1: </strong>Schick uns diesen, Deinen Taiko-Entwurf und  
+							wir beraten Dich unverbindlich weiter. <b>Dies ist keine Bestellung!</b></p>
+						<table style="width: 100%;">				
+							<tr>
+								<td class="formcol1">Name</td>
+								<td><input name="Name" type="text"></td>
+							</tr>
+							<tr>
+								<td class="formcol1">Email</td>
+								<td><input id="INQUIRY_MAIL" name="liame" type="email"></td>
+							</tr>
+							<tr>
+								<td id="OFFER_PHONE" class="formcol1 localize">Telefon</td>
+								<td><input name="Telefon" type="text"></td>
+							</tr>
+							<tr>
+								<td id="OFFER_REMARKS" class="formcol1 localize">Anmerkungen <br>& Fragen</td>
+								<td><textarea name="Anmerkungen" rows="10"></textarea></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td id="INQUIRY_FEEDBACK"></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td><button id="OFFER_SUBMIT" class="localize" type="submit">Taiko unverbindlich anfragen</button></td>
+							</tr>
+						</table>
+					</div>
 				</form>
+				<script type="text/javascript">
+					
+					function submit_inquiry(event)
+					{
+						var feedback = INQUIRY_FEEDBACK;
 
-				<div id="SHOWDRUMLINK_FORM" class="formpart">
-					<input class="DRUMLINK_FIELD" type="hidden" name="sys_subject" value="Ich möchte Dir meine Wunsch-Taiko zeigen">
-					<input class="DRUMLINK_FIELD" type="hidden" name="sys_template" value="taiko-zeigen.html">
-					<input class="DRUMLINK_FIELD" id="INPUT_DRUMLINK" type="hidden" name="LINK" value="https://mytaikodrum.de">
-					<p><strong>Option 2: Schick doch auch gerne deinem Taikokumpel eine Mail</strong> und zeige ihm/ihr deine Trommel: 
-						Einfach das Formular ausfüllen.</p>
-					<table>				
+						event.preventDefault();
+
+						feedback.innerHTML = "";
+						feedback.style.color = "black";	
+
+						if (! isValidEmailAddress(INQUIRY_MAIL.value))
+						{
+							feedback.style.color = "red";
+							feedback.innerHTML = "Bitte gib Deine Email-Adresse ein."
+							return;
+						}		
+
+						var request = new XMLHttpRequest();
+
+						request.onreadystatechange = function() 
+						{
+						    if (this.readyState == 4)
+						    {
+							    if (this.status == 200) 
+							    {
+							    	feedback.style.color = "green";
+							    	feedback.innerHTML = LOC_DATA_JSON.getLocstring("MESSAGE_SEND", global.lang);
+							       	console.log(request.responseText);
+							    }
+							    else
+							    {
+							    	feedback.style.color = "red";
+							    	feedback.innerHTML = LOC_DATA_JSON.getLocstring("MESSAGE_OOPS", global.lang);
+							       	console.log(request.responseText);
+							    }
+						    } 
+						}
+						
+						var formData = new FormData(FORM_INQUIRY);		
+
+						request.open("POST","/mailer.php");
+						request.send(formData);
+					}
+
+					FORM_INQUIRY.onsubmit = submit_inquiry;
+
+				</script>
+
+
+				<form id="FORM_SHOWDRUMLINK" class="formpart" style="width: 100%;">
+					<input type="hidden" name="sys_subject" value="Ich möchte Dir meine Wunsch-Taiko zeigen">
+					<input type="hidden" name="sys_template" value="taiko-zeigen-de.html">
+					<input id="INPUT_DRUMLINK" type="hidden" name="LINK" value="https://mytaikodrum.de">
+					<p id="SHOWDRUMLINK_TITLE" class="localize">
+						<strong>Option 2: Schick doch auch gerne deinem Taikokumpel eine Mail</strong> und zeige ihm/ihr deine Trommel: 
+						Einfach das Formular ausfüllen.
+					</p>
+					<table style="width: 100%;">				
 						<tr>
-							<td class="formcol1">Dein Name</td>
-							<td><input class="DRUMLINK_FIELD" name="NAME" type="text"></td>
+							<td id="SHOW_YOURNAME" class="formcol1 localize">Dein Name</td>
+							<td><input name="NAME" type="text"></td>
 						</tr>
 						<tr>
-							<td class="formcol1">Deine Email</td>
-							<td><input class="DRUMLINK_FIELD" name="sys_from" type="email"> (wir setzen dich auf 'cc')</td>
+							<td id="SHOW_YOUREMAIL"class="formcol1 localize">Deine Email</td>
+							<td><input name="sys_from" type="email"> 
+								<span id="SHOW_CC" class="localize">(wir setzen dich auf 'cc')</span>
+							</td>
 						</tr>
 						<tr>
-							<td class="formcol1 localize">Deine Nachricht</td>
-							<td><textarea class="DRUMLINK_FIELD" name="Nachricht" style="width: 100%;" rows="10"></textarea></td>
+							<td id="SHOW_MESSAGE" class="formcol1 localize">Deine Nachricht</td>
+							<td><textarea name="Nachricht" rows="10"></textarea></td>
 						</tr>
 						<tr>
-							<td class="formcol1">Der Link</td>
-							<td><a id="A_DRUMLINK" href="https://mytaikodrum.de">Der Link zu Deiner Taiko</a></td>
+							<td id="SHOW_LINK" class="formcol1 localize">Der Link</td>
+							<td><a id="A_DRUMLINK" class="localize" href="https://mytaikodrum.de">Der Link zu Deiner Taiko</a></td>
 						</tr>
 						<tr>
-							<td class="formcol1">Email des Empfängers</td><td><input id="ZIELMAIL" class="DRUMLINK_FIELD" name="sys_liame" type="email"></td>
+							<td id="SHOW_TO_EMAIL" class="formcol1 localize">Email des Empfängers</td>
+							<td><input id="ZIELMAIL" name="sys_liame" type="email"></td>
 						</tr>
 						<tr>
 							<td></td>
@@ -535,90 +609,76 @@
 						</tr>
 						<tr>
 							<td></td>
-							<td><button onclick="onclick_maildrumlink();">Email abschicken</button></td>
+							<td><button id="SHOW_SUBMIT" class="localize" type="submit">Email abschicken</button></td>
 						</tr>
 					</table>
+				</form>
+				<script type="text/javascript">
+					var drum = JSON.parse(localStorage.getItem("drumspec"));
+					var drumLink = new URL("https://mytaikodrum.de" + /*URL*/ "/meine-taiko.html");
+					var lang = localStorage.getItem("lang");
 
-					<script type="text/javascript">
-						var drum = JSON.parse(localStorage.getItem("drumspec"));
-						var drumLink = new URL("https://mytaikodrum.de" + /*URL*/ "/meine-taiko.html");
+					drumLink.searchParams.append('lang', lang);
+					drumLink.searchParams.append('section', 'offer');
+					drumLink.searchParams.append('id', drum.id);
+					drumLink.searchParams.append('woodId', drum.woodId);
+					drumLink.searchParams.append('colorId', drum.colorId);
+					drumLink.searchParams.append('handleId', drum.handleId);
+					drumLink.searchParams.append('nailId', drum.nailId);
+					drumLink.searchParams.append('nailrowId', drum.nailrowId);
 
-						drumLink.searchParams.append('section', 'offer');
-						drumLink.searchParams.append('id', drum.id);
-						drumLink.searchParams.append('woodId', drum.woodId);
-						drumLink.searchParams.append('colorId', drum.colorId);
-						drumLink.searchParams.append('handleId', drum.handleId);
-						drumLink.searchParams.append('nailId', drum.nailId);
-						drumLink.searchParams.append('nailrowId', drum.nailrowId);
+					A_DRUMLINK.setAttribute("href",drumLink);
+					INPUT_DRUMLINK.setAttribute("value",drumLink);
 
-						document.querySelector("#A_DRUMLINK").setAttribute("href",drumLink);
-						document.querySelector("#INPUT_DRUMLINK").setAttribute("value",drumLink);
+					function submit_maildrumlink(event)
+					{
+						var feedback = SHOWDRUMLINK_FEEDBACK;
 
-						function isValidEmailAddress(value)
+						event.preventDefault();
+
+						feedback.innerHTML = "";
+						feedback.style.color = "black";
+
+						if (! isValidEmailAddress(ZIELMAIL.value))
 						{
-							return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value);
-						}
+							feedback.style.color = "red";
+							feedback.innerHTML = LOC_DATA_JSON.getLocstring("ENTER_RECEIVERS_EMAIL", global.lang); 
+							return;
+						}			
 
-						function onclick_maildrumlink()
+						var request = new XMLHttpRequest();
+
+						request.onreadystatechange = function() 
 						{
-							var feedback = document.querySelector("#SHOWDRUMLINK_FEEDBACK");
-
-							feedback.innerHTML = "";
-							feedback.style.color = "black";
-
-							if (! isValidEmailAddress(document.querySelector("#ZIELMAIL").value))
-							{
-								feedback.style.color = "red";
-								feedback.innerHTML = "Bitte gib die Email des Empfängers ein."
-								return;
-							}			
-
-							var request = new XMLHttpRequest();
-
-							request.onreadystatechange = function() 
-							{
-							    if (this.readyState == 4 && this.status == 200) 
+						    if (this.readyState == 4)
+						    {
+							    if (this.status == 200) 
 							    {
 							    	feedback.style.color = "green";
-							    	feedback.innerHTML = "Danke - deine Mail wurde erfolgreich verschickt!"
+							    	feedback.innerHTML = LOC_DATA_JSON.getLocstring("EMAIL_SEND", global.lang); 
 							       	console.log(request.responseText);
 							    }
 							    else
 							    {
 							    	feedback.style.color = "red";
-							    	feedback.innerHTML = "Oops ... da ist leider etwas schief gelaufen! Probiere es nochmal oder \
-							    							verschicke den Link mit deinem Mail-Programme."
+							    	feedback.innerHTML = LOC_DATA_JSON.getLocstring("EMAIL_OOPS", global.lang); 
 							       	console.log(request.responseText);
 							    }
-							}
-
-							request.open("POST","/mailer/mailer-t.php");
-							request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // ?
-
-							var allFields = document.querySelectorAll(".DRUMLINK_FIELD");
-							var params = "";
-
-							for (var i=0; i<allFields.length; i++)
-							{
-								if (i>0)
-									params +="&";
-
-								params += allFields[i].getAttribute("name");
-								params += "=";
-
-								if (allFields[i].value.includes("\n"))
-								{
-									params += encodeURIComponent("<p>" + allFields[i].value.replace(/\n/g,"</p><p>") + "</p>");
-								}
-								else
-									params += encodeURIComponent(allFields[i].value); 
-							}
-
-							request.send(params);
+						    } 
 						}
-					</script>
-				</div>
+						
+						var formData = new FormData(FORM_SHOWDRUMLINK);		
 
+						formData.set("Nachricht", "<p>" + formData.get("Nachricht").replace(/\n/g,"<br/>") + "</p>");
+						formData.set("sys_template", (global.lang == "en") ? "taiko-zeigen-en.html" : "taiko-zeigen-de.html");
+						formData.set("sys_subject", LOC_DATA_JSON.getLocstring("SHOW_SUBJECT", global.lang));
+						request.open("POST","/mailer/mailer-t.php");
+						request.send(formData);
+					}
+
+					FORM_SHOWDRUMLINK.onsubmit = submit_maildrumlink;
+
+				</script>
 			</div>
 
 			<div id="footer" class="footer">
@@ -846,7 +906,7 @@
 
 				text.innerHTML = description(TAIKO_DATA_JSON.getWoodcolorDataForId(global.drum.colorId),global.lang);
 
-			if (global.drum.woodId == "WOOD_ELM" 
+				if (global.drum.woodId == "WOOD_ELM" 
 				&&  global.drum.colorId != "WOODCOLOR_NATURAL")
 					text.innerHTML += " " + LOC_DATA_JSON.getLocstring("WRONG_COLOUR_ELM", global.lang);
 

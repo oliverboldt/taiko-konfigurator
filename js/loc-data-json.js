@@ -711,9 +711,46 @@ const LOC_DATA_JSON =
 		}
 		,
 		{ 
-			id: "",
+			id: "SHOWDRUMLINK_TITLE",
 			language: "en",
-			text: ""
+			text: "<strong>Option No. 2: Send an email to your Taiko mate</strong> and show \
+						him/her your drum: 	Just fill-in and send this form."
+		}
+		,
+		{ 
+			id: "SHOW_YOURNAME",
+			language: "en",
+			text: "Your name"
+		}
+		,
+		{ 
+			id: "SHOW_YOUREMAIL",
+			language: "en",
+			text: "Your email"
+		}
+		,
+		{ 
+			id: "SHOW_CC",
+			language: "en",
+			text: "(We'll put you on 'cc')"
+		}
+		,
+		{ 
+			id: "SHOW_MESSAGE",
+			language: "en",
+			text: "Your message"
+		}
+		,
+		{ 
+			id: "SHOW_LINK",
+			language: "en",
+			text: "The Link"
+		}
+		,
+		{ 
+			id: "A_DRUMLINK",
+			language: "en",
+			text: "The link for your drum"
 		}
 		,
 		{ 
@@ -721,6 +758,62 @@ const LOC_DATA_JSON =
 			language: "en",
 			text: ""
 		}
+		,
+		{ 
+			id: "SHOW_TO_EMAIL",
+			language: "en",
+			text: "Receivers email"
+		}
+		,
+		{ 
+			id: "SHOW_SUBMIT",
+			language: "en",
+			text: "Send email"
+		}
+		,
+		{ 
+			id: "ENTER_RECEIVERS_EMAIL",
+			text_de: "Bitte gib die Email des Empfängers ein.",
+			text_en: "Please enter the receivers email address"
+		}
+		,
+		{ 
+			id: "EMAIL_SEND",
+			text_de: "Danke - deine Mail wurde erfolgreich verschickt!",
+			text_en: "Thanks - your email was send successfully!"
+		}
+		,
+		{ 
+			id: "EMAIL_OOPS",
+			text_de: "Oops ... da ist leider etwas schief gelaufen! Probiere es nochmal oder \
+							    							verschicke den Link mit deinem Mail-Programme.",
+			text_en: "Oops ... something went wrong! Please try again later or \
+						send the link using your email application."
+		}		
+		,
+		{ 
+			id: "MESSAGE_SEND",
+			text_de: "Danke - deine Anfrage wurde erfolgreich verschickt!",
+			text_en: "Thanks - your inquiry was send successfully!"
+		}
+		,
+		{ 
+			id: "MESSAGE_OOPS",
+			text_de: "Oops ... da ist leider etwas schief gelaufen! Probiere es später nochmal.",
+			text_en: "Oops ... something went wrong! Please try again later."
+		}		
+		,
+		{ 
+			id: "SHOW_SUBJECT",
+			text_de: "Ich möchte Dir meine Wunsch-Taiko zeigen",
+			text_en: "I'd like to show you my taiko drum"
+		}		
+		,
+		{ 
+			id: "",
+			language: "en",
+			text: ""
+		}	
 	]
 	,
 	getLocstring : function(locId, language)
