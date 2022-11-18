@@ -30,7 +30,7 @@
 	//	$verteiler = $_REQUEST['verteiler'];
 
 	$sys_an		 = $_REQUEST['sys_an'];
-	$sys_betreff = $_REQUEST['sys_betreff'];
+	$sys_betreff = $_REQUEST['sys_subject'];
 	$sys_ok	 	 = $_REQUEST['sys_ok'];
 	$sys_fehler	 = $_REQUEST['sys_fehler'];
 	
@@ -58,7 +58,7 @@
 		if ($sys_an != "")
 			$mailTo = $sys_an;
 		else
-			$mailTo = "anfrage@mytaikodrum.de";
+			$mailTo = "anfrage@mytaikodrum.de"; // "taiko@oliver-boldt.de"; // 
 		
 		$mailHeaders = "From: ".$email."\n";
 		$mailSubject = $sys_betreff;

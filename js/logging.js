@@ -31,7 +31,15 @@ function logPage(page)
 	{
 	    if (this.readyState == 4 && this.status == 200) 
 	    {
-	       console.log(request.responseText);
+	       	console.log(request.responseText);
+	       
+	       	var response_obj = JSON.parse(request.responseText);
+	       
+	       	if (lang == "??")
+	       	{
+	       		lang = response_obj.lang;
+	       		localStorage.setItem("lang", lang);
+	       	}
 	    }
 	}
 

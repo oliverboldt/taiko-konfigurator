@@ -97,17 +97,21 @@
 				}
 				else if (localStorage.getItem("lang") == null)
 				{ 
-					localStorage.setItem("lang", "de");
-
 					if (window.location.hostname.includes("mytaikodrum.eu"))
 						localStorage.setItem("lang", "en");
+					else
+						localStorage.setItem("lang", "??"/*"de"*/); // automode / logPage;
 				}
-
-				if (localStorage.getItem("lang") != "de")
-					document.querySelector("#languageswitchlink").title = "Auf Deutsch umschalten";
+				
+				logPage("index.html"); // might change lang
+				
+				if (localStorage.getItem("lang") == "??")
+					localStorage.setItem("lang", "de");
 				
 				LOC_DATA_JSON.localizePage();
-				logPage("index.html");
+				
+				if (localStorage.getItem("lang") != "de")
+					document.querySelector("#languageswitchlink").title = "Auf Deutsch umschalten";
 			</script>
 		</div>
 	</body>

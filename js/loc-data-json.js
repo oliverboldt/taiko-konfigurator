@@ -249,13 +249,19 @@ const LOC_DATA_JSON =
 		{ 
 			id: "OPTION_SIZE_3",
 			language: "en",
-			text: "Size 3"
+			text: "Size 3 (rope)"
+		}
+		,
+		{ 
+			id: "OPTION_SIZE_31",
+			language: "en",
+			text: "Size 3 (bolt)"
 		}
 		,
 		{ 
 			id: "OPTION_SIZE_4",
 			language: "en",
-			text: "Size 4"
+			text: "Size 4 (rope)"
 		}
 		,
 		{ 
@@ -323,11 +329,11 @@ const LOC_DATA_JSON =
 		{ 
 			id: "ARTICLE_DRUMTYPE_SHIME",
 			language: "en",
-			text: "<p>No group should be without a laced Shime-daiko.We have been building them since the year 2000 \
+			text: "<p>No group should be without a Shime-daiko. We have been building them since the year 2000 \
 				and the first instruments are still in use. \
 				Only the best parts of the skin are used and they make the typical crisp sound. \
-				The rope model weighs about 6 kg. \
-				We will be happy to show you how to readjust the tension without needing any technical aids. \
+				The rope model weighs about 6 kg, and the bolt one is 10 kg. \
+				We will be happy to show you how to readjust the tension of the rope shime without needing any technical aids. \
 				<b>Size 3 is a real classic and is always a first choice.</b> \
 				The corpus of size 4 is at 21 cm about 3 cm higher than the size 3 and uses thicker skin. \
 				With relevant effort it is possible to adjust the tension to a higher degree.</p>"

@@ -111,7 +111,7 @@ const TAIKO_DATA_JSON =
 		  	thumbnail: "woodcolor-nature.jpg",   
 		  	thumbnail_miya: "miya-pear.jpg",
 		  	thumbnail_hira: "hira.jpg",
-		  	thumbnail_shime: "shime.jpg",
+		  	thumbnail_shime: "shime-bolt.jpg",
 		  	description: "Rüster Natur",
 		  	description_en: "Elmwood natural"  
 		}
@@ -121,7 +121,7 @@ const TAIKO_DATA_JSON =
 		  	thumbnail: "woodcolor-pear.jpg",   
 		  	thumbnail_miya: "miya-pear.jpg",
 		  	thumbnail_hira: "hira-pear.jpg",
-		  	thumbnail_shime: "shime.jpg",
+		  	thumbnail_shime: "shime-bolt.jpg",
 			description: "Farbton Birne/Rüster",
 			description_en: "Colour Pear/Elmwood"
 		}
@@ -131,7 +131,7 @@ const TAIKO_DATA_JSON =
 		  	thumbnail: "woodcolor-nut.jpg",   
 		  	thumbnail_miya: "miya-darkbrown.jpg",
 		  	thumbnail_hira: "hira-darkbrown.jpg",
-		  	thumbnail_shime: "shime.jpg",
+		  	thumbnail_shime: "shime-bolt.jpg",
 			description: "Farbton Nuss/Dunkelbraun",
 			description_en: "Colour Nut/darkbrown"
 		}
@@ -141,7 +141,7 @@ const TAIKO_DATA_JSON =
 		  	thumbnail: "woodcolor-redbrown.jpg",   
 		  	thumbnail_miya: "miya-redbrown.jpg",
 		  	thumbnail_hira: "hira-redbrown.jpg",
-		  	thumbnail_shime: "shime.jpg",
+		  	thumbnail_shime: "shime-bolt.jpg",
 			description: "Farbton Rotbraun",
 			description_en: "Colour Redbrown" 
 		}
@@ -151,7 +151,7 @@ const TAIKO_DATA_JSON =
 		  	thumbnail: "woodcolor-darkred.jpg", 
 		  	thumbnail_miya: "miya-darkred.jpg",
 		  	thumbnail_hira: "hira-darkred.jpg",
-		  	thumbnail_shime: "shime.jpg",  
+		  	thumbnail_shime: "shime-bolt.jpg",  
 			description: "Farbton Dunkelrot",
 			description_en: "Colour Darkred" 
 		}
@@ -160,7 +160,7 @@ const TAIKO_DATA_JSON =
 			id: "WOODCOLOR_SPECIAL", 
 		  	thumbnail_miya: "miya-special.jpg",
 		  	thumbnail_hira: "hira-special.jpg",
-		  	thumbnail_shime: "shime.jpg",
+		  	thumbnail_shime: "shime-bolt.jpg",
 		  	thumbnail: "woodcolor-special.jpg",   
 			description: "Wunschfarbe",
 			description_en: "Colour of choice" 
@@ -263,23 +263,34 @@ const TAIKO_DATA_JSON =
 		,
 		{
 			id: 			"SHIME_DAIKO_3", 
-			name: 			"Shime daiko Größe 3",
-			name_en: 		"Shime daiko Type 3",
+			name: 			"Shime daiko Größe 3 (Seil)",
+			name_en: 		"Shime daiko Type 3 (rope)",
 			thumbnail: 		"shime.jpg",
 			thumbnail_size: "shime-3-masse.jpg",
-			description: 	"Shime daiko #3, Durchmesser 35cm, Höhe 18cm",
-			description_en: "Shime daiko #3, Diameter 35cm, height 18cm ",
+			description: 	"Shime daiko #3 (Seil), Durchmesser 36cm, Höhe 18cm",
+			description_en: "Shime daiko #3 (rope), Diameter 36cm, height 18cm ",
 			price: 			"780"
 		}
 		,
 		{
+			id: 			"SHIME_DAIKO_31", 
+			name: 			"Shime daiko Größe 3 (Bolzen)",
+			name_en: 		"Shime daiko Type 3 (bolt)",
+			thumbnail: 		"shime-bolt.jpg",
+			thumbnail_size: "shime-3-bolzen-masse.jpg",
+			description: 	"Shime daiko #3 (Bolzen), Durchmesser 36cm, Höhe 18cm",
+			description_en: "Shime daiko #3 (bolt), Diameter 36cm, height 18cm ",
+			price: 			"965"
+		}
+		,
+		{
 			id: 			"SHIME_DAIKO_4", 
-			name: 			"Shime daiko Größe 4",
-			name_en: 		"Shime daiko Type 4",
+			name: 			"Shime daiko Größe 4 (Seil)",
+			name_en: 		"Shime daiko Type 4 (rope)",
 			thumbnail: 		"shime.jpg",
 			thumbnail_size: "shime-4-masse.jpg",
-			description: 	"Shime daiko #4, Durchmesser 35cm, Höhe 21cm",
-			description_en: "Shime daiko #4, Diameter 35cm, height 21cm ",
+			description: 	"Shime daiko #4 (Seil), Durchmesser 36cm, Höhe 21cm",
+			description_en: "Shime daiko #4 (rope), Diameter 36cm, height 21cm ",
 			price: 			"850"
 		}
 	],

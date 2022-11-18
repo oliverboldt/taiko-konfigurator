@@ -156,13 +156,13 @@
 					</article>	
 
 					<div style="display:block;clear:both;"><h1>Shime-daiko</h1>
-					<img class="right stdphoto photoframe" src="image/shime.jpg">
+					<img class="right stdphoto photoframe" src="image/shime-bolt.jpg">
 					<article id="ARTICLE_DRUMTYPE_SHIME" class="localize">
-						<p>Die geschnürte Shime-daiko darf in keiner Gruppe fehlen. Wir bauen sie bereits seit dem Jahre 2000
+						<p>Die Shime-daiko darf in keiner Gruppe fehlen. Wir bauen sie bereits seit dem Jahre 2000
 						und haben die ersten Instrumente immer noch im Einsatz.</p>
 						<p>Nur die besten Teile einer Haut kommen beim Bau zum Einsatz und sorgen für den typischen, knackigen
-						Sound. Ca. 6kg bringt dieses Seil-Modell auf die Waage. Wir zeigen Dir gerne, wie man die Shime ohne 
-						technische Hilfsmittel nachspannt.</p>
+						Sound. Das Gewicht ist 6kg für das Seil-Modell und 10kg für das Modell mit Bolzen. 
+						Wir zeigen Dir gerne, wie man die Seil-Shime ohne technische Hilfsmittel nachspannt.</p>
 						<p><strong>Die Größe 3 ist ein echter Klassiker</strong> und immer erste Wahl. Der Körper der 
 							Größe 4 ist mit 21cm um 3cm höher als bei der '3er' und es kommen dickere 
 							Felle zum Einsatz. Diese Trommel lässt sich noch höher spannen 
@@ -521,8 +521,20 @@
 							</tr>
 						</table>
 					</div>
+					<input type="hidden" name="sys_subject" value="Anfrage mytaikodrum">
+					<input id="INPUT_TAIKOSPEC" type="hidden" name="Taiko" value="Test">
 				</form>
 				<script type="text/javascript">
+
+					var drum = JSON.parse(localStorage.getItem("drumspec"));
+
+					INPUT_TAIKOSPEC.value = 
+						drum.id + ", "
+						+ drum.woodId + ", "
+						+ drum.colorId + ", "
+						+ drum.handleId + ", "
+						+ drum.nailId + ", "
+						+ drum.nailrowId;
 					
 					function submit_inquiry(event)
 					{
@@ -839,8 +851,9 @@
 				
 				if (drumtype == "SHIME")
 				{
-					options += "<option id='OPTION_SIZE_3' class='localize' value='3'>Größe 3</option>";
-					options += "<option id='OPTION_SIZE_4' class='localize' value='4'>Größe 4</option>";
+					options += "<option id='OPTION_SIZE_3' class='localize' value='3'>Größe 3 (Seil)</option>";
+					options += "<option id='OPTION_SIZE_31' class='localize' value='31'>Größe 3 (Bolzen)</option>";
+					options += "<option id='OPTION_SIZE_4' class='localize' value='4'>Größe 4 (Seil)</option>";
 				}
 				
 				// var oldValue = drumSizeElement.value;
@@ -863,7 +876,7 @@
 					drumSizeElement.value = "14";
 				else if (drumType == "HIRA" && (isNaN(drumSize) || drumSize < 14))
 					drumSizeElement.value = "14";
-				else if (drumType == "SHIME" && (isNaN(drumSize) || drumSize < 3 || drumSize > 4))
+				else if (drumType == "SHIME" && (isNaN(drumSize) || drumSize < 3 || drumSize > 4) && drumSize != 31)
 					drumSizeElement.value = "3";
 
 				updateDrumIdAndPrice();
